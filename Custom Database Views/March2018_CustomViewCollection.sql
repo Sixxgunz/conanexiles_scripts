@@ -1,4 +1,5 @@
 BEGIN TRANSACTION;
+DROP TABLE cust_item_xref;
 CREATE TABLE cust_item_xref (
 template_id INTEGER,
 name TEXT,
