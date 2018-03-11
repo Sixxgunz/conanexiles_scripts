@@ -1,1237 +1,1251 @@
 BEGIN TRANSACTION;
-
-DROP TABLE cust_item_xref;
-
 CREATE TABLE cust_item_xref (
 template_id INTEGER,
 name TEXT,
 type TEXT
 );
-INSERT INTO `cust_item_xref` VALUES (10001,'Stone','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10005,'Bark','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10011,'Wood','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10012,'Branch','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10021,'Bone','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10022,'Undead Dragonbone','ingredient');
-INSERT INTO `cust_item_xref` VALUES (10023,'Undead Dragonhorn','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11001,'Ironstone','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11011,'Coal','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11051,'Crystal','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11052,'Silver','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11501,'Iron Bar','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11502,'Steel Bar','ingredient');
-INSERT INTO `cust_item_xref` VALUES (11551,'Glass','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12001,'Plant Fiber','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12003,'Gossamer','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12011,'Hide','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12012,'Thick Hide','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12511,'Leather','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12512,'Thick Leather','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12513,'Silk','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12514,'Ichor','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13001,'Feral Flesh','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13002,'Savoury Flesh','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13003,'Exotic Flesh','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13011,'Shaleback Egg','consumable');
-INSERT INTO `cust_item_xref` VALUES (13012,'Fat Grub','consumable');
-INSERT INTO `cust_item_xref` VALUES (13013,'Handful of Insects','consumable');
-INSERT INTO `cust_item_xref` VALUES (13014,'Small Scorpion','consumable');
-INSERT INTO `cust_item_xref` VALUES (13015,'Seeds','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13051,'Human Flesh','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13052,'Eyes of Innocence','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13501,'Shredded Roast','consumable');
-INSERT INTO `cust_item_xref` VALUES (13502,'Grilled Steak','consumable');
-INSERT INTO `cust_item_xref` VALUES (13503,'Roasted Haunch','consumable');
-INSERT INTO `cust_item_xref` VALUES (13540,'Gruel','consumable');
-INSERT INTO `cust_item_xref` VALUES (13550,'Devils Bonemeal','consumable');
-INSERT INTO `cust_item_xref` VALUES (13597,'Spoiled Gruel','consumable');
-INSERT INTO `cust_item_xref` VALUES (13598,'Rotten Devils Bonemeal','consumable');
-INSERT INTO `cust_item_xref` VALUES (13599,'Putrid Meat','consumable');
-INSERT INTO `cust_item_xref` VALUES (13601,'Arena Ritual Offering','consumable');
-INSERT INTO `cust_item_xref` VALUES (14001,'Aloe Leaves','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14101,'Serpent Venom Gland','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14102,'Sand Reaper Toxin Gland','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14151,'Yellow Lotus Blossom','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14171,'Brimstone','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14172,'Tar','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14173,'Steelfire','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14174,'Twine','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14175,'Dead Womans Hair','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14181,'Tomb Dust','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14182,'Demon Blood','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14183,'Dragonpowder','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15001,'Human Heart','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15002,'Unblemished Human Meat','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15003,'Lingering Essence','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15501,'Heart of a Hero','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15502,'Ancient Rhino Horn','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16001,'Stone Consolidant','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16002,'Iron Reinforcement','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16003,'Steel Reinforcement','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16011,'Brick','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16012,'Hardened Brick','ingredient');
-INSERT INTO `cust_item_xref` VALUES (16021,'Shaped Wood','ingredient');
-INSERT INTO `cust_item_xref` VALUES (30001,'Scrawled Note','consumable');
-INSERT INTO `cust_item_xref` VALUES (30002,'Leather Journal','consumable');
-INSERT INTO `cust_item_xref` VALUES (30003,'Prayer to Hanuman','consumable');
-INSERT INTO `cust_item_xref` VALUES (30004,'Scribbled Note','consumable');
-INSERT INTO `cust_item_xref` VALUES (30005,'Torn Parchment','consumable');
-INSERT INTO `cust_item_xref` VALUES (30006,'Razmas Journal #1','consumable');
-INSERT INTO `cust_item_xref` VALUES (30007,'Razmas Journal #2','consumable');
-INSERT INTO `cust_item_xref` VALUES (30008,'Razmas Journal #3','consumable');
-INSERT INTO `cust_item_xref` VALUES (30009,'Razmas Journal #4','consumable');
-INSERT INTO `cust_item_xref` VALUES (30010,'Razmas Journal #5','consumable');
-INSERT INTO `cust_item_xref` VALUES (30011,'Razmas Journal #6','consumable');
-INSERT INTO `cust_item_xref` VALUES (30012,'Razmas Journal #7','consumable');
-INSERT INTO `cust_item_xref` VALUES (30013,'Razmas Journal #8','consumable');
-INSERT INTO `cust_item_xref` VALUES (30014,'Etched Note','consumable');
-INSERT INTO `cust_item_xref` VALUES (30015,'First Mates Report','consumable');
-INSERT INTO `cust_item_xref` VALUES (30016,'Black Hand Shanty','consumable');
-INSERT INTO `cust_item_xref` VALUES (30017,'Salaceos Instructions','consumable');
-INSERT INTO `cust_item_xref` VALUES (30018,'Hunters Note - Shalebacks','consumable');
-INSERT INTO `cust_item_xref` VALUES (30019,'Priests Journal','consumable');
-INSERT INTO `cust_item_xref` VALUES (30020,'Hunters Note - Hyenas','consumable');
-INSERT INTO `cust_item_xref` VALUES (30021,'Hunters Note - Imps','consumable');
-INSERT INTO `cust_item_xref` VALUES (30022,'Hunters Note - Crocodiles','consumable');
-INSERT INTO `cust_item_xref` VALUES (30023,'Mercenarys Diary Page','consumable');
-INSERT INTO `cust_item_xref` VALUES (30024,'Waterstained Note','consumable');
-INSERT INTO `cust_item_xref` VALUES (41031,'Improvised Torch','weapon');
-INSERT INTO `cust_item_xref` VALUES (41032,'Sealed Waterskin','consumable');
-INSERT INTO `cust_item_xref` VALUES (41033,'Torch','weapon');
-INSERT INTO `cust_item_xref` VALUES (51001,'Stone Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51002,'Iron Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51003,'Steel Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51011,'Stone Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51012,'Iron Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51013,'Steel Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51021,'Pickaxe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51031,'Repair Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51151,'Iron Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51152,'Stone Maul','weapon');
-INSERT INTO `cust_item_xref` VALUES (51153,'Sledge of Tsotha-lanti','weapon');
-INSERT INTO `cust_item_xref` VALUES (51301,'Stone Club','weapon');
-INSERT INTO `cust_item_xref` VALUES (51303,'Truncheon','weapon');
-INSERT INTO `cust_item_xref` VALUES (51304,'Mitraen Ankh','weapon');
-INSERT INTO `cust_item_xref` VALUES (51401,'Hunting Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51402,'Hyrkanian Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51403,'Exceptional Hyrkanian Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51404,'Flawless Hyrkanian Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51451,'Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51452,'Exceptional Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51453,'Flawless Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51600,'Wooden Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51601,'Bone Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51602,'Wooden Targe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51611,'Iron Targe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51621,'Steel Heater Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51623,'Ancient Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51624,'Stygian Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51625,'Setite Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51626,'Exceptional Steel Heater Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51627,'Flawless Steel Heater Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51711,'Iron Pike','weapon');
-INSERT INTO `cust_item_xref` VALUES (51721,'Steel Trident','weapon');
-INSERT INTO `cust_item_xref` VALUES (51722,'Gavains Rusty Pike','weapon');
-INSERT INTO `cust_item_xref` VALUES (51801,'Stone Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51811,'Iron Broadsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51812,'Stygian Khopesh','weapon');
-INSERT INTO `cust_item_xref` VALUES (51813,'Ancient Khopesh','weapon');
-INSERT INTO `cust_item_xref` VALUES (51814,'Exceptional Iron Broadsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51815,'Flawless Iron Broadsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51816,'Phoenix-engraved Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51817,'Serpent-stamped Khopesh','weapon');
-INSERT INTO `cust_item_xref` VALUES (51818,'Exceptional Stygian Khopesh','weapon');
-INSERT INTO `cust_item_xref` VALUES (51821,'Falcata','weapon');
-INSERT INTO `cust_item_xref` VALUES (51822,'Cutlass','weapon');
-INSERT INTO `cust_item_xref` VALUES (51823,'Exceptional Cutlass','weapon');
-INSERT INTO `cust_item_xref` VALUES (51831,'Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51832,'Dry Scraper','weapon');
-INSERT INTO `cust_item_xref` VALUES (51833,'Darfari Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51834,'Els Drinker','weapon');
-INSERT INTO `cust_item_xref` VALUES (51835,'Tulwar of Amir Khurum','weapon');
-INSERT INTO `cust_item_xref` VALUES (51836,'Exceptional Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51837,'Flawless Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51850,'Darfari Cudgel','weapon');
-INSERT INTO `cust_item_xref` VALUES (51851,'Cimmerian Battle-axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51853,'Darfari Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51854,'Yog Cleaver','weapon');
-INSERT INTO `cust_item_xref` VALUES (51855,'Yoggite Cudgel','weapon');
-INSERT INTO `cust_item_xref` VALUES (51902,'Setite Ritual Knife','weapon');
-INSERT INTO `cust_item_xref` VALUES (51911,'Javelin','weapon');
-INSERT INTO `cust_item_xref` VALUES (51912,'Throwing Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51922,'Yoggite Bone Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51931,'Stygian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51951,'Stone Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51952,'Iron Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51953,'Steel Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51954,'Dagger of Nameless Days','weapon');
-INSERT INTO `cust_item_xref` VALUES (51955,'Exceptional Iron Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51956,'Flawless Iron Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51961,'Fiber Bindings','weapon');
-INSERT INTO `cust_item_xref` VALUES (51962,'Rawhide Bindings','weapon');
-INSERT INTO `cust_item_xref` VALUES (51963,'Leather Bindings','weapon');
-INSERT INTO `cust_item_xref` VALUES (51964,'Chain Bindings','weapon');
-INSERT INTO `cust_item_xref` VALUES (51965,'Bindings of Dead Women?s Hair','weapon');
-INSERT INTO `cust_item_xref` VALUES (52001,'Light Turban','armor');
-INSERT INTO `cust_item_xref` VALUES (52002,'Light Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52003,'Light Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52004,'Light Wrap','armor');
-INSERT INTO `cust_item_xref` VALUES (52005,'Light Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52011,'Medium Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52012,'Medium Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52013,'Medium Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52014,'Medium Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52015,'Medium Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52021,'Heavy Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52022,'Heavy Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52023,'Heavy Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52024,'Heavy Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52025,'Heavy Sabatons','armor');
-INSERT INTO `cust_item_xref` VALUES (52071,'Darfari Watcher Mask','armor');
-INSERT INTO `cust_item_xref` VALUES (52072,'Darfari Skin Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52073,'Darfari Skin Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52074,'Darfari Skin Skirt','armor');
-INSERT INTO `cust_item_xref` VALUES (52075,'Darfari Skin Greaves','armor');
-INSERT INTO `cust_item_xref` VALUES (52076,'Darfari Speaker Mask','armor');
-INSERT INTO `cust_item_xref` VALUES (52081,'Sandstorm Breathing Mask','armor');
-INSERT INTO `cust_item_xref` VALUES (52092,'Chest Wrap','armor');
-INSERT INTO `cust_item_xref` VALUES (52094,'Loin-cloth','armor');
-INSERT INTO `cust_item_xref` VALUES (52101,'Zamorian Dancer Headdress','armor');
-INSERT INTO `cust_item_xref` VALUES (52102,'Zamorian Dancer Blouse','armor');
-INSERT INTO `cust_item_xref` VALUES (52103,'Zamorian Dancer Bracelets','armor');
-INSERT INTO `cust_item_xref` VALUES (52104,'Zamorian Dancer Skirt','armor');
-INSERT INTO `cust_item_xref` VALUES (52105,'Zamorian Dancer Anklets','armor');
-INSERT INTO `cust_item_xref` VALUES (52202,'Coarse Tunic','armor');
-INSERT INTO `cust_item_xref` VALUES (52203,'Coarse Handwraps','armor');
-INSERT INTO `cust_item_xref` VALUES (52204,'Coarse Leggings','armor');
-INSERT INTO `cust_item_xref` VALUES (52205,'Coarse Footwraps','armor');
-INSERT INTO `cust_item_xref` VALUES (52212,'Leather Apron','armor');
-INSERT INTO `cust_item_xref` VALUES (52213,'Leather Workgloves','armor');
-INSERT INTO `cust_item_xref` VALUES (52221,'Shemite Turban','armor');
-INSERT INTO `cust_item_xref` VALUES (52222,'Shemite Tunic','armor');
-INSERT INTO `cust_item_xref` VALUES (52224,'Shemite Leggings','armor');
-INSERT INTO `cust_item_xref` VALUES (52225,'Shemite Shoes','armor');
-INSERT INTO `cust_item_xref` VALUES (52301,'Exceptional Light Turban','armor');
-INSERT INTO `cust_item_xref` VALUES (52302,'Exceptional Light Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52303,'Exceptional Light Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52304,'Exceptional Light Wrap','armor');
-INSERT INTO `cust_item_xref` VALUES (52305,'Exceptional Light Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52401,'Flawless Light Turban','armor');
-INSERT INTO `cust_item_xref` VALUES (52402,'Flawless Light Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52403,'Flawless Light Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52404,'Flawless Light Wrap','armor');
-INSERT INTO `cust_item_xref` VALUES (52405,'Flawless Light Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52501,'Setite Mask','armor');
-INSERT INTO `cust_item_xref` VALUES (52502,'Setite Choker','armor');
-INSERT INTO `cust_item_xref` VALUES (52504,'Setite Shendyt','armor');
-INSERT INTO `cust_item_xref` VALUES (52505,'Setite Sandals','armor');
-INSERT INTO `cust_item_xref` VALUES (52511,'Yoggite Watcher Mask','armor');
-INSERT INTO `cust_item_xref` VALUES (52512,'Yoggite Skin Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52513,'Yoggite Skin Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52514,'Yoggite Skin Skirt','armor');
-INSERT INTO `cust_item_xref` VALUES (52515,'Yoggite Skin Greaves','armor');
-INSERT INTO `cust_item_xref` VALUES (52523,'Mitraen Gloves','armor');
-INSERT INTO `cust_item_xref` VALUES (52524,'Mitraen Breeches','armor');
-INSERT INTO `cust_item_xref` VALUES (52525,'Mitraen Shoes','armor');
-INSERT INTO `cust_item_xref` VALUES (52532,'Black Hand Vest','armor');
-INSERT INTO `cust_item_xref` VALUES (52534,'Black Hand Trousers','armor');
-INSERT INTO `cust_item_xref` VALUES (53001,'Aloe Extract','consumable');
-INSERT INTO `cust_item_xref` VALUES (53011,'Violet Cureall','consumable');
-INSERT INTO `cust_item_xref` VALUES (53101,'Yellow Lotus Potion','consumable');
-INSERT INTO `cust_item_xref` VALUES (53201,'Reaper Poison','consumable');
-INSERT INTO `cust_item_xref` VALUES (53501,'Purified Flesh','consumable');
-INSERT INTO `cust_item_xref` VALUES (53502,'Ambrosia','consumable');
-INSERT INTO `cust_item_xref` VALUES (53503,'Set Antidote','consumable');
-INSERT INTO `cust_item_xref` VALUES (53511,'Flinthead Bolts','consumable');
-INSERT INTO `cust_item_xref` VALUES (53512,'Ironhead Bolts','consumable');
-INSERT INTO `cust_item_xref` VALUES (53513,'Razor Bolts','consumable');
-INSERT INTO `cust_item_xref` VALUES (53514,'Fire Bolts','consumable');
-INSERT INTO `cust_item_xref` VALUES (53611,'Flinthead Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53612,'Ironhead Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53613,'Razor Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53614,'Fire Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53651,'Snake Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (55001,'True Name of Set','consumable');
-INSERT INTO `cust_item_xref` VALUES (55002,'True Name of Yog','consumable');
-INSERT INTO `cust_item_xref` VALUES (55003,'True Name of Mitra','consumable');
-INSERT INTO `cust_item_xref` VALUES (55100,'Manifestation of Zeal','consumable');
-INSERT INTO `cust_item_xref` VALUES (60001,'Eyes of Hanuman','consumable');
-INSERT INTO `cust_item_xref` VALUES (80101,'Bed','building');
-INSERT INTO `cust_item_xref` VALUES (80102,'Bed - Folded','building');
-INSERT INTO `cust_item_xref` VALUES (80103,'Bed - Stygian','building');
-INSERT INTO `cust_item_xref` VALUES (80111,'Rawhide Bedroll','building');
-INSERT INTO `cust_item_xref` VALUES (80112,'Fiber Bedroll','building');
-INSERT INTO `cust_item_xref` VALUES (80131,'Water Well','building');
-INSERT INTO `cust_item_xref` VALUES (80132,'Large Water Well','building');
-INSERT INTO `cust_item_xref` VALUES (80152,'Archery Target','building');
-INSERT INTO `cust_item_xref` VALUES (80171,'Spike','building');
-INSERT INTO `cust_item_xref` VALUES (80201,'Table','building');
-INSERT INTO `cust_item_xref` VALUES (80202,'Table - Round','building');
-INSERT INTO `cust_item_xref` VALUES (80210,'Simple Palisade','building');
-INSERT INTO `cust_item_xref` VALUES (80211,'Wall Palisade','building');
-INSERT INTO `cust_item_xref` VALUES (80251,'Square Stool','building');
-INSERT INTO `cust_item_xref` VALUES (80252,'Round Stool','building');
-INSERT INTO `cust_item_xref` VALUES (80253,'Woven Stool','building');
-INSERT INTO `cust_item_xref` VALUES (80261,'Chair','building');
-INSERT INTO `cust_item_xref` VALUES (80271,'Log Bench','building');
-INSERT INTO `cust_item_xref` VALUES (80281,'Stone Throne','building');
-INSERT INTO `cust_item_xref` VALUES (80301,'Wooden Signpost','building');
-INSERT INTO `cust_item_xref` VALUES (80302,'Wall Sign','building');
-INSERT INTO `cust_item_xref` VALUES (80311,'Papyrus Scroll','building');
-INSERT INTO `cust_item_xref` VALUES (80501,'Standing Torch','building');
-INSERT INTO `cust_item_xref` VALUES (80504,'Set Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80511,'Bracketed Torch','building');
-INSERT INTO `cust_item_xref` VALUES (80515,'Wall Lantern','building');
-INSERT INTO `cust_item_xref` VALUES (80521,'Candle Stub','building');
-INSERT INTO `cust_item_xref` VALUES (80522,'White Candle','building');
-INSERT INTO `cust_item_xref` VALUES (80523,'Black Candle','building');
-INSERT INTO `cust_item_xref` VALUES (80531,'Radium Gem','building');
-INSERT INTO `cust_item_xref` VALUES (80551,'Tapestry','building');
-INSERT INTO `cust_item_xref` VALUES (80571,'Awning','building');
-INSERT INTO `cust_item_xref` VALUES (80601,'Carpet','building');
-INSERT INTO `cust_item_xref` VALUES (80621,'Hide Rug','building');
-INSERT INTO `cust_item_xref` VALUES (80631,'Pillow','building');
-INSERT INTO `cust_item_xref` VALUES (80651,'Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80661,'Iron Pot','building');
-INSERT INTO `cust_item_xref` VALUES (80662,'Mortarium','building');
-INSERT INTO `cust_item_xref` VALUES (80663,'Iron Pan','building');
-INSERT INTO `cust_item_xref` VALUES (80671,'Barrel','building');
-INSERT INTO `cust_item_xref` VALUES (80673,'Ale Keg','building');
-INSERT INTO `cust_item_xref` VALUES (80695,'Shelf','building');
-INSERT INTO `cust_item_xref` VALUES (80701,'Stygian Flag','building');
-INSERT INTO `cust_item_xref` VALUES (80721,'Small Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80722,'Medium Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80733,'Large Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80751,'Gong','building');
-INSERT INTO `cust_item_xref` VALUES (80752,'Horn','building');
-INSERT INTO `cust_item_xref` VALUES (80753,'Darfari Wind Chimes','building');
-INSERT INTO `cust_item_xref` VALUES (80851,'Wooden Box','building');
-INSERT INTO `cust_item_xref` VALUES (80852,'Large Chest','building');
-INSERT INTO `cust_item_xref` VALUES (80853,'Vault','building');
-INSERT INTO `cust_item_xref` VALUES (80901,'Explosive Jar','building');
-INSERT INTO `cust_item_xref` VALUES (80911,'Iron Leg-hold Trap','building');
-INSERT INTO `cust_item_xref` VALUES (80913,'Wooden Leg-hold Trap','building');
-INSERT INTO `cust_item_xref` VALUES (80951,'Sepulcher of Set','building');
-INSERT INTO `cust_item_xref` VALUES (80952,'Altar of Set','building');
-INSERT INTO `cust_item_xref` VALUES (80953,'Sanctum of Set','building');
-INSERT INTO `cust_item_xref` VALUES (80961,'Pit of Yog','building');
-INSERT INTO `cust_item_xref` VALUES (80962,'Rift of Yog','building');
-INSERT INTO `cust_item_xref` VALUES (80963,'Abyss of Yog','building');
-INSERT INTO `cust_item_xref` VALUES (80971,'Shrine of Mitra','building');
-INSERT INTO `cust_item_xref` VALUES (80972,'Santuary of Mitra','building');
-INSERT INTO `cust_item_xref` VALUES (80973,'Temple of Mitra','building');
-INSERT INTO `cust_item_xref` VALUES (80975,'Statue of Refreshment','building');
-INSERT INTO `cust_item_xref` VALUES (80976,'Statue of Guidance','building');
-INSERT INTO `cust_item_xref` VALUES (81001,'White Rhino Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81002,'Black Rhino Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81003,'Rhino King Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81004,'Grey Rhino Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81005,'Gazelle Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81006,'Kudo Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81007,'Antelope Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81008,'Rocknose Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81009,'King Rocknose Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82001,'White Rhino Head','building');
-INSERT INTO `cust_item_xref` VALUES (82002,'Black Rhino Head','building');
-INSERT INTO `cust_item_xref` VALUES (82003,'Rhino King Head','building');
-INSERT INTO `cust_item_xref` VALUES (82004,'Grey Rhino Head','building');
-INSERT INTO `cust_item_xref` VALUES (82005,'Gazelle Head','building');
-INSERT INTO `cust_item_xref` VALUES (82006,'Kudu Head','building');
-INSERT INTO `cust_item_xref` VALUES (82007,'Antelope Head','building');
-INSERT INTO `cust_item_xref` VALUES (82008,'Rocknose Head','building');
-INSERT INTO `cust_item_xref` VALUES (82009,'King Rocknose Head','building');
-INSERT INTO `cust_item_xref` VALUES (89001,'Campfire','building');
-INSERT INTO `cust_item_xref` VALUES (89010,'Bonfire','building');
-INSERT INTO `cust_item_xref` VALUES (89101,'Furnace','building');
-INSERT INTO `cust_item_xref` VALUES (89103,'Firebowl Cauldron','building');
-INSERT INTO `cust_item_xref` VALUES (89104,'Tannery','building');
-INSERT INTO `cust_item_xref` VALUES (89201,'Armorers Bench','building');
-INSERT INTO `cust_item_xref` VALUES (89301,'Blacksmiths Bench','building');
-INSERT INTO `cust_item_xref` VALUES (89401,'Carpenters Bench','building');
-INSERT INTO `cust_item_xref` VALUES (89911,'Lesser Wheel of Pain','building');
-INSERT INTO `cust_item_xref` VALUES (89912,'Wheel of Pain','building');
-INSERT INTO `cust_item_xref` VALUES (89913,'Greater Wheel of Pain','building');
-INSERT INTO `cust_item_xref` VALUES (90001,'Sandstone Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90002,'Sandstone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90003,'Sandstone Ceiling','building');
-INSERT INTO `cust_item_xref` VALUES (90004,'Sandstone DoorFrame','building');
-INSERT INTO `cust_item_xref` VALUES (90005,'Sandstone Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90006,'Sandstone Triangle','building');
-INSERT INTO `cust_item_xref` VALUES (90007,'Sandstone Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90008,'Simple Wooden Door','building');
-INSERT INTO `cust_item_xref` VALUES (90009,'Sandstone Pillar','building');
-INSERT INTO `cust_item_xref` VALUES (90010,'Sandstone Fence','building');
-INSERT INTO `cust_item_xref` VALUES (90011,'Sandstone Triangle Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90013,'Thatch Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90014,'Thatch Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90015,'Left-sloping Sandstone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90017,'Right-sloping Sandstone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90018,'Inverted Thatch Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90019,'Sandstone Window','building');
-INSERT INTO `cust_item_xref` VALUES (90020,'Sandstone Fence Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90101,'Stonebrick Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90102,'Stonebrick Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90103,'Stonebrick Ceiling','building');
-INSERT INTO `cust_item_xref` VALUES (90104,'Stonebrick Doorframe','building');
-INSERT INTO `cust_item_xref` VALUES (90105,'Stonebrick Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90106,'Stonebrick Wedge','building');
-INSERT INTO `cust_item_xref` VALUES (90107,'Stonebrick Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90108,'Reinforced Wooden Door','building');
-INSERT INTO `cust_item_xref` VALUES (90109,'Stonebrick Piller','building');
-INSERT INTO `cust_item_xref` VALUES (90110,'Stonebrick Fence','building');
-INSERT INTO `cust_item_xref` VALUES (90111,'Stonebrick Wedge Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90113,'Wooden Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90114,'Wooden Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90115,'Left-sloping Stonebrick Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90117,'Right-sloping Stonebrick Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90118,'Inverted Wooden Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90120,'Stonebrick Fence Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90121,'Stonebrick Gateway','building');
-INSERT INTO `cust_item_xref` VALUES (90122,'Stonebrick Gate','building');
-INSERT INTO `cust_item_xref` VALUES (90201,'Reinforced Stone Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90202,'Reinforced Stone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90203,'Reinforced Stone Ceiling','building');
-INSERT INTO `cust_item_xref` VALUES (90204,'Reinforced Stone Doorway','building');
-INSERT INTO `cust_item_xref` VALUES (90205,'Reinforced Stone Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90206,'Reinforced Stone Wedge','building');
-INSERT INTO `cust_item_xref` VALUES (90207,'Reinforced Stone Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90208,'Heavy Reinforced Door','building');
-INSERT INTO `cust_item_xref` VALUES (90209,'Reinforced Stone Pillar','building');
-INSERT INTO `cust_item_xref` VALUES (90210,'Reinforced Stone Fence','building');
-INSERT INTO `cust_item_xref` VALUES (90211,'Reinforced Stone Wedge Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90213,'Tiled Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90214,'Tiled Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90215,'Left-sloping Reinforced Stone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90217,'Right-sloping Reinforced Stone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90218,'Inverted Tiled Wedge Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90220,'Reinforced Stone Fence Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90221,'Reinforced Stone Gateway','building');
-INSERT INTO `cust_item_xref` VALUES (90222,'Reinforced Stone Gateway','building');
-INSERT INTO `cust_item_xref` VALUES (80104,'Double Bed','building');
-INSERT INTO `cust_item_xref` VALUES (80203,'Rock Slab','building');
-INSERT INTO `cust_item_xref` VALUES (80204,'Table-Rectangle (Variation)','building');
-INSERT INTO `cust_item_xref` VALUES (80205,'Low Wooden Table','building');
-INSERT INTO `cust_item_xref` VALUES (80206,'Table - Rectangle (Variation)','building');
-INSERT INTO `cust_item_xref` VALUES (80262,'Wooden Chair','building');
-INSERT INTO `cust_item_xref` VALUES (80263,'Comfortable Chair','building');
-INSERT INTO `cust_item_xref` VALUES (80272,'Wooden Bench','building');
-INSERT INTO `cust_item_xref` VALUES (80312,'Decorative Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80313,'Note','building');
-INSERT INTO `cust_item_xref` VALUES (80314,'Journal','building');
-INSERT INTO `cust_item_xref` VALUES (80315,'Note','building');
-INSERT INTO `cust_item_xref` VALUES (80316,'Note','building');
-INSERT INTO `cust_item_xref` VALUES (80502,'Protected Torch','building');
-INSERT INTO `cust_item_xref` VALUES (80503,'Stygian Tripod Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80505,'Iron Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80506,'Wall Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80507,'Hanging Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80508,'Hanging Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80509,'Cimmerian Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80524,'Black Candle Stub','building');
-INSERT INTO `cust_item_xref` VALUES (80525,'Candleholder','building');
-INSERT INTO `cust_item_xref` VALUES (80552,'Tapestry','building');
-INSERT INTO `cust_item_xref` VALUES (80622,'Large Carpet','building');
-INSERT INTO `cust_item_xref` VALUES (80623,'Blue Stygian Carpet','building');
-INSERT INTO `cust_item_xref` VALUES (80624,'Green Stygian Carpet','building');
-INSERT INTO `cust_item_xref` VALUES (80625,'Orange Stygian Carpet','building');
-INSERT INTO `cust_item_xref` VALUES (80664,'Large Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80665,'Large Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80666,'Large Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80667,'Iron Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80668,'Iron Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80669,'Iron Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80670,'Small Barrel','building');
-INSERT INTO `cust_item_xref` VALUES (80700,'Iron Mug','building');
-INSERT INTO `cust_item_xref` VALUES (80702,'Iron Tankard','building');
-INSERT INTO `cust_item_xref` VALUES (80703,'Iron Pitcher','building');
-INSERT INTO `cust_item_xref` VALUES (80704,'Iron Decanter','building');
-INSERT INTO `cust_item_xref` VALUES (80705,'Iron Plate','building');
-INSERT INTO `cust_item_xref` VALUES (80706,'Iron Plate','building');
-INSERT INTO `cust_item_xref` VALUES (80707,'Wooden Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80708,'Wooden Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80709,'Wooden Bowl','building');
-INSERT INTO `cust_item_xref` VALUES (80734,'Darfari Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80735,'Darfari Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80736,'Darfari Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80737,'Dogs of the Desert Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80738,'Black Hand Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80739,'Relic Hunter Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80740,'Darfari Banner','building');
-INSERT INTO `cust_item_xref` VALUES (80741,'Skeletal Decoration','building');
-INSERT INTO `cust_item_xref` VALUES (80742,'Fireplace and Hearth','building');
-INSERT INTO `cust_item_xref` VALUES (80743,'Cupboard','building');
-INSERT INTO `cust_item_xref` VALUES (80744,'Stygian Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80745,'Cauldron','building');
-INSERT INTO `cust_item_xref` VALUES (80746,'Tea Pot','building');
-INSERT INTO `cust_item_xref` VALUES (80747,'Stygian Eathenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80748,'Stygian Metal Jug','building');
-INSERT INTO `cust_item_xref` VALUES (80749,'Stygian Drum','building');
-INSERT INTO `cust_item_xref` VALUES (80750,'Stygian Brazier','building');
-INSERT INTO `cust_item_xref` VALUES (80754,'Drum','building');
-INSERT INTO `cust_item_xref` VALUES (80755,'Large Darfari Wind Chimes','building');
-INSERT INTO `cust_item_xref` VALUES (80756,'Bed - Stygian','building');
-INSERT INTO `cust_item_xref` VALUES (80757,'Statue of Ymir','building');
-INSERT INTO `cust_item_xref` VALUES (80758,'Nordheimer Horn','building');
-INSERT INTO `cust_item_xref` VALUES (80811,'Ladder','building');
-INSERT INTO `cust_item_xref` VALUES (80914,'Vapor Trap','building');
-INSERT INTO `cust_item_xref` VALUES (80915,'Exploding Trap','building');
-INSERT INTO `cust_item_xref` VALUES (80974,'Altar of Ymir','building');
-INSERT INTO `cust_item_xref` VALUES (80977,'Blooded Altar of Ymir','building');
-INSERT INTO `cust_item_xref` VALUES (80978,'Exalted Altar of Ymir','building');
-INSERT INTO `cust_item_xref` VALUES (81010,'Shaleback Hatchling Decoration','building');
-INSERT INTO `cust_item_xref` VALUES (81011,'Bat Demon Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81012,'Crocodile Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81013,'Hyena Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81014,'Shaleback Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81015,'Shaleback King Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81016,'Demonic Shaleback Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81017,'Undead Hyena Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81018,'Skeletal Serpentman Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (81019,'Kingslayer Polearm','weapon');
-INSERT INTO `cust_item_xref` VALUES (82010,'Bat Demon Head','building');
-INSERT INTO `cust_item_xref` VALUES (82011,'Crocodile Head','building');
-INSERT INTO `cust_item_xref` VALUES (82012,'Hyena Head','building');
-INSERT INTO `cust_item_xref` VALUES (82013,'Shaleback Head','building');
-INSERT INTO `cust_item_xref` VALUES (82014,'Shaleback King Head','building');
-INSERT INTO `cust_item_xref` VALUES (82015,'Demonic Shaleback Head','building');
-INSERT INTO `cust_item_xref` VALUES (82016,'Undead Hyena Head','building');
-INSERT INTO `cust_item_xref` VALUES (82017,'Skeletal Serpentman Head','building');
-INSERT INTO `cust_item_xref` VALUES (82018,'Elk King Head','building');
-INSERT INTO `cust_item_xref` VALUES (82019,'Black Bear Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82020,'Black Bear Head','building');
-INSERT INTO `cust_item_xref` VALUES (82021,'Deer Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82022,'Deer Head','building');
-INSERT INTO `cust_item_xref` VALUES (82023,'Mammoth Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82024,'Mammoth Head','building');
-INSERT INTO `cust_item_xref` VALUES (82025,'Mountain Goat Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82026,'Mountain Goat Head','building');
-INSERT INTO `cust_item_xref` VALUES (82027,'Wild Boar Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82028,'Wild Boar Head','building');
-INSERT INTO `cust_item_xref` VALUES (82030,'Wolf Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82031,'Wolf Head','building');
-INSERT INTO `cust_item_xref` VALUES (82032,'Dire Wolf Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82033,'Dire Wolf Head','building');
-INSERT INTO `cust_item_xref` VALUES (82034,'Elk Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82035,'Elk Head','building');
-INSERT INTO `cust_item_xref` VALUES (82036,'Elk King Head','building');
-INSERT INTO `cust_item_xref` VALUES (82037,'Brown Bear Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82038,'Brown Bear Head','building');
-INSERT INTO `cust_item_xref` VALUES (82039,'Panther Head','building');
-INSERT INTO `cust_item_xref` VALUES (82040,'Panther Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82041,'Sabertooth Head','building');
-INSERT INTO `cust_item_xref` VALUES (82042,'Sabertooth Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82043,'Red Dragon Head','building');
-INSERT INTO `cust_item_xref` VALUES (82044,'Green Dragon Head','building');
-INSERT INTO `cust_item_xref` VALUES (82045,'Red Dragon Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (82046,'Green Dragon Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (88892,'Impaled Skull','building');
-INSERT INTO `cust_item_xref` VALUES (88893,'Vanir Totem','building');
-INSERT INTO `cust_item_xref` VALUES (88894,'Vanir Totem','building');
-INSERT INTO `cust_item_xref` VALUES (88895,'Vanir Totem','building');
-INSERT INTO `cust_item_xref` VALUES (88896,'Vanir Totem','building');
-INSERT INTO `cust_item_xref` VALUES (88897,'Srygian Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (88898,'Srygian Earthenware Jug','building');
-INSERT INTO `cust_item_xref` VALUES (88899,'Folding Screen','building');
-INSERT INTO `cust_item_xref` VALUES (88900,'Stygian Table','building');
-INSERT INTO `cust_item_xref` VALUES (88901,'Round Stygian Table','building');
-INSERT INTO `cust_item_xref` VALUES (88902,'Triple-Slot Weapon Display Rack','building');
-INSERT INTO `cust_item_xref` VALUES (88903,'Single-Slot Weapon Display Rack','building');
-INSERT INTO `cust_item_xref` VALUES (88904,'Shield Display Rack','building');
-INSERT INTO `cust_item_xref` VALUES (89011,'Large Campfire','building');
-INSERT INTO `cust_item_xref` VALUES (89801,'Siege Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (89811,'Trebuchet Base','building');
-INSERT INTO `cust_item_xref` VALUES (89812,'Trebuchet Frame','building');
-INSERT INTO `cust_item_xref` VALUES (89813,'Trebuchet','building');
-INSERT INTO `cust_item_xref` VALUES (89851,'Siege Boulder','building');
-INSERT INTO `cust_item_xref` VALUES (89852,'Demon-Fire Barrage','building');
-INSERT INTO `cust_item_xref` VALUES (90023,'Thatch Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90024,'Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90025,'Reinforced Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90026,'Inverted Thatch Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90027,'Inverted Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90028,'Inverted Reinforced Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90029,'Thatch Rooftop End','building');
-INSERT INTO `cust_item_xref` VALUES (90030,'Wooden Rooftop End','building');
-INSERT INTO `cust_item_xref` VALUES (90031,'Reinforced Wooden Rooftop End','building');
-INSERT INTO `cust_item_xref` VALUES (90032,'Thatch Rooftop','building');
-INSERT INTO `cust_item_xref` VALUES (90034,'Reinforced Wooden Rooftop','building');
-INSERT INTO `cust_item_xref` VALUES (90035,'Thatch Rooftop Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90036,'Wooden Rooftop Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90037,'Reinforced Wooden Rooftop Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90038,'Thatch Rooftop Junction','building');
-INSERT INTO `cust_item_xref` VALUES (90039,'Wooden Rooftop Junction','building');
-INSERT INTO `cust_item_xref` VALUES (90033,'Wooden Rooftop','building');
-INSERT INTO `cust_item_xref` VALUES (90040,'Reinforced Wooden Rooftop Junction','building');
-INSERT INTO `cust_item_xref` VALUES (90041,'Thatch Rooftop Intersection','building');
-INSERT INTO `cust_item_xref` VALUES (90042,'Wooden Rooftop Intersection','building');
-INSERT INTO `cust_item_xref` VALUES (90043,'Reinforced Wooden Rooftop Intersection','building');
-INSERT INTO `cust_item_xref` VALUES (90044,'Thatch Rooftop Cap','building');
-INSERT INTO `cust_item_xref` VALUES (90045,'Wooden Rooftop Cap','building');
-INSERT INTO `cust_item_xref` VALUES (90046,'Reinforced Wooden Rooftop Cap','building');
-INSERT INTO `cust_item_xref` VALUES (90047,'Thatched Awning','building');
-INSERT INTO `cust_item_xref` VALUES (90048,'Thatched Awning Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90049,'Insulated Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90050,'Black Ice-Reinforced Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90051,'Inverted Insulated Wooden Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90052,'Inverted Black Ice-Reinforced Sloped Roof Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90053,'Insulated Wood Rooftop End','building');
-INSERT INTO `cust_item_xref` VALUES (90054,'Black Ice-Reinforced Rooftop End','building');
-INSERT INTO `cust_item_xref` VALUES (90055,'Insulated Wood Rooftop','building');
-INSERT INTO `cust_item_xref` VALUES (90056,'Black Ice-Reinforced Rooftop','building');
-INSERT INTO `cust_item_xref` VALUES (90057,'Insulated Wood Rooftop Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90058,'Black Ice-Reinforced Rooftop Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90059,'Insulated Wood Rooftop Junction','building');
-INSERT INTO `cust_item_xref` VALUES (90060,'Black Ice-Reinforced Rooftop Junction','building');
-INSERT INTO `cust_item_xref` VALUES (90061,'Insulated Wood Rooftop Intersection','building');
-INSERT INTO `cust_item_xref` VALUES (90062,'Black Ice-Reinforced Rooftop Intersection','building');
-INSERT INTO `cust_item_xref` VALUES (90063,'Insulated Wood Rooftop Cap','building');
-INSERT INTO `cust_item_xref` VALUES (90064,'Black Ice-Reinforced Rooftop Cap','building');
-INSERT INTO `cust_item_xref` VALUES (90065,'Wooden Awning','building');
-INSERT INTO `cust_item_xref` VALUES (90066,'Wooden Awning Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90067,'Reinforced Wooden Awning','building');
-INSERT INTO `cust_item_xref` VALUES (90068,'Reinforced Wooden Awning Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90069,'Sandstone Stairs Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90070,'Stonebrick Stairs Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90071,'Reinforced Stone Stairs Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90072,'Insulated Wooden Stairs Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90073,'Black Ice-Reinforced Wooden Stairs Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90074,'Insulated Wood Awning','building');
-INSERT INTO `cust_item_xref` VALUES (90075,'Insulated Wood Awning Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90076,'Reinforced Wooden Awning','building');
-INSERT INTO `cust_item_xref` VALUES (90077,'Black Ice-Reinforced Awning Corner','building');
-INSERT INTO `cust_item_xref` VALUES (90078,'Stonebrick Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90079,'Reinforced Stone Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90080,'Insulated Wooden Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90081,'Black Ice-Reinforced Wooden Stairs','building');
-INSERT INTO `cust_item_xref` VALUES (90223,'Reinforced Stone Crenelated Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90224,'Drawbridge','building');
-INSERT INTO `cust_item_xref` VALUES (90225,'Elevator Vertical','building');
-INSERT INTO `cust_item_xref` VALUES (90226,'Elevator Horizontal','building');
-INSERT INTO `cust_item_xref` VALUES (90227,'Siege Cauldron','building');
-INSERT INTO `cust_item_xref` VALUES (90243,'Insulated Wooden Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90244,'Insulated Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90245,'Insulated Wooden Ceiling','building');
-INSERT INTO `cust_item_xref` VALUES (90246,'Insulated Wooden Doorway','building');
-INSERT INTO `cust_item_xref` VALUES (90247,'Insulated Wooden Stairs (rail)','building');
-INSERT INTO `cust_item_xref` VALUES (90248,'Insulated Wooden Wedge','building');
-INSERT INTO `cust_item_xref` VALUES (90249,'Insulated Wooden Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90250,'Insulated Wooden Door','building');
-INSERT INTO `cust_item_xref` VALUES (90251,'Insulated Wooden Pillar','building');
-INSERT INTO `cust_item_xref` VALUES (90252,'Insulated Wooden Fence','building');
-INSERT INTO `cust_item_xref` VALUES (90253,'Insulated Wooden Wedge Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90254,'Tiled Sloped Insulated Wooden Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90255,'Tiled Wedge Insulated Wooden Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90256,'Left-sloping Insulated Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90257,'Right-sloping Insulated Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90258,'Inverted Tiled Wedge Insulated Wooden Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90260,'Insulated Wooden Fence Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90261,'Insulated Wooden Gateway','building');
-INSERT INTO `cust_item_xref` VALUES (90262,'Insulated Wooden Gate','building');
-INSERT INTO `cust_item_xref` VALUES (90263,'Black Ice-Reinforced Wooden Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90264,'Black Ice-Reinforced Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90265,'Black Ice-Reinforced Wooden Ceiling','building');
-INSERT INTO `cust_item_xref` VALUES (90266,'Black Ice-Reinforced Wooden Doorway','building');
-INSERT INTO `cust_item_xref` VALUES (90267,'Black Ice-Reinforced Wooden Stairs (rail)','building');
-INSERT INTO `cust_item_xref` VALUES (90268,'Black Ice-Reinforced Wooden Wedge','building');
-INSERT INTO `cust_item_xref` VALUES (90269,'Black Ice-Reinforced Wooden Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90270,'Black Ice-Reinforced Wooden Door','building');
-INSERT INTO `cust_item_xref` VALUES (90271,'Black Ice-Reinforced Wooden Pillar','building');
-INSERT INTO `cust_item_xref` VALUES (90272,'Black Ice-Reinforced Wooden Fence','building');
-INSERT INTO `cust_item_xref` VALUES (90273,'Black Ice-Reinforced Wooden Wedge Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90274,'Tiled Sloped Black Ice-Reinforced Wooden Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90275,'Tiled Wedge Black Ice-Reinforced Wooden Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90276,'Left-sloping Black Ice-Reinforced Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90277,'Right-sloping Black Ice-Reinforced Wooden Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90278,'Inverted Tiled Wedge Black Ice-Reinforced Wooden Sloped Roof','building');
-INSERT INTO `cust_item_xref` VALUES (90280,'Black Ice-Reinforced Wooden Fence Foundation','building');
-INSERT INTO `cust_item_xref` VALUES (90281,'Black Ice-Reinforced Wooden Gateway','building');
-INSERT INTO `cust_item_xref` VALUES (90282,'Black Ice-Reinforced Wooden Gate','building');
-INSERT INTO `cust_item_xref` VALUES (90283,'Black Ice-Reinforced Crenelated Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90284,'Sandstone Hatch Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90285,'Stonebrick Hatch Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90286,'Reinforced Stone Hatch Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90287,'Insulated Wood Hatch Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90288,'Black Ice-Reinforced Hatch Frame','building');
-INSERT INTO `cust_item_xref` VALUES (90289,'Hatch Door','building');
-INSERT INTO `cust_item_xref` VALUES (90290,'Stonebrick Hatch Door','building');
-INSERT INTO `cust_item_xref` VALUES (90291,'Reinforced Stone Hatch Door','building');
-INSERT INTO `cust_item_xref` VALUES (90292,'Insulated Wood Hatch Door','building');
-INSERT INTO `cust_item_xref` VALUES (90293,'Black Ice-Reinforced Hatch Door','building');
-INSERT INTO `cust_item_xref` VALUES (90294,'Left-sloping Inverted Sandstone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90295,'Left-sloping Inverted Stonebrick Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90296,'Left-sloping Inverted Reinforced Stone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90297,'Left-sloping Inverted Insulated Wood Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90298,'Left-sloping Inverted Black Ice-Reinforced Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90299,'Right-sloping Inverted Sandstone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90300,'Right-sloping Inverted Stonebrick Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90301,'Right-sloping Inverted Reinforced Stone Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90302,'Right-sloping Inverted Insulated Wood Wall','building');
-INSERT INTO `cust_item_xref` VALUES (90303,'Right-sloping Inverted Black Ice-Reinforced Wall','building');
-INSERT INTO `cust_item_xref` VALUES (10024,'Ice Shard','ingredient');
-INSERT INTO `cust_item_xref` VALUES (12013,'Reptile Hide','ingredient');
-INSERT INTO `cust_item_xref` VALUES (13600,'Cooked Abysmal Meat','consumable');
-INSERT INTO `cust_item_xref` VALUES (14185,'Abysmal Eye','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14186,'Abysmal Fang','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14187,'Abysmal Flesh','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14190,'Grey-flower Lupine','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14191,'True Indigo','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14192,'Orange Phykos','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14193,'Cochineal','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14194,'False Mandrake','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14195,'Glowing Goop','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14196,'Sandbeast Bile Gland','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14197,'Glowing Essence','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14199,'Asura''s Glory','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14200,'Glass Flask','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14201,'Water-filled Glass Flask','ingredient');
-INSERT INTO `cust_item_xref` VALUES (14601,'Glass Flask Mold','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15503,'Ancient Key','ingredient');
-INSERT INTO `cust_item_xref` VALUES (15504,'Heart of the Kinscourge','ingredient');
-INSERT INTO `cust_item_xref` VALUES (17001,'Dark Dye Colorant','ingredient');
-INSERT INTO `cust_item_xref` VALUES (17002,'Light Dye Colorant','ingredient');
-INSERT INTO `cust_item_xref` VALUES (17010,'Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17011,'Light Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17012,'Dark Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17020,'Grey Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17021,'Light Grey Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17022,'Dark Grey Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17030,'Cyan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17031,'Light Cyan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17032,'Dark Cyan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17040,'Red Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17041,'Light Red Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17042,'Dark Red Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17050,'Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17051,'Light Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17052,'Dark Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17060,'Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17061,'Light Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17062,'Dark Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17070,'Yellow Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17071,'Light Yellow Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17072,'Dark Yellow Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17080,'Purple Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17081,'Light Purple Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17082,'Dark Purple Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17090,'Orange Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17091,'Light Orange Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17092,'Dark Orange Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17093,'Magenta Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17094,'Light Magenta Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17095,'Dark Magenta Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17096,'Olive Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17097,'Light Olive Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17098,'Dark Olive Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17099,'Ash Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17100,'Light Ash Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17101,'Dark Ash Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17102,'Cimmerian Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17103,'Light Cimmerian Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17104,'Dark Cimmerian Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17105,'Muted Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17106,'Light Muted Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17107,'Dark Muted Brown Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17108,'Tan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17109,'Light Tan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17110,'Dark Tan Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17111,'Deep Red Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17112,'Midnight Blue Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17113,'Abyssal Violet Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (17114,'Cursed Green Dye','consumable');
-INSERT INTO `cust_item_xref` VALUES (18000,'Hops','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18001,'Leavening Agent','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18002,'Honey','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18005,'Highland Berries','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18006,'Desert Berries','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18007,'Shroom Amanita','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18008,'Puffball Mushroom','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18010,'Unappetizing Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18011,'Savory Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18012,'Exotic Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18013,'Dried Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18014,'Dried Meat','consumable');
-INSERT INTO `cust_item_xref` VALUES (18020,'Unappetizing Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18021,'Savory Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18022,'Exotic Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18025,'Dry Wood','consumable');
-INSERT INTO `cust_item_xref` VALUES (18030,'Resin','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18031,'Oil','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18032,'Highland Berry Pulp','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18033,'Desert Berry Pulp','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18040,'Ice','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18041,'Black Ice','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18052,'Fur','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18060,'Star Metal Ore','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18061,'Star Metal Bar','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18062,'Hardened Steel Bar','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18070,'Phykos Rum','consumable');
-INSERT INTO `cust_item_xref` VALUES (18071,'Absinthe','consumable');
-INSERT INTO `cust_item_xref` VALUES (18072,'Ale','consumable');
-INSERT INTO `cust_item_xref` VALUES (18073,'Highland Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18074,'Cactus Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18075,'Firewater','consumable');
-INSERT INTO `cust_item_xref` VALUES (18076,'Mead','consumable');
-INSERT INTO `cust_item_xref` VALUES (18077,'Resin Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18078,'Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18079,'Honeyed Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18080,'Desert Wine','consumable');
-INSERT INTO `cust_item_xref` VALUES (18081,'Shroom Beer','consumable');
-INSERT INTO `cust_item_xref` VALUES (18188,'Volatile Gland','ingredient');
-INSERT INTO `cust_item_xref` VALUES (18200,'Cooked Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18201,'Cooked Savory Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18202,'Cooked Exotic Fish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18203,'Cooked Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18204,'Cooked Savory Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18205,'Cooked Exotic Shellfish','consumable');
-INSERT INTO `cust_item_xref` VALUES (18206,'Bread','consumable');
-INSERT INTO `cust_item_xref` VALUES (18207,'Exotic Feast','consumable');
-INSERT INTO `cust_item_xref` VALUES (18208,'Savory Feast','consumable');
-INSERT INTO `cust_item_xref` VALUES (18209,'Oyster Omlette','consumable');
-INSERT INTO `cust_item_xref` VALUES (18210,'Century Egg','consumable');
-INSERT INTO `cust_item_xref` VALUES (18211,'Purified Water','consumable');
-INSERT INTO `cust_item_xref` VALUES (18212,'Feast to Yog','consumable');
-INSERT INTO `cust_item_xref` VALUES (18213,'Feral Feast','consumable');
-INSERT INTO `cust_item_xref` VALUES (18214,'Bush Jerky','consumable');
-INSERT INTO `cust_item_xref` VALUES (18215,'Corrupting Brew','consumable');
-INSERT INTO `cust_item_xref` VALUES (18216,'Flavored Gruel','consumable');
-INSERT INTO `cust_item_xref` VALUES (18217,'Spiced Haunch','consumable');
-INSERT INTO `cust_item_xref` VALUES (18218,'Feast of Set','consumable');
-INSERT INTO `cust_item_xref` VALUES (18219,'Spiced Oysters','consumable');
-INSERT INTO `cust_item_xref` VALUES (18220,'Cooked Oyster','consumable');
-INSERT INTO `cust_item_xref` VALUES (18221,'Berry Juice','consumable');
-INSERT INTO `cust_item_xref` VALUES (18222,'Feast of Mitra','consumable');
-INSERT INTO `cust_item_xref` VALUES (18223,'Meaty Mashup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18224,'Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18225,'Enhanced Gruel','consumable');
-INSERT INTO `cust_item_xref` VALUES (18226,'Cleansing Brew','consumable');
-INSERT INTO `cust_item_xref` VALUES (18227,'Spiced Tea','consumable');
-INSERT INTO `cust_item_xref` VALUES (18228,'Herbal Tea','consumable');
-INSERT INTO `cust_item_xref` VALUES (18229,'Trail Jerky','consumable');
-INSERT INTO `cust_item_xref` VALUES (18230,'Steak and Eggs','consumable');
-INSERT INTO `cust_item_xref` VALUES (18231,'Spiced Steak','consumable');
-INSERT INTO `cust_item_xref` VALUES (18232,'Savory Jerky','consumable');
-INSERT INTO `cust_item_xref` VALUES (18234,'Darfari Bug Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18235,'Spiced Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18236,'Aloe Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18237,'Seed Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18238,'Yellow Lotus Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18239,'Mushroom Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18240,'Roasted Mushrooms','consumable');
-INSERT INTO `cust_item_xref` VALUES (18241,'Mulled Brew','consumable');
-INSERT INTO `cust_item_xref` VALUES (18242,'Cimmerian Meal','consumable');
-INSERT INTO `cust_item_xref` VALUES (18243,'Mushroom Tea','consumable');
-INSERT INTO `cust_item_xref` VALUES (18245,'Demon Blood-Sausage','consumable');
-INSERT INTO `cust_item_xref` VALUES (18233,'Meat Strips','consumable');
-INSERT INTO `cust_item_xref` VALUES (18244,'Hearty Stew','consumable');
-INSERT INTO `cust_item_xref` VALUES (18246,'Rhino Head Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18247,'Lasting Meal','consumable');
-INSERT INTO `cust_item_xref` VALUES (18248,'Spiced Slivers','consumable');
-INSERT INTO `cust_item_xref` VALUES (18249,'Exquisite Stew','consumable');
-INSERT INTO `cust_item_xref` VALUES (18250,'Chili Desert Style','consumable');
-INSERT INTO `cust_item_xref` VALUES (18251,'Hearty Meal','consumable');
-INSERT INTO `cust_item_xref` VALUES (18252,'Bone Broth','consumable');
-INSERT INTO `cust_item_xref` VALUES (18253,'Spiced and Shredded Roast','consumable');
-INSERT INTO `cust_item_xref` VALUES (18254,'Bug Kabob','consumable');
-INSERT INTO `cust_item_xref` VALUES (18255,'Spiced Egg','consumable');
-INSERT INTO `cust_item_xref` VALUES (18256,'Egg Surpise','consumable');
-INSERT INTO `cust_item_xref` VALUES (18257,'Cooked Eggs','consumable');
-INSERT INTO `cust_item_xref` VALUES (18258,'Dried Berries','consumable');
-INSERT INTO `cust_item_xref` VALUES (18259,'Salted Berries','consumable');
-INSERT INTO `cust_item_xref` VALUES (18260,'Feast of Ymir','consumable');
-INSERT INTO `cust_item_xref` VALUES (18261,'Oyster Flesh','consumable');
-INSERT INTO `cust_item_xref` VALUES (18263,'Salt','consumable');
-INSERT INTO `cust_item_xref` VALUES (18264,'Spice','consumable');
-INSERT INTO `cust_item_xref` VALUES (18268,'Honeyglazed Roast','consumable');
-INSERT INTO `cust_item_xref` VALUES (18269,'Honeyed Eggs','consumable');
-INSERT INTO `cust_item_xref` VALUES (18270,'Mystery Meat Soup','consumable');
-INSERT INTO `cust_item_xref` VALUES (18271,'Honeyed Gruel','consumable');
-INSERT INTO `cust_item_xref` VALUES (18272,'Honey Jerky','consumable');
-INSERT INTO `cust_item_xref` VALUES (18273,'Honeybread','consumable');
-INSERT INTO `cust_item_xref` VALUES (18274,'Ice Tea','consumable');
-INSERT INTO `cust_item_xref` VALUES (18400,'Healing Wraps','consumable');
-INSERT INTO `cust_item_xref` VALUES (18401,'Numbing Wraps','consumable');
-INSERT INTO `cust_item_xref` VALUES (18402,'Midnight Blue Flower','consumable');
-INSERT INTO `cust_item_xref` VALUES (18500,'Beehive','building');
-INSERT INTO `cust_item_xref` VALUES (18501,'Improved Beehive','building');
-INSERT INTO `cust_item_xref` VALUES (18502,'Fish Trap','building');
-INSERT INTO `cust_item_xref` VALUES (18503,'Shellfish Trap','building');
-INSERT INTO `cust_item_xref` VALUES (18504,'Fermentation Barrel','building');
-INSERT INTO `cust_item_xref` VALUES (18505,'Fluid Press','building');
-INSERT INTO `cust_item_xref` VALUES (18506,'Dryer','building');
-INSERT INTO `cust_item_xref` VALUES (18507,'Preservation box','building');
-INSERT INTO `cust_item_xref` VALUES (18508,'Improved Preservation box','building');
-INSERT INTO `cust_item_xref` VALUES (18509,'Stove','building');
-INSERT INTO `cust_item_xref` VALUES (18510,'Grinder','building');
-INSERT INTO `cust_item_xref` VALUES (18511,'Frost Temple Smithy','building');
-INSERT INTO `cust_item_xref` VALUES (18512,'Artisan''s Worktable','building');
-INSERT INTO `cust_item_xref` VALUES (18513,'Tanner''s Worktable','building');
-INSERT INTO `cust_item_xref` VALUES (18514,'Torturer''s Worktable','building');
-INSERT INTO `cust_item_xref` VALUES (30025,'XX_Plaseholder_Lore_1','consumable');
-INSERT INTO `cust_item_xref` VALUES (30026,'XX_Plaseholder_Lore_2','consumable');
-INSERT INTO `cust_item_xref` VALUES (30027,'XX_Plaseholder_Lore_3','consumable');
-INSERT INTO `cust_item_xref` VALUES (30028,'XX_Plaseholder_Lore_4','consumable');
-INSERT INTO `cust_item_xref` VALUES (30029,'XX_Plaseholder_Lore_5','consumable');
-INSERT INTO `cust_item_xref` VALUES (30030,'XX_Plaseholder_Lore_6','consumable');
-INSERT INTO `cust_item_xref` VALUES (30031,'XX_Plaseholder_Lore_7','consumable');
-INSERT INTO `cust_item_xref` VALUES (30032,'XX_Plaseholder_Lore_8','consumable');
-INSERT INTO `cust_item_xref` VALUES (30033,'XX_Plaseholder_Lore_9','consumable');
-INSERT INTO `cust_item_xref` VALUES (30034,'XX_Plaseholder_Lore_10','consumable');
-INSERT INTO `cust_item_xref` VALUES (30035,'XX_Plaseholder_Lore_11','consumable');
-INSERT INTO `cust_item_xref` VALUES (30036,'XX_Plaseholder_Lore_12','consumable');
-INSERT INTO `cust_item_xref` VALUES (30037,'XX_Plaseholder_Lore_13','consumable');
-INSERT INTO `cust_item_xref` VALUES (30038,'XX_Plaseholder_Lore_14','consumable');
-INSERT INTO `cust_item_xref` VALUES (30039,'XX_Plaseholder_Lore_15','consumable');
-INSERT INTO `cust_item_xref` VALUES (30040,'XX_Plaseholder_Lore_16','consumable');
-INSERT INTO `cust_item_xref` VALUES (30041,'XX_Plaseholder_Lore_17','consumable');
-INSERT INTO `cust_item_xref` VALUES (30042,'XX_Plaseholder_Lore_18','consumable');
-INSERT INTO `cust_item_xref` VALUES (30043,'XX_Plaseholder_Lore_19','consumable');
-INSERT INTO `cust_item_xref` VALUES (30044,'XX_Plaseholder_Lore_20','consumable');
-INSERT INTO `cust_item_xref` VALUES (54008,'King Rocknose Head Trophy','building');
-INSERT INTO `cust_item_xref` VALUES (55004,'True Name of Ymir','consumable');
-INSERT INTO `cust_item_xref` VALUES (56230,'Vanir Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (70001,'Snake Idol','building');
-INSERT INTO `cust_item_xref` VALUES (41020,'Simple Armor Patch Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41021,'Armor Patch Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41022,'Advanced Armor Patch Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41023,'Master Armor Patch Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41024,'Simple Weapon Repair Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41025,'Weapon Repair Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41026,'Advanced Weapon Repair Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41027,'Master Weapon Repair Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41028,'Steel Cleaver','weapon');
-INSERT INTO `cust_item_xref` VALUES (41029,'Hardened Steel Cleaver','weapon');
-INSERT INTO `cust_item_xref` VALUES (41030,'Star Metal Cleaver','weapon');
-INSERT INTO `cust_item_xref` VALUES (41035,'Glowing Stick','weapon');
-INSERT INTO `cust_item_xref` VALUES (41051,'Balanced Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41052,'Simple Weapon Damage Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41053,'Weapon Damage Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41054,'Advanced Weapon Damage Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41055,'Weighted Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41056,'Simple Tool Upgrade Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41057,'Tool Upgrade Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41058,'Advanced Tool Upgrade Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41059,'Simple Blunted Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41060,'Blunted Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41061,'Advanced Blunted Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41063,'Paring Blade','consumable');
-INSERT INTO `cust_item_xref` VALUES (41064,'Simple Weapon Reinforcement','consumable');
-INSERT INTO `cust_item_xref` VALUES (41065,'Weapon Reinforcement','consumable');
-INSERT INTO `cust_item_xref` VALUES (41066,'Advanced Weapon Reinforcement','consumable');
-INSERT INTO `cust_item_xref` VALUES (41067,'Spiked Weapon Fitting','consumable');
-INSERT INTO `cust_item_xref` VALUES (41068,'Armor Reduction Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41069,'Thin Armor Plating','consumable');
-INSERT INTO `cust_item_xref` VALUES (41070,'Armor Plating','consumable');
-INSERT INTO `cust_item_xref` VALUES (41071,'Thick Armor Plating','consumable');
-INSERT INTO `cust_item_xref` VALUES (41072,'Simple Armor Rebalance Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41073,'Armor Rebalance Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41074,'Advanced Armor Rebalance Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41075,'Simple Armor Flexibility Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41076,'Armor Flexibility Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (41077,'Advanced Armor Flexibility Kit','consumable');
-INSERT INTO `cust_item_xref` VALUES (51014,'Hardened Steel Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51015,'Star Metal Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51022,'Hardened Steel Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51023,'Star Metal Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51040,'Steel Sickle','weapon');
-INSERT INTO `cust_item_xref` VALUES (51041,'Hardened Steel Sickle','weapon');
-INSERT INTO `cust_item_xref` VALUES (51042,'Star Metal Sickle','weapon');
-INSERT INTO `cust_item_xref` VALUES (51066,'Telith''s Lament','weapon');
-INSERT INTO `cust_item_xref` VALUES (51067,'Hoar-Frost Hatchet','weapon');
-INSERT INTO `cust_item_xref` VALUES (51068,'Glacier-Crack','weapon');
-INSERT INTO `cust_item_xref` VALUES (51069,'Star Metal Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51070,'Exceptional Star Metal Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51071,'Flawless Star Metal Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51072,'Deathbringer Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51073,'xx_Wight_Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51074,'xx_Wight_Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51154,'Steel Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51155,'Ancient Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51156,'Hardened Steel Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51157,'Exceptional Hardened Steel Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51158,'Flawless Hardened Steel Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51159,'Star Metal Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51160,'Exceptional Star Metal Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51161,'Flawless Star Metal Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51162,'Exceptional Iron Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51163,'Flawless Iron Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51164,'Exceptional Steel Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51165,'Flawless Steel Warhammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51166,'Exceptional Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51167,'Flawless Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51168,'Exceptional Hunting Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51169,'Flawless Hunting Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51170,'Exceptional Heavy Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51171,'Flawless Heavy Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51172,'Exceptional Iron Pike','weapon');
-INSERT INTO `cust_item_xref` VALUES (51173,'Flawless Iron Pike','weapon');
-INSERT INTO `cust_item_xref` VALUES (51174,'Exceptional Steel Trident','weapon');
-INSERT INTO `cust_item_xref` VALUES (51175,'Flawless Steel Trident','weapon');
-INSERT INTO `cust_item_xref` VALUES (51176,'Exceptional Falcata','weapon');
-INSERT INTO `cust_item_xref` VALUES (51177,'Flawless Falcata','weapon');
-INSERT INTO `cust_item_xref` VALUES (51178,'Exceptional Cimmerian Battle-axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51179,'Flawless Cimmerian Battle-axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51180,'Exceptional Stygian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51181,'Flawless Stygian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51182,'Exceptional Steel Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51183,'Flawless Steel Poniard','weapon');
-INSERT INTO `cust_item_xref` VALUES (51184,'Bone Arrow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51185,'Bobe Bolt','weapon');
-INSERT INTO `cust_item_xref` VALUES (51186,'Flanged Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51187,'Exceptional Flanged Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51188,'Flawless Flanged Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51189,'Iron Corseque','weapon');
-INSERT INTO `cust_item_xref` VALUES (51190,'Exceptional Iron Corseque','weapon');
-INSERT INTO `cust_item_xref` VALUES (51191,'Flawless Iron Corseque','weapon');
-INSERT INTO `cust_item_xref` VALUES (51195,'Iron War Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51196,'Exceptional Iron War Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51197,'Flawless Iron War Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51198,'Studded Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51199,'Exceptional Studded Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51200,'Flawless Studded Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51971,'Demon-fire Orb','weapon');
-INSERT INTO `cust_item_xref` VALUES (51209,'Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51210,'Exceptional Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51211,'Flawless Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51212,'Ancient Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51972,'Grease Orb','weapon');
-INSERT INTO `cust_item_xref` VALUES (51302,'Iron Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51305,'Steel Mace','weapon');
-INSERT INTO `cust_item_xref` VALUES (51306,'Iron Truncheon','weapon');
-INSERT INTO `cust_item_xref` VALUES (51307,'Steel Truncheon','weapon');
-INSERT INTO `cust_item_xref` VALUES (51406,'Ancient Bow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51454,'Heavy Crossbow','weapon');
-INSERT INTO `cust_item_xref` VALUES (51622,'Lantern Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51628,'Hardened Steel Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51629,'Exceptional Hardened Steel Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51630,'Flawless Hardened Steel Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51631,'Star Metal Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51632,'Exceptional Star Metal Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51633,'Flawless Star Metal Shield','weapon');
-INSERT INTO `cust_item_xref` VALUES (51715,'Stone Pike','weapon');
-INSERT INTO `cust_item_xref` VALUES (51723,'Star Metal Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51724,'Exceptional Star Metal Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51725,'Flawless Star Metal Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51726,'Hardened Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51727,'Exceptional Hardened Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51728,'Flawless Hardened Steel Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51827,'Saw','weapon');
-INSERT INTO `cust_item_xref` VALUES (51828,'Adze','weapon');
-INSERT INTO `cust_item_xref` VALUES (51829,'Carpentry Hammer','weapon');
-INSERT INTO `cust_item_xref` VALUES (51830,'Drum','weapon');
-INSERT INTO `cust_item_xref` VALUES (51841,'Hardened Steel Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51842,'Exceptional Hardened Steel Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51843,'Flawless Hardened Steel Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51852,'Iron Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51973,'Water Orb','weapon');
-INSERT INTO `cust_item_xref` VALUES (51974,'Gaseous Orb','weapon');
-INSERT INTO `cust_item_xref` VALUES (51957,'Abysmal Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51958,'Abysmal Sword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51959,'Hardened Steel Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51960,'Exceptional Hardened Steel Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51966,'Flawless Hardened Steel Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51967,'Star Metal Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51968,'Exceptional Star Metal Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51969,'Flawless Star Metal Dagger','weapon');
-INSERT INTO `cust_item_xref` VALUES (51970,'Acheronian Sickle','weapon');
-INSERT INTO `cust_item_xref` VALUES (51975,'Black Ice Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51976,'Black Ice Broadsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51977,'Black Ice Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51978,'Acheronian Pick','weapon');
-INSERT INTO `cust_item_xref` VALUES (51979,'Acheronian Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51980,'Exceptional Acheronian Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51981,'Flawless Acheronian Longsword','weapon');
-INSERT INTO `cust_item_xref` VALUES (51982,'Acheronian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51983,'Exceptional Acheronian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51984,'Flawless Acheronian Spear','weapon');
-INSERT INTO `cust_item_xref` VALUES (51985,'Acheronian War-Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51986,'Exceptional Acheronian War-Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (51987,'Flawless Acheronian War-Axe','weapon');
-INSERT INTO `cust_item_xref` VALUES (52016,'Reptilian Helm','armor');
-INSERT INTO `cust_item_xref` VALUES (52017,'Reptilian Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52018,'Reptilian Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52019,'Reptilian Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52020,'Reptilian Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52026,'Exceptional Medium Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52027,'Exceptional Medium Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52028,'Exceptional Medium Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52029,'Exceptional Medium Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52030,'Exceptional Medium Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52036,'Exceptional Heavy Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52037,'Exceptional Heavy Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52038,'Exceptional Heavy Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52039,'Exceptional Heavy Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52040,'Exceptional Heavy Sabatons','armor');
-INSERT INTO `cust_item_xref` VALUES (52056,'Flawless Medium Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52057,'Flawless Medium Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52058,'Flawless Medium Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52059,'Flawless Medium Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52060,'Flawless Medium Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52061,'XX_Stygian Headdress','armor');
-INSERT INTO `cust_item_xref` VALUES (52062,'XX_Stygian Vest','armor');
-INSERT INTO `cust_item_xref` VALUES (52064,'XX_Stygian Shendyt','armor');
-INSERT INTO `cust_item_xref` VALUES (52065,'XX_Stygian Sandals','armor');
-INSERT INTO `cust_item_xref` VALUES (52066,'Flawless Heavy Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52067,'Flawless Heavy Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52068,'Flawless Heavy Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52069,'Flawless Heavy Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52070,'Flawless Heavy Sabatons','armor');
-INSERT INTO `cust_item_xref` VALUES (52293,'Climbing Gloves','armor');
-INSERT INTO `cust_item_xref` VALUES (52295,'Climbing Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52522,'Mitraen Tunic','armor');
-INSERT INTO `cust_item_xref` VALUES (52541,'Relic Hunter Turban','armor');
-INSERT INTO `cust_item_xref` VALUES (52542,'Relic Hunter Shirt','armor');
-INSERT INTO `cust_item_xref` VALUES (52543,'Relic Hunter Gloves','armor');
-INSERT INTO `cust_item_xref` VALUES (52544,'Relic Hunter Trousers','armor');
-INSERT INTO `cust_item_xref` VALUES (52545,'Relic Hunter Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52551,'Hyena Skull Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52552,'Hyena-fur Chestpiece','armor');
-INSERT INTO `cust_item_xref` VALUES (52553,'Hyena-fur Gloves','armor');
-INSERT INTO `cust_item_xref` VALUES (52554,'Hyena-fur Wrap','armor');
-INSERT INTO `cust_item_xref` VALUES (52555,'Hyena-fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52556,'Star Metal Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52557,'Star Metal Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52558,'Star Metal Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52559,'Star Metal Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52560,'Star Metal Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52561,'Hardened Steel Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52562,'Hardened Steel Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52563,'Hardened Steel Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52564,'Hardened Steel Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52565,'Hardened Steel Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52566,'Fur Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52567,'Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52568,'Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52569,'Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52570,'Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52571,'Exceptional Star Metal Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52572,'Exceptional Star Metal Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52573,'Exceptional Star Metal Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52574,'Exceptional Star Metal Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52575,'Exceptional Star Metal Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52576,'Exceptional Hardened Steel Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52577,'Exceptional Hardened Steel Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52578,'Exceptional Hardened Steel Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52579,'Exceptional Hardened Steel Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52580,'Exceptional Hardened Steel Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52581,'Exceptional Fur Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52582,'Exceptional Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52583,'Exceptional Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52584,'Exceptional Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52585,'Exceptional Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52586,'Flawless Star Metal Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52587,'Flawless Star Metal Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52588,'Flawless Star Metal Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52589,'Flawless Star Metal Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52590,'Flawless Star Metal Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52591,'Flawless Hardened Steel Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52592,'Flawless Hardened Steel Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52593,'Flawless Hardened Steel Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52594,'Flawless Hardened Steel Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52595,'Flawless Hardened Steel Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52596,'Flawless Fur Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52597,'Flawless Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52598,'Flawless Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52599,'Flawless Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52600,'Flawless Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52601,'Heavy Plated Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52602,'Horned Heavy Plated Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52603,'Silent Legion Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52604,'Silent Legion Pauldron','armor');
-INSERT INTO `cust_item_xref` VALUES (52605,'Silent Legion Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52606,'Silent Legion Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52607,'Silent Legion Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52610,'Winter''s Majesty','armor');
-INSERT INTO `cust_item_xref` VALUES (52611,'Ymir''s Aegis','armor');
-INSERT INTO `cust_item_xref` VALUES (52612,'Ymir''s Might','armor');
-INSERT INTO `cust_item_xref` VALUES (52613,'Ymir''s Shanks','armor');
-INSERT INTO `cust_item_xref` VALUES (52614,'Ymir''s Stride','armor');
-INSERT INTO `cust_item_xref` VALUES (52615,'Vanir Fur Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52616,'Vanir Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52617,'Vanir Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52618,'Vanir Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52619,'Vanir Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52620,'Exceptional Vanir Fur Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52621,'Exceptional Vanir Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52622,'Exceptional Vanir Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52623,'Exceptional Vanir Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52624,'Exceptional Vanir Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52625,'Flawless Vanir Fur Cap','armor');
-INSERT INTO `cust_item_xref` VALUES (52626,'Flawless Vanir Fur Harness','armor');
-INSERT INTO `cust_item_xref` VALUES (52627,'Flawless Vanir Fur Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52628,'Flawless Vanir Fur Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52629,'Flawless Vanir Fur Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52630,'Aquilonian Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52631,'Aquilonian Chestplate','armor');
-INSERT INTO `cust_item_xref` VALUES (52632,'Aquilonian Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52633,'Aquilonian Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52634,'Aquilonian Sandals','armor');
-INSERT INTO `cust_item_xref` VALUES (52635,'Exceptional Aquilonian Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52636,'Exceptional Aquilonian Chestplate','armor');
-INSERT INTO `cust_item_xref` VALUES (52637,'Exceptional Aquilonian Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52638,'Exceptional Aquilonian Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52639,'Exceptional Aquilonian Sandals','armor');
-INSERT INTO `cust_item_xref` VALUES (52640,'Flawless Aquilonian Helmet','armor');
-INSERT INTO `cust_item_xref` VALUES (52641,'Flawless Aquilonian Chestplate','armor');
-INSERT INTO `cust_item_xref` VALUES (52642,'Flawless Aquilonian Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52643,'Flawless Aquilonian Tasset','armor');
-INSERT INTO `cust_item_xref` VALUES (52644,'Flawless Aquilonian Sandals','armor');
-INSERT INTO `cust_item_xref` VALUES (52911,'Medium Helmet Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52912,'Medium Chest Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52913,'Medium Gauntlet Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52914,'Medium Legging Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52915,'Medium Boot Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52916,'Heavy Helmet Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52917,'Heavy Chest Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52918,'Heavy Gauntlet Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52919,'Heavy Legging Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52920,'Heavy Boot Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52921,'Light Helmet Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52922,'Light Chest Padding','armor');
-INSERT INTO `cust_item_xref` VALUES (52932,'Light Gloves Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52933,'Light Legging Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52934,'Light Boot Lining','armor');
-INSERT INTO `cust_item_xref` VALUES (52935,'Zamorian Thief Hood','armor');
-INSERT INTO `cust_item_xref` VALUES (52936,'Zamorian Thief Chest','armor');
-INSERT INTO `cust_item_xref` VALUES (52937,'Zamorian Thief Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52938,'Zamorian Thief Breeches','armor');
-INSERT INTO `cust_item_xref` VALUES (52939,'Zamorian Thief Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52940,'Exceptional Zamorian Thief Hood','armor');
-INSERT INTO `cust_item_xref` VALUES (52941,'Exceptional Zamorian Thief Chest','armor');
-INSERT INTO `cust_item_xref` VALUES (52942,'Exceptional Zamorian Thief Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52943,'Exceptional Zamorian Thief Breeches','armor');
-INSERT INTO `cust_item_xref` VALUES (52944,'Exceptional Zamorian Thief Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52945,'Flawless Zamorian Thief Hood','armor');
-INSERT INTO `cust_item_xref` VALUES (52946,'Flawless Zamorian Thief Chest','armor');
-INSERT INTO `cust_item_xref` VALUES (52947,'Flawless Zamorian Thief Gauntlets','armor');
-INSERT INTO `cust_item_xref` VALUES (52948,'Flawless Zamorian Thief Breeches','armor');
-INSERT INTO `cust_item_xref` VALUES (52949,'Flawless Zamorian Thief Boots','armor');
-INSERT INTO `cust_item_xref` VALUES (52950,'Hyperborean Slaver Waistguard','armor');
-INSERT INTO `cust_item_xref` VALUES (52951,'Hyperborean Slaver Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52952,'Exceptional Hyperborean Slaver Waistguard','armor');
-INSERT INTO `cust_item_xref` VALUES (52953,'Exceptional Hyperborean Slaver Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (52954,'Flawless Hyperborean Slaver Waistguard','armor');
-INSERT INTO `cust_item_xref` VALUES (52955,'Flawless Hyperborean Slaver Bracers','armor');
-INSERT INTO `cust_item_xref` VALUES (53102,'Beathing Potion','consumable');
-INSERT INTO `cust_item_xref` VALUES (53202,'XX_Demon''s Bane','consumable');
-INSERT INTO `cust_item_xref` VALUES (53652,'Abysmal Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53653,'Abysmal Bolts','consumable');
-INSERT INTO `cust_item_xref` VALUES (53654,'Hardened Steel Arrow','consumable');
-INSERT INTO `cust_item_xref` VALUES (53655,'Hardened Steel Bolt','consumable');
-INSERT INTO `cust_item_xref` VALUES (53656,'Star Metal Arrow','consumable');
-INSERT INTO `cust_item_xref` VALUES (53657,'Star Metal Bolt','consumable');
-INSERT INTO `cust_item_xref` VALUES (53658,'Ice Shard Arrows','consumable');
-INSERT INTO `cust_item_xref` VALUES (53659,'Ice Shard Bolts','consumable');
-
-
+INSERT INTO `cust_item_xref` (template_id,name,type) VALUES (10001,'Stone','ingredient'),
+ (10005,'Bark','ingredient'),
+ (10011,'Wood','ingredient'),
+ (10012,'Branch','ingredient'),
+ (10021,'Bone','ingredient'),
+ (10022,'Undead Dragonbone','ingredient'),
+ (10023,'Undead Dragonhorn','ingredient'),
+ (11001,'Ironstone','ingredient'),
+ (11011,'Coal','ingredient'),
+ (11051,'Crystal','ingredient'),
+ (11052,'Silver','ingredient'),
+ (11501,'Iron Bar','ingredient'),
+ (11502,'Steel Bar','ingredient'),
+ (11551,'Glass','ingredient'),
+ (12001,'Plant Fiber','ingredient'),
+ (12003,'Gossamer','ingredient'),
+ (12011,'Hide','ingredient'),
+ (12012,'Thick Hide','ingredient'),
+ (12511,'Leather','ingredient'),
+ (12512,'Thick Leather','ingredient'),
+ (12513,'Silk','ingredient'),
+ (12514,'Ichor','ingredient'),
+ (13001,'Feral Flesh','ingredient'),
+ (13002,'Savoury Flesh','ingredient'),
+ (13003,'Exotic Flesh','ingredient'),
+ (13011,'Shaleback Egg','consumable'),
+ (13012,'Fat Grub','consumable'),
+ (13013,'Handful of Insects','consumable'),
+ (13014,'Small Scorpion','consumable'),
+ (13015,'Seeds','ingredient'),
+ (13051,'Human Flesh','ingredient'),
+ (13052,'Eyes of Innocence','ingredient'),
+ (13501,'Shredded Roast','consumable'),
+ (13502,'Grilled Steak','consumable'),
+ (13503,'Roasted Haunch','consumable'),
+ (13540,'Gruel','consumable'),
+ (13550,'Devils Bonemeal','consumable'),
+ (13597,'Spoiled Gruel','consumable'),
+ (13598,'Rotten Devils Bonemeal','consumable'),
+ (13599,'Putrid Meat','consumable'),
+ (13601,'Arena Ritual Offering','consumable'),
+ (14001,'Aloe Leaves','ingredient'),
+ (14101,'Serpent Venom Gland','ingredient'),
+ (14102,'Sand Reaper Toxin Gland','ingredient'),
+ (14151,'Yellow Lotus Blossom','ingredient'),
+ (14171,'Brimstone','ingredient'),
+ (14172,'Tar','ingredient'),
+ (14173,'Steelfire','ingredient'),
+ (14174,'Twine','ingredient'),
+ (14175,'Dead Womans Hair','ingredient'),
+ (14181,'Tomb Dust','ingredient'),
+ (14182,'Demon Blood','ingredient'),
+ (14183,'Dragonpowder','ingredient'),
+ (15001,'Human Heart','ingredient'),
+ (15002,'Unblemished Human Meat','ingredient'),
+ (15003,'Lingering Essence','ingredient'),
+ (15501,'Heart of a Hero','ingredient'),
+ (15502,'Ancient Rhino Horn','ingredient'),
+ (16001,'Stone Consolidant','ingredient'),
+ (16002,'Iron Reinforcement','ingredient'),
+ (16003,'Steel Reinforcement','ingredient'),
+ (16011,'Brick','ingredient'),
+ (16012,'Hardened Brick','ingredient'),
+ (16021,'Shaped Wood','ingredient'),
+ (30001,'Scrawled Note','consumable'),
+ (30002,'Leather Journal','consumable'),
+ (30003,'Prayer to Hanuman','consumable'),
+ (30004,'Scribbled Note','consumable'),
+ (30005,'Torn Parchment','consumable'),
+ (30006,'Razmas Journal #1','consumable'),
+ (30007,'Razmas Journal #2','consumable'),
+ (30008,'Razmas Journal #3','consumable'),
+ (30009,'Razmas Journal #4','consumable'),
+ (30010,'Razmas Journal #5','consumable'),
+ (30011,'Razmas Journal #6','consumable'),
+ (30012,'Razmas Journal #7','consumable'),
+ (30013,'Razmas Journal #8','consumable'),
+ (30014,'Etched Note','consumable'),
+ (30015,'First Mates Report','consumable'),
+ (30016,'Black Hand Shanty','consumable'),
+ (30017,'Salaceos Instructions','consumable'),
+ (30018,'Hunters Note - Shalebacks','consumable'),
+ (30019,'Priests Journal','consumable'),
+ (30020,'Hunters Note - Hyenas','consumable'),
+ (30021,'Hunters Note - Imps','consumable'),
+ (30022,'Hunters Note - Crocodiles','consumable'),
+ (30023,'Mercenarys Diary Page','consumable'),
+ (30024,'Waterstained Note','consumable'),
+ (41031,'Improvised Torch','weapon'),
+ (41032,'Sealed Waterskin','consumable'),
+ (41033,'Torch','weapon'),
+ (51001,'Stone Pick','weapon'),
+ (51002,'Iron Pick','weapon'),
+ (51003,'Steel Pick','weapon'),
+ (51011,'Stone Hatchet','weapon'),
+ (51012,'Iron Hatchet','weapon'),
+ (51013,'Steel Hatchet','weapon'),
+ (51021,'Pickaxe','weapon'),
+ (51031,'Repair Hammer','weapon'),
+ (51151,'Iron Warhammer','weapon'),
+ (51152,'Stone Maul','weapon'),
+ (51153,'Sledge of Tsotha-lanti','weapon'),
+ (51301,'Stone Club','weapon'),
+ (51303,'Truncheon','weapon'),
+ (51304,'Mitraen Ankh','weapon'),
+ (51401,'Hunting Bow','weapon'),
+ (51402,'Hyrkanian Bow','weapon'),
+ (51403,'Exceptional Hyrkanian Bow','weapon'),
+ (51404,'Flawless Hyrkanian Bow','weapon'),
+ (51451,'Crossbow','weapon'),
+ (51452,'Exceptional Crossbow','weapon'),
+ (51453,'Flawless Crossbow','weapon'),
+ (51600,'Wooden Shield','weapon'),
+ (51601,'Bone Shield','weapon'),
+ (51602,'Wooden Targe','weapon'),
+ (51611,'Iron Targe','weapon'),
+ (51621,'Steel Heater Shield','weapon'),
+ (51623,'Ancient Shield','weapon'),
+ (51624,'Stygian Shield','weapon'),
+ (51625,'Setite Shield','weapon'),
+ (51626,'Exceptional Steel Heater Shield','weapon'),
+ (51627,'Flawless Steel Heater Shield','weapon'),
+ (51711,'Iron Pike','weapon'),
+ (51721,'Steel Trident','weapon'),
+ (51722,'Gavains Rusty Pike','weapon'),
+ (51801,'Stone Sword','weapon'),
+ (51811,'Iron Broadsword','weapon'),
+ (51812,'Stygian Khopesh','weapon'),
+ (51813,'Ancient Khopesh','weapon'),
+ (51814,'Exceptional Iron Broadsword','weapon'),
+ (51815,'Flawless Iron Broadsword','weapon'),
+ (51816,'Phoenix-engraved Sword','weapon'),
+ (51817,'Serpent-stamped Khopesh','weapon'),
+ (51818,'Exceptional Stygian Khopesh','weapon'),
+ (51821,'Falcata','weapon'),
+ (51822,'Cutlass','weapon'),
+ (51823,'Exceptional Cutlass','weapon'),
+ (51831,'Longsword','weapon'),
+ (51832,'Dry Scraper','weapon'),
+ (51833,'Darfari Axe','weapon'),
+ (51834,'Els Drinker','weapon'),
+ (51835,'Tulwar of Amir Khurum','weapon'),
+ (51836,'Exceptional Longsword','weapon'),
+ (51837,'Flawless Longsword','weapon'),
+ (51850,'Darfari Cudgel','weapon'),
+ (51851,'Cimmerian Battle-axe','weapon'),
+ (51853,'Darfari Sword','weapon'),
+ (51854,'Yog Cleaver','weapon'),
+ (51855,'Yoggite Cudgel','weapon'),
+ (51902,'Setite Ritual Knife','weapon'),
+ (51911,'Javelin','weapon'),
+ (51912,'Throwing Axe','weapon'),
+ (51922,'Yoggite Bone Spear','weapon'),
+ (51931,'Stygian Spear','weapon'),
+ (51951,'Stone Dagger','weapon'),
+ (51952,'Iron Poniard','weapon'),
+ (51953,'Steel Poniard','weapon'),
+ (51954,'Dagger of Nameless Days','weapon'),
+ (51955,'Exceptional Iron Poniard','weapon'),
+ (51956,'Flawless Iron Poniard','weapon'),
+ (51961,'Fiber Bindings','weapon'),
+ (51962,'Rawhide Bindings','weapon'),
+ (51963,'Leather Bindings','weapon'),
+ (51964,'Chain Bindings','weapon'),
+ (51965,'Bindings of Dead Women?s Hair','weapon'),
+ (52001,'Light Turban','armor'),
+ (52002,'Light Chestpiece','armor'),
+ (52003,'Light Gauntlets','armor'),
+ (52004,'Light Wrap','armor'),
+ (52005,'Light Boots','armor'),
+ (52011,'Medium Cap','armor'),
+ (52012,'Medium Harness','armor'),
+ (52013,'Medium Gauntlets','armor'),
+ (52014,'Medium Tasset','armor'),
+ (52015,'Medium Boots','armor'),
+ (52021,'Heavy Helmet','armor'),
+ (52022,'Heavy Pauldron','armor'),
+ (52023,'Heavy Gauntlets','armor'),
+ (52024,'Heavy Tasset','armor'),
+ (52025,'Heavy Sabatons','armor'),
+ (52071,'Darfari Watcher Mask','armor'),
+ (52072,'Darfari Skin Chestpiece','armor'),
+ (52073,'Darfari Skin Bracers','armor'),
+ (52074,'Darfari Skin Skirt','armor'),
+ (52075,'Darfari Skin Greaves','armor'),
+ (52076,'Darfari Speaker Mask','armor'),
+ (52081,'Sandstorm Breathing Mask','armor'),
+ (52092,'Chest Wrap','armor'),
+ (52094,'Loin-cloth','armor'),
+ (52101,'Zamorian Dancer Headdress','armor'),
+ (52102,'Zamorian Dancer Blouse','armor'),
+ (52103,'Zamorian Dancer Bracelets','armor'),
+ (52104,'Zamorian Dancer Skirt','armor'),
+ (52105,'Zamorian Dancer Anklets','armor'),
+ (52202,'Coarse Tunic','armor'),
+ (52203,'Coarse Handwraps','armor'),
+ (52204,'Coarse Leggings','armor'),
+ (52205,'Coarse Footwraps','armor'),
+ (52212,'Leather Apron','armor'),
+ (52213,'Leather Workgloves','armor'),
+ (52221,'Shemite Turban','armor'),
+ (52222,'Shemite Tunic','armor'),
+ (52224,'Shemite Leggings','armor'),
+ (52225,'Shemite Shoes','armor'),
+ (52301,'Exceptional Light Turban','armor'),
+ (52302,'Exceptional Light Chestpiece','armor'),
+ (52303,'Exceptional Light Gauntlets','armor'),
+ (52304,'Exceptional Light Wrap','armor'),
+ (52305,'Exceptional Light Boots','armor'),
+ (52401,'Flawless Light Turban','armor'),
+ (52402,'Flawless Light Chestpiece','armor'),
+ (52403,'Flawless Light Gauntlets','armor'),
+ (52404,'Flawless Light Wrap','armor'),
+ (52405,'Flawless Light Boots','armor'),
+ (52501,'Setite Mask','armor'),
+ (52502,'Setite Choker','armor'),
+ (52504,'Setite Shendyt','armor'),
+ (52505,'Setite Sandals','armor'),
+ (52511,'Yoggite Watcher Mask','armor'),
+ (52512,'Yoggite Skin Chestpiece','armor'),
+ (52513,'Yoggite Skin Bracers','armor'),
+ (52514,'Yoggite Skin Skirt','armor'),
+ (52515,'Yoggite Skin Greaves','armor'),
+ (52523,'Mitraen Gloves','armor'),
+ (52524,'Mitraen Breeches','armor'),
+ (52525,'Mitraen Shoes','armor'),
+ (52532,'Black Hand Vest','armor'),
+ (52534,'Black Hand Trousers','armor'),
+ (53001,'Aloe Extract','consumable'),
+ (53011,'Violet Cureall','consumable'),
+ (53101,'Yellow Lotus Potion','consumable'),
+ (53201,'Reaper Poison','consumable'),
+ (53501,'Purified Flesh','consumable'),
+ (53502,'Ambrosia','consumable'),
+ (53503,'Set Antidote','consumable'),
+ (53511,'Flinthead Bolts','consumable'),
+ (53512,'Ironhead Bolts','consumable'),
+ (53513,'Razor Bolts','consumable'),
+ (53514,'Fire Bolts','consumable'),
+ (53611,'Flinthead Arrows','consumable'),
+ (53612,'Ironhead Arrows','consumable'),
+ (53613,'Razor Arrows','consumable'),
+ (53614,'Fire Arrows','consumable'),
+ (53651,'Snake Arrows','consumable'),
+ (55001,'True Name of Set','consumable'),
+ (55002,'True Name of Yog','consumable'),
+ (55003,'True Name of Mitra','consumable'),
+ (55100,'Manifestation of Zeal','consumable'),
+ (60001,'Eyes of Hanuman','consumable'),
+ (80101,'Bed','building'),
+ (80102,'Bed - Folded','building'),
+ (80103,'Bed - Stygian','building'),
+ (80111,'Rawhide Bedroll','building'),
+ (80112,'Fiber Bedroll','building'),
+ (80131,'Water Well','building'),
+ (80132,'Large Water Well','building'),
+ (80152,'Archery Target','building'),
+ (80171,'Spike','building'),
+ (80201,'Table','building'),
+ (80202,'Table - Round','building'),
+ (80210,'Simple Palisade','building'),
+ (80211,'Wall Palisade','building'),
+ (80251,'Square Stool','building'),
+ (80252,'Round Stool','building'),
+ (80253,'Woven Stool','building'),
+ (80261,'Chair','building'),
+ (80271,'Log Bench','building'),
+ (80281,'Stone Throne','building'),
+ (80301,'Wooden Signpost','building'),
+ (80302,'Wall Sign','building'),
+ (80311,'Papyrus Scroll','building'),
+ (80501,'Standing Torch','building'),
+ (80504,'Set Brazier','building'),
+ (80511,'Bracketed Torch','building'),
+ (80515,'Wall Lantern','building'),
+ (80521,'Candle Stub','building'),
+ (80522,'White Candle','building'),
+ (80523,'Black Candle','building'),
+ (80531,'Radium Gem','building'),
+ (80551,'Tapestry','building'),
+ (80571,'Awning','building'),
+ (80601,'Carpet','building'),
+ (80621,'Hide Rug','building'),
+ (80631,'Pillow','building'),
+ (80651,'Earthenware Jug','building'),
+ (80661,'Iron Pot','building'),
+ (80662,'Mortarium','building'),
+ (80663,'Iron Pan','building'),
+ (80671,'Barrel','building'),
+ (80673,'Ale Keg','building'),
+ (80695,'Shelf','building'),
+ (80701,'Stygian Flag','building'),
+ (80721,'Small Banner','building'),
+ (80722,'Medium Banner','building'),
+ (80733,'Large Banner','building'),
+ (80751,'Gong','building'),
+ (80752,'Horn','building'),
+ (80753,'Darfari Wind Chimes','building'),
+ (80851,'Wooden Box','building'),
+ (80852,'Large Chest','building'),
+ (80853,'Vault','building'),
+ (80901,'Explosive Jar','building'),
+ (80911,'Iron Leg-hold Trap','building'),
+ (80913,'Wooden Leg-hold Trap','building'),
+ (80951,'Sepulcher of Set','building'),
+ (80952,'Altar of Set','building'),
+ (80953,'Sanctum of Set','building'),
+ (80961,'Pit of Yog','building'),
+ (80962,'Rift of Yog','building'),
+ (80963,'Abyss of Yog','building'),
+ (80971,'Shrine of Mitra','building'),
+ (80972,'Santuary of Mitra','building'),
+ (80973,'Temple of Mitra','building'),
+ (80975,'Statue of Refreshment','building'),
+ (80976,'Statue of Guidance','building'),
+ (81001,'White Rhino Head Trophy','building'),
+ (81002,'Black Rhino Head Trophy','building'),
+ (81003,'Rhino King Head Trophy','building'),
+ (81004,'Grey Rhino Head Trophy','building'),
+ (81005,'Gazelle Head Trophy','building'),
+ (81006,'Kudo Head Trophy','building'),
+ (81007,'Antelope Head Trophy','building'),
+ (81008,'Rocknose Head Trophy','building'),
+ (81009,'King Rocknose Head Trophy','building'),
+ (82001,'White Rhino Head','building'),
+ (82002,'Black Rhino Head','building'),
+ (82003,'Rhino King Head','building'),
+ (82004,'Grey Rhino Head','building'),
+ (82005,'Gazelle Head','building'),
+ (82006,'Kudu Head','building'),
+ (82007,'Antelope Head','building'),
+ (82008,'Rocknose Head','building'),
+ (82009,'King Rocknose Head','building'),
+ (89001,'Campfire','building'),
+ (89010,'Bonfire','building'),
+ (89101,'Furnace','building'),
+ (89103,'Firebowl Cauldron','building'),
+ (89104,'Tannery','building'),
+ (89201,'Armorers Bench','building'),
+ (89301,'Blacksmiths Bench','building'),
+ (89401,'Carpenters Bench','building'),
+ (89911,'Lesser Wheel of Pain','building'),
+ (89912,'Wheel of Pain','building'),
+ (89913,'Greater Wheel of Pain','building'),
+ (90001,'Sandstone Foundation','building'),
+ (90002,'Sandstone Wall','building'),
+ (90003,'Sandstone Ceiling','building'),
+ (90004,'Sandstone DoorFrame','building'),
+ (90005,'Sandstone Stairs','building'),
+ (90006,'Sandstone Triangle','building'),
+ (90007,'Sandstone Frame','building'),
+ (90008,'Simple Wooden Door','building'),
+ (90009,'Sandstone Pillar','building'),
+ (90010,'Sandstone Fence','building'),
+ (90011,'Sandstone Triangle Foundation','building'),
+ (90013,'Thatch Sloped Roof','building'),
+ (90014,'Thatch Wedge Sloped Roof','building'),
+ (90015,'Left-sloping Sandstone Wall','building'),
+ (90017,'Right-sloping Sandstone Wall','building'),
+ (90018,'Inverted Thatch Wedge Sloped Roof','building'),
+ (90019,'Sandstone Window','building'),
+ (90020,'Sandstone Fence Foundation','building'),
+ (90101,'Stonebrick Foundation','building'),
+ (90102,'Stonebrick Wall','building'),
+ (90103,'Stonebrick Ceiling','building'),
+ (90104,'Stonebrick Doorframe','building'),
+ (90105,'Stonebrick Stairs','building'),
+ (90106,'Stonebrick Wedge','building'),
+ (90107,'Stonebrick Frame','building'),
+ (90108,'Reinforced Wooden Door','building'),
+ (90109,'Stonebrick Piller','building'),
+ (90110,'Stonebrick Fence','building'),
+ (90111,'Stonebrick Wedge Foundation','building'),
+ (90113,'Wooden Sloped Roof','building'),
+ (90114,'Wooden Wedge Sloped Roof','building'),
+ (90115,'Left-sloping Stonebrick Wall','building'),
+ (90117,'Right-sloping Stonebrick Wall','building'),
+ (90118,'Inverted Wooden Wedge Sloped Roof','building'),
+ (90120,'Stonebrick Fence Foundation','building'),
+ (90121,'Stonebrick Gateway','building'),
+ (90122,'Stonebrick Gate','building'),
+ (90201,'Reinforced Stone Foundation','building'),
+ (90202,'Reinforced Stone Wall','building'),
+ (90203,'Reinforced Stone Ceiling','building'),
+ (90204,'Reinforced Stone Doorway','building'),
+ (90205,'Reinforced Stone Stairs','building'),
+ (90206,'Reinforced Stone Wedge','building'),
+ (90207,'Reinforced Stone Frame','building'),
+ (90208,'Heavy Reinforced Door','building'),
+ (90209,'Reinforced Stone Pillar','building'),
+ (90210,'Reinforced Stone Fence','building'),
+ (90211,'Reinforced Stone Wedge Foundation','building'),
+ (90213,'Tiled Sloped Roof','building'),
+ (90214,'Tiled Wedge Sloped Roof','building'),
+ (90215,'Left-sloping Reinforced Stone Wall','building'),
+ (90217,'Right-sloping Reinforced Stone Wall','building'),
+ (90218,'Inverted Tiled Wedge Sloped Roof','building'),
+ (90220,'Reinforced Stone Fence Foundation','building'),
+ (90221,'Reinforced Stone Gateway','building'),
+ (90222,'Reinforced Stone Gateway','building'),
+ (80104,'Double Bed','building'),
+ (80203,'Rock Slab','building'),
+ (80204,'Table-Rectangle (Variation)','building'),
+ (80205,'Low Wooden Table','building'),
+ (80206,'Table - Rectangle (Variation)','building'),
+ (80262,'Wooden Chair','building'),
+ (80263,'Comfortable Chair','building'),
+ (80272,'Wooden Bench','building'),
+ (80312,'Decorative Bowl','building'),
+ (80313,'Note','building'),
+ (80314,'Journal','building'),
+ (80315,'Note','building'),
+ (80316,'Note','building'),
+ (80502,'Protected Torch','building'),
+ (80503,'Stygian Tripod Brazier','building'),
+ (80505,'Iron Brazier','building'),
+ (80506,'Wall Brazier','building'),
+ (80507,'Hanging Brazier','building'),
+ (80508,'Hanging Brazier','building'),
+ (80509,'Cimmerian Brazier','building'),
+ (80524,'Black Candle Stub','building'),
+ (80525,'Candleholder','building'),
+ (80552,'Tapestry','building'),
+ (80622,'Large Carpet','building'),
+ (80623,'Blue Stygian Carpet','building'),
+ (80624,'Green Stygian Carpet','building'),
+ (80625,'Orange Stygian Carpet','building'),
+ (80664,'Large Earthenware Jug','building'),
+ (80665,'Large Earthenware Jug','building'),
+ (80666,'Large Earthenware Jug','building'),
+ (80667,'Iron Bowl','building'),
+ (80668,'Iron Bowl','building'),
+ (80669,'Iron Bowl','building'),
+ (80670,'Small Barrel','building'),
+ (80700,'Iron Mug','building'),
+ (80702,'Iron Tankard','building'),
+ (80703,'Iron Pitcher','building'),
+ (80704,'Iron Decanter','building'),
+ (80705,'Iron Plate','building'),
+ (80706,'Iron Plate','building'),
+ (80707,'Wooden Bowl','building'),
+ (80708,'Wooden Bowl','building'),
+ (80709,'Wooden Bowl','building'),
+ (80734,'Darfari Banner','building'),
+ (80735,'Darfari Banner','building'),
+ (80736,'Darfari Banner','building'),
+ (80737,'Dogs of the Desert Banner','building'),
+ (80738,'Black Hand Banner','building'),
+ (80739,'Relic Hunter Banner','building'),
+ (80740,'Darfari Banner','building'),
+ (80741,'Skeletal Decoration','building'),
+ (80742,'Fireplace and Hearth','building'),
+ (80743,'Cupboard','building'),
+ (80744,'Stygian Brazier','building'),
+ (80745,'Cauldron','building'),
+ (80746,'Tea Pot','building'),
+ (80747,'Stygian Eathenware Jug','building'),
+ (80748,'Stygian Metal Jug','building'),
+ (80749,'Stygian Drum','building'),
+ (80750,'Stygian Brazier','building'),
+ (80754,'Drum','building'),
+ (80755,'Large Darfari Wind Chimes','building'),
+ (80756,'Bed - Stygian','building'),
+ (80757,'Statue of Ymir','building'),
+ (80758,'Nordheimer Horn','building'),
+ (80811,'Ladder','building'),
+ (80914,'Vapor Trap','building'),
+ (80915,'Exploding Trap','building'),
+ (80974,'Altar of Ymir','building'),
+ (80977,'Blooded Altar of Ymir','building'),
+ (80978,'Exalted Altar of Ymir','building'),
+ (81010,'Shaleback Hatchling Decoration','building'),
+ (81011,'Bat Demon Head Trophy','building'),
+ (81012,'Crocodile Head Trophy','building'),
+ (81013,'Hyena Head Trophy','building'),
+ (81014,'Shaleback Head Trophy','building'),
+ (81015,'Shaleback King Head Trophy','building'),
+ (81016,'Demonic Shaleback Head Trophy','building'),
+ (81017,'Undead Hyena Head Trophy','building'),
+ (81018,'Skeletal Serpentman Head Trophy','building'),
+ (81019,'Kingslayer Polearm','weapon'),
+ (82010,'Bat Demon Head','building'),
+ (82011,'Crocodile Head','building'),
+ (82012,'Hyena Head','building'),
+ (82013,'Shaleback Head','building'),
+ (82014,'Shaleback King Head','building'),
+ (82015,'Demonic Shaleback Head','building'),
+ (82016,'Undead Hyena Head','building'),
+ (82017,'Skeletal Serpentman Head','building'),
+ (82018,'Elk King Head','building'),
+ (82019,'Black Bear Trophy','building'),
+ (82020,'Black Bear Head','building'),
+ (82021,'Deer Trophy','building'),
+ (82022,'Deer Head','building'),
+ (82023,'Mammoth Trophy','building'),
+ (82024,'Mammoth Head','building'),
+ (82025,'Mountain Goat Trophy','building'),
+ (82026,'Mountain Goat Head','building'),
+ (82027,'Wild Boar Trophy','building'),
+ (82028,'Wild Boar Head','building'),
+ (82030,'Wolf Trophy','building'),
+ (82031,'Wolf Head','building'),
+ (82032,'Dire Wolf Trophy','building'),
+ (82033,'Dire Wolf Head','building'),
+ (82034,'Elk Trophy','building'),
+ (82035,'Elk Head','building'),
+ (82036,'Elk King Head','building'),
+ (82037,'Brown Bear Trophy','building'),
+ (82038,'Brown Bear Head','building'),
+ (82039,'Panther Head','building'),
+ (82040,'Panther Trophy','building'),
+ (82041,'Sabertooth Head','building'),
+ (82042,'Sabertooth Trophy','building'),
+ (82043,'Red Dragon Head','building'),
+ (82044,'Green Dragon Head','building'),
+ (82045,'Red Dragon Trophy','building'),
+ (82046,'Green Dragon Trophy','building'),
+ (88892,'Impaled Skull','building'),
+ (88893,'Vanir Totem','building'),
+ (88894,'Vanir Totem','building'),
+ (88895,'Vanir Totem','building'),
+ (88896,'Vanir Totem','building'),
+ (88897,'Srygian Earthenware Jug','building'),
+ (88898,'Srygian Earthenware Jug','building'),
+ (88899,'Folding Screen','building'),
+ (88900,'Stygian Table','building'),
+ (88901,'Round Stygian Table','building'),
+ (88902,'Triple-Slot Weapon Display Rack','building'),
+ (88903,'Single-Slot Weapon Display Rack','building'),
+ (88904,'Shield Display Rack','building'),
+ (89011,'Large Campfire','building'),
+ (89801,'Siege Foundation','building'),
+ (89811,'Trebuchet Base','building'),
+ (89812,'Trebuchet Frame','building'),
+ (89813,'Trebuchet','building'),
+ (89851,'Siege Boulder','building'),
+ (89852,'Demon-Fire Barrage','building'),
+ (90023,'Thatch Sloped Roof Corner','building'),
+ (90024,'Wooden Sloped Roof Corner','building'),
+ (90025,'Reinforced Wooden Sloped Roof Corner','building'),
+ (90026,'Inverted Thatch Sloped Roof Corner','building'),
+ (90027,'Inverted Wooden Sloped Roof Corner','building'),
+ (90028,'Inverted Reinforced Wooden Sloped Roof Corner','building'),
+ (90029,'Thatch Rooftop End','building'),
+ (90030,'Wooden Rooftop End','building'),
+ (90031,'Reinforced Wooden Rooftop End','building'),
+ (90032,'Thatch Rooftop','building'),
+ (90034,'Reinforced Wooden Rooftop','building'),
+ (90035,'Thatch Rooftop Corner','building'),
+ (90036,'Wooden Rooftop Corner','building'),
+ (90037,'Reinforced Wooden Rooftop Corner','building'),
+ (90038,'Thatch Rooftop Junction','building'),
+ (90039,'Wooden Rooftop Junction','building'),
+ (90033,'Wooden Rooftop','building'),
+ (90040,'Reinforced Wooden Rooftop Junction','building'),
+ (90041,'Thatch Rooftop Intersection','building'),
+ (90042,'Wooden Rooftop Intersection','building'),
+ (90043,'Reinforced Wooden Rooftop Intersection','building'),
+ (90044,'Thatch Rooftop Cap','building'),
+ (90045,'Wooden Rooftop Cap','building'),
+ (90046,'Reinforced Wooden Rooftop Cap','building'),
+ (90047,'Thatched Awning','building'),
+ (90048,'Thatched Awning Corner','building'),
+ (90049,'Insulated Wooden Sloped Roof Corner','building'),
+ (90050,'Black Ice-Reinforced Sloped Roof Corner','building'),
+ (90051,'Inverted Insulated Wooden Sloped Roof Corner','building'),
+ (90052,'Inverted Black Ice-Reinforced Sloped Roof Corner','building'),
+ (90053,'Insulated Wood Rooftop End','building'),
+ (90054,'Black Ice-Reinforced Rooftop End','building'),
+ (90055,'Insulated Wood Rooftop','building'),
+ (90056,'Black Ice-Reinforced Rooftop','building'),
+ (90057,'Insulated Wood Rooftop Corner','building'),
+ (90058,'Black Ice-Reinforced Rooftop Corner','building'),
+ (90059,'Insulated Wood Rooftop Junction','building'),
+ (90060,'Black Ice-Reinforced Rooftop Junction','building'),
+ (90061,'Insulated Wood Rooftop Intersection','building'),
+ (90062,'Black Ice-Reinforced Rooftop Intersection','building'),
+ (90063,'Insulated Wood Rooftop Cap','building'),
+ (90064,'Black Ice-Reinforced Rooftop Cap','building'),
+ (90065,'Wooden Awning','building'),
+ (90066,'Wooden Awning Corner','building'),
+ (90067,'Reinforced Wooden Awning','building'),
+ (90068,'Reinforced Wooden Awning Corner','building'),
+ (90069,'Sandstone Stairs Corner','building'),
+ (90070,'Stonebrick Stairs Corner','building'),
+ (90071,'Reinforced Stone Stairs Corner','building'),
+ (90072,'Insulated Wooden Stairs Corner','building'),
+ (90073,'Black Ice-Reinforced Wooden Stairs Corner','building'),
+ (90074,'Insulated Wood Awning','building'),
+ (90075,'Insulated Wood Awning Corner','building'),
+ (90076,'Reinforced Wooden Awning','building'),
+ (90077,'Black Ice-Reinforced Awning Corner','building'),
+ (90078,'Stonebrick Stairs','building'),
+ (90079,'Reinforced Stone Stairs','building'),
+ (90080,'Insulated Wooden Stairs','building'),
+ (90081,'Black Ice-Reinforced Wooden Stairs','building'),
+ (90223,'Reinforced Stone Crenelated Wall','building'),
+ (90224,'Drawbridge','building'),
+ (90225,'Elevator Vertical','building'),
+ (90226,'Elevator Horizontal','building'),
+ (90227,'Siege Cauldron','building'),
+ (90243,'Insulated Wooden Foundation','building'),
+ (90244,'Insulated Wooden Wall','building'),
+ (90245,'Insulated Wooden Ceiling','building'),
+ (90246,'Insulated Wooden Doorway','building'),
+ (90247,'Insulated Wooden Stairs (rail)','building'),
+ (90248,'Insulated Wooden Wedge','building'),
+ (90249,'Insulated Wooden Frame','building'),
+ (90250,'Insulated Wooden Door','building'),
+ (90251,'Insulated Wooden Pillar','building'),
+ (90252,'Insulated Wooden Fence','building'),
+ (90253,'Insulated Wooden Wedge Foundation','building'),
+ (90254,'Tiled Sloped Insulated Wooden Roof','building'),
+ (90255,'Tiled Wedge Insulated Wooden Sloped Roof','building'),
+ (90256,'Left-sloping Insulated Wooden Wall','building'),
+ (90257,'Right-sloping Insulated Wooden Wall','building'),
+ (90258,'Inverted Tiled Wedge Insulated Wooden Sloped Roof','building'),
+ (90260,'Insulated Wooden Fence Foundation','building'),
+ (90261,'Insulated Wooden Gateway','building'),
+ (90262,'Insulated Wooden Gate','building'),
+ (90263,'Black Ice-Reinforced Wooden Foundation','building'),
+ (90264,'Black Ice-Reinforced Wooden Wall','building'),
+ (90265,'Black Ice-Reinforced Wooden Ceiling','building'),
+ (90266,'Black Ice-Reinforced Wooden Doorway','building'),
+ (90267,'Black Ice-Reinforced Wooden Stairs (rail)','building'),
+ (90268,'Black Ice-Reinforced Wooden Wedge','building'),
+ (90269,'Black Ice-Reinforced Wooden Frame','building'),
+ (90270,'Black Ice-Reinforced Wooden Door','building'),
+ (90271,'Black Ice-Reinforced Wooden Pillar','building'),
+ (90272,'Black Ice-Reinforced Wooden Fence','building'),
+ (90273,'Black Ice-Reinforced Wooden Wedge Foundation','building'),
+ (90274,'Tiled Sloped Black Ice-Reinforced Wooden Roof','building'),
+ (90275,'Tiled Wedge Black Ice-Reinforced Wooden Sloped Roof','building'),
+ (90276,'Left-sloping Black Ice-Reinforced Wooden Wall','building'),
+ (90277,'Right-sloping Black Ice-Reinforced Wooden Wall','building'),
+ (90278,'Inverted Tiled Wedge Black Ice-Reinforced Wooden Sloped Roof','building'),
+ (90280,'Black Ice-Reinforced Wooden Fence Foundation','building'),
+ (90281,'Black Ice-Reinforced Wooden Gateway','building'),
+ (90282,'Black Ice-Reinforced Wooden Gate','building'),
+ (90283,'Black Ice-Reinforced Crenelated Wall','building'),
+ (90284,'Sandstone Hatch Frame','building'),
+ (90285,'Stonebrick Hatch Frame','building'),
+ (90286,'Reinforced Stone Hatch Frame','building'),
+ (90287,'Insulated Wood Hatch Frame','building'),
+ (90288,'Black Ice-Reinforced Hatch Frame','building'),
+ (90289,'Hatch Door','building'),
+ (90290,'Stonebrick Hatch Door','building'),
+ (90291,'Reinforced Stone Hatch Door','building'),
+ (90292,'Insulated Wood Hatch Door','building'),
+ (90293,'Black Ice-Reinforced Hatch Door','building'),
+ (90294,'Left-sloping Inverted Sandstone Wall','building'),
+ (90295,'Left-sloping Inverted Stonebrick Wall','building'),
+ (90296,'Left-sloping Inverted Reinforced Stone Wall','building'),
+ (90297,'Left-sloping Inverted Insulated Wood Wall','building'),
+ (90298,'Left-sloping Inverted Black Ice-Reinforced Wall','building'),
+ (90299,'Right-sloping Inverted Sandstone Wall','building'),
+ (90300,'Right-sloping Inverted Stonebrick Wall','building'),
+ (90301,'Right-sloping Inverted Reinforced Stone Wall','building'),
+ (90302,'Right-sloping Inverted Insulated Wood Wall','building'),
+ (90303,'Right-sloping Inverted Black Ice-Reinforced Wall','building'),
+ (10024,'Ice Shard','ingredient'),
+ (12013,'Reptile Hide','ingredient'),
+ (13600,'Cooked Abysmal Meat','consumable'),
+ (14185,'Abysmal Eye','ingredient'),
+ (14186,'Abysmal Fang','ingredient'),
+ (14187,'Abysmal Flesh','ingredient'),
+ (14190,'Grey-flower Lupine','ingredient'),
+ (14191,'True Indigo','ingredient'),
+ (14192,'Orange Phykos','ingredient'),
+ (14193,'Cochineal','ingredient'),
+ (14194,'False Mandrake','ingredient'),
+ (14195,'Glowing Goop','ingredient'),
+ (14196,'Sandbeast Bile Gland','ingredient'),
+ (14197,'Glowing Essence','ingredient'),
+ (14199,'Asura''s Glory','ingredient'),
+ (14200,'Glass Flask','ingredient'),
+ (14201,'Water-filled Glass Flask','ingredient'),
+ (14601,'Glass Flask Mold','ingredient'),
+ (15503,'Ancient Key','ingredient'),
+ (15504,'Heart of the Kinscourge','ingredient'),
+ (17001,'Dark Dye Colorant','ingredient'),
+ (17002,'Light Dye Colorant','ingredient'),
+ (17010,'Brown Dye','consumable'),
+ (17011,'Light Brown Dye','consumable'),
+ (17012,'Dark Brown Dye','consumable'),
+ (17020,'Grey Dye','consumable'),
+ (17021,'Light Grey Dye','consumable'),
+ (17022,'Dark Grey Dye','consumable'),
+ (17030,'Cyan Dye','consumable'),
+ (17031,'Light Cyan Dye','consumable'),
+ (17032,'Dark Cyan Dye','consumable'),
+ (17040,'Red Dye','consumable'),
+ (17041,'Light Red Dye','consumable'),
+ (17042,'Dark Red Dye','consumable'),
+ (17050,'Blue Dye','consumable'),
+ (17051,'Light Blue Dye','consumable'),
+ (17052,'Dark Blue Dye','consumable'),
+ (17060,'Green Dye','consumable'),
+ (17061,'Light Green Dye','consumable'),
+ (17062,'Dark Green Dye','consumable'),
+ (17070,'Yellow Dye','consumable'),
+ (17071,'Light Yellow Dye','consumable'),
+ (17072,'Dark Yellow Dye','consumable'),
+ (17080,'Purple Dye','consumable'),
+ (17081,'Light Purple Dye','consumable'),
+ (17082,'Dark Purple Dye','consumable'),
+ (17090,'Orange Dye','consumable'),
+ (17091,'Light Orange Dye','consumable'),
+ (17092,'Dark Orange Dye','consumable'),
+ (17093,'Magenta Dye','consumable'),
+ (17094,'Light Magenta Dye','consumable'),
+ (17095,'Dark Magenta Dye','consumable'),
+ (17096,'Olive Green Dye','consumable'),
+ (17097,'Light Olive Green Dye','consumable'),
+ (17098,'Dark Olive Green Dye','consumable'),
+ (17099,'Ash Dye','consumable'),
+ (17100,'Light Ash Dye','consumable'),
+ (17101,'Dark Ash Dye','consumable'),
+ (17102,'Cimmerian Blue Dye','consumable'),
+ (17103,'Light Cimmerian Blue Dye','consumable'),
+ (17104,'Dark Cimmerian Blue Dye','consumable'),
+ (17105,'Muted Brown Dye','consumable'),
+ (17106,'Light Muted Brown Dye','consumable'),
+ (17107,'Dark Muted Brown Dye','consumable'),
+ (17108,'Tan Dye','consumable'),
+ (17109,'Light Tan Dye','consumable'),
+ (17110,'Dark Tan Dye','consumable'),
+ (17111,'Deep Red Dye','consumable'),
+ (17112,'Midnight Blue Dye','consumable'),
+ (17113,'Abyssal Violet Dye','consumable'),
+ (17114,'Cursed Green Dye','consumable'),
+ (18000,'Hops','ingredient'),
+ (18001,'Leavening Agent','ingredient'),
+ (18002,'Honey','ingredient'),
+ (18005,'Highland Berries','ingredient'),
+ (18006,'Desert Berries','ingredient'),
+ (18007,'Shroom Amanita','ingredient'),
+ (18008,'Puffball Mushroom','ingredient'),
+ (18010,'Unappetizing Fish','consumable'),
+ (18011,'Savory Fish','consumable'),
+ (18012,'Exotic Fish','consumable'),
+ (18013,'Dried Fish','consumable'),
+ (18014,'Dried Meat','consumable'),
+ (18020,'Unappetizing Shellfish','consumable'),
+ (18021,'Savory Shellfish','consumable'),
+ (18022,'Exotic Shellfish','consumable'),
+ (18025,'Dry Wood','consumable'),
+ (18030,'Resin','ingredient'),
+ (18031,'Oil','ingredient'),
+ (18032,'Highland Berry Pulp','ingredient'),
+ (18033,'Desert Berry Pulp','ingredient'),
+ (18040,'Ice','ingredient'),
+ (18041,'Black Ice','ingredient'),
+ (18052,'Fur','ingredient'),
+ (18060,'Star Metal Ore','ingredient'),
+ (18061,'Star Metal Bar','ingredient'),
+ (18062,'Hardened Steel Bar','ingredient'),
+ (18070,'Phykos Rum','consumable'),
+ (18071,'Absinthe','consumable'),
+ (18072,'Ale','consumable'),
+ (18073,'Highland Wine','consumable'),
+ (18074,'Cactus Wine','consumable'),
+ (18075,'Firewater','consumable'),
+ (18076,'Mead','consumable'),
+ (18077,'Resin Wine','consumable'),
+ (18078,'Wine','consumable'),
+ (18079,'Honeyed Wine','consumable'),
+ (18080,'Desert Wine','consumable'),
+ (18081,'Shroom Beer','consumable'),
+ (18188,'Volatile Gland','ingredient'),
+ (18200,'Cooked Fish','consumable'),
+ (18201,'Cooked Savory Fish','consumable'),
+ (18202,'Cooked Exotic Fish','consumable'),
+ (18203,'Cooked Shellfish','consumable'),
+ (18204,'Cooked Savory Shellfish','consumable'),
+ (18205,'Cooked Exotic Shellfish','consumable'),
+ (18206,'Bread','consumable'),
+ (18207,'Exotic Feast','consumable'),
+ (18208,'Savory Feast','consumable'),
+ (18209,'Oyster Omlette','consumable'),
+ (18210,'Century Egg','consumable'),
+ (18211,'Purified Water','consumable'),
+ (18212,'Feast to Yog','consumable'),
+ (18213,'Feral Feast','consumable'),
+ (18214,'Bush Jerky','consumable'),
+ (18215,'Corrupting Brew','consumable'),
+ (18216,'Flavored Gruel','consumable'),
+ (18217,'Spiced Haunch','consumable'),
+ (18218,'Feast of Set','consumable'),
+ (18219,'Spiced Oysters','consumable'),
+ (18220,'Cooked Oyster','consumable'),
+ (18221,'Berry Juice','consumable'),
+ (18222,'Feast of Mitra','consumable'),
+ (18223,'Meaty Mashup','consumable'),
+ (18224,'Soup','consumable'),
+ (18225,'Enhanced Gruel','consumable'),
+ (18226,'Cleansing Brew','consumable'),
+ (18227,'Spiced Tea','consumable'),
+ (18228,'Herbal Tea','consumable'),
+ (18229,'Trail Jerky','consumable'),
+ (18230,'Steak and Eggs','consumable'),
+ (18231,'Spiced Steak','consumable'),
+ (18232,'Savory Jerky','consumable'),
+ (18234,'Darfari Bug Soup','consumable'),
+ (18235,'Spiced Soup','consumable'),
+ (18236,'Aloe Soup','consumable'),
+ (18237,'Seed Soup','consumable'),
+ (18238,'Yellow Lotus Soup','consumable'),
+ (18239,'Mushroom Soup','consumable'),
+ (18240,'Roasted Mushrooms','consumable'),
+ (18241,'Mulled Brew','consumable'),
+ (18242,'Cimmerian Meal','consumable'),
+ (18243,'Mushroom Tea','consumable'),
+ (18245,'Demon Blood-Sausage','consumable'),
+ (18233,'Meat Strips','consumable'),
+ (18244,'Hearty Stew','consumable'),
+ (18246,'Rhino Head Soup','consumable'),
+ (18247,'Lasting Meal','consumable'),
+ (18248,'Spiced Slivers','consumable'),
+ (18249,'Exquisite Stew','consumable'),
+ (18250,'Chili Desert Style','consumable'),
+ (18251,'Hearty Meal','consumable'),
+ (18252,'Bone Broth','consumable'),
+ (18253,'Spiced and Shredded Roast','consumable'),
+ (18254,'Bug Kabob','consumable'),
+ (18255,'Spiced Egg','consumable'),
+ (18256,'Egg Surpise','consumable'),
+ (18257,'Cooked Eggs','consumable'),
+ (18258,'Dried Berries','consumable'),
+ (18259,'Salted Berries','consumable'),
+ (18260,'Feast of Ymir','consumable'),
+ (18261,'Oyster Flesh','consumable'),
+ (18263,'Salt','consumable'),
+ (18264,'Spice','consumable'),
+ (18268,'Honeyglazed Roast','consumable'),
+ (18269,'Honeyed Eggs','consumable'),
+ (18270,'Mystery Meat Soup','consumable'),
+ (18271,'Honeyed Gruel','consumable'),
+ (18272,'Honey Jerky','consumable'),
+ (18273,'Honeybread','consumable'),
+ (18274,'Ice Tea','consumable'),
+ (18400,'Healing Wraps','consumable'),
+ (18401,'Numbing Wraps','consumable'),
+ (18402,'Midnight Blue Flower','consumable'),
+ (18500,'Beehive','building'),
+ (18501,'Improved Beehive','building'),
+ (18502,'Fish Trap','building'),
+ (18503,'Shellfish Trap','building'),
+ (18504,'Fermentation Barrel','building'),
+ (18505,'Fluid Press','building'),
+ (18506,'Dryer','building'),
+ (18507,'Preservation box','building'),
+ (18508,'Improved Preservation box','building'),
+ (18509,'Stove','building'),
+ (18510,'Grinder','building'),
+ (18511,'Frost Temple Smithy','building'),
+ (18512,'Artisan''s Worktable','building'),
+ (18513,'Tanner''s Worktable','building'),
+ (18514,'Torturer''s Worktable','building'),
+ (30025,'XX_Plaseholder_Lore_1','consumable'),
+ (30026,'XX_Plaseholder_Lore_2','consumable'),
+ (30027,'XX_Plaseholder_Lore_3','consumable'),
+ (30028,'XX_Plaseholder_Lore_4','consumable'),
+ (30029,'XX_Plaseholder_Lore_5','consumable'),
+ (30030,'XX_Plaseholder_Lore_6','consumable'),
+ (30031,'XX_Plaseholder_Lore_7','consumable'),
+ (30032,'XX_Plaseholder_Lore_8','consumable'),
+ (30033,'XX_Plaseholder_Lore_9','consumable'),
+ (30034,'XX_Plaseholder_Lore_10','consumable'),
+ (30035,'XX_Plaseholder_Lore_11','consumable'),
+ (30036,'XX_Plaseholder_Lore_12','consumable'),
+ (30037,'XX_Plaseholder_Lore_13','consumable'),
+ (30038,'XX_Plaseholder_Lore_14','consumable'),
+ (30039,'XX_Plaseholder_Lore_15','consumable'),
+ (30040,'XX_Plaseholder_Lore_16','consumable'),
+ (30041,'XX_Plaseholder_Lore_17','consumable'),
+ (30042,'XX_Plaseholder_Lore_18','consumable'),
+ (30043,'XX_Plaseholder_Lore_19','consumable'),
+ (30044,'XX_Plaseholder_Lore_20','consumable'),
+ (54008,'King Rocknose Head Trophy','building'),
+ (55004,'True Name of Ymir','consumable'),
+ (56230,'Vanir Tasset','armor'),
+ (70001,'Snake Idol','building'),
+ (41020,'Simple Armor Patch Kit','consumable'),
+ (41021,'Armor Patch Kit','consumable'),
+ (41022,'Advanced Armor Patch Kit','consumable'),
+ (41023,'Master Armor Patch Kit','consumable'),
+ (41024,'Simple Weapon Repair Kit','consumable'),
+ (41025,'Weapon Repair Kit','consumable'),
+ (41026,'Advanced Weapon Repair Kit','consumable'),
+ (41027,'Master Weapon Repair Kit','consumable'),
+ (41028,'Steel Cleaver','weapon'),
+ (41029,'Hardened Steel Cleaver','weapon'),
+ (41030,'Star Metal Cleaver','weapon'),
+ (41035,'Glowing Stick','weapon'),
+ (41051,'Balanced Weapon Fitting','consumable'),
+ (41052,'Simple Weapon Damage Kit','consumable'),
+ (41053,'Weapon Damage Kit','consumable'),
+ (41054,'Advanced Weapon Damage Kit','consumable'),
+ (41055,'Weighted Weapon Fitting','consumable'),
+ (41056,'Simple Tool Upgrade Kit','consumable'),
+ (41057,'Tool Upgrade Kit','consumable'),
+ (41058,'Advanced Tool Upgrade Kit','consumable'),
+ (41059,'Simple Blunted Weapon Fitting','consumable'),
+ (41060,'Blunted Weapon Fitting','consumable'),
+ (41061,'Advanced Blunted Weapon Fitting','consumable'),
+ (41063,'Paring Blade','consumable'),
+ (41064,'Simple Weapon Reinforcement','consumable'),
+ (41065,'Weapon Reinforcement','consumable'),
+ (41066,'Advanced Weapon Reinforcement','consumable'),
+ (41067,'Spiked Weapon Fitting','consumable'),
+ (41068,'Armor Reduction Kit','consumable'),
+ (41069,'Thin Armor Plating','consumable'),
+ (41070,'Armor Plating','consumable'),
+ (41071,'Thick Armor Plating','consumable'),
+ (41072,'Simple Armor Rebalance Kit','consumable'),
+ (41073,'Armor Rebalance Kit','consumable'),
+ (41074,'Advanced Armor Rebalance Kit','consumable'),
+ (41075,'Simple Armor Flexibility Kit','consumable'),
+ (41076,'Armor Flexibility Kit','consumable'),
+ (41077,'Advanced Armor Flexibility Kit','consumable'),
+ (51014,'Hardened Steel Hatchet','weapon'),
+ (51015,'Star Metal Hatchet','weapon'),
+ (51022,'Hardened Steel Pick','weapon'),
+ (51023,'Star Metal Pick','weapon'),
+ (51040,'Steel Sickle','weapon'),
+ (51041,'Hardened Steel Sickle','weapon'),
+ (51042,'Star Metal Sickle','weapon'),
+ (51066,'Telith''s Lament','weapon'),
+ (51067,'Hoar-Frost Hatchet','weapon'),
+ (51068,'Glacier-Crack','weapon'),
+ (51069,'Star Metal Sword','weapon'),
+ (51070,'Exceptional Star Metal Sword','weapon'),
+ (51071,'Flawless Star Metal Sword','weapon'),
+ (51072,'Deathbringer Axe','weapon'),
+ (51073,'xx_Wight_Sword','weapon'),
+ (51074,'xx_Wight_Axe','weapon'),
+ (51154,'Steel Warhammer','weapon'),
+ (51155,'Ancient Warhammer','weapon'),
+ (51156,'Hardened Steel Hammer','weapon'),
+ (51157,'Exceptional Hardened Steel Hammer','weapon'),
+ (51158,'Flawless Hardened Steel Hammer','weapon'),
+ (51159,'Star Metal Hammer','weapon'),
+ (51160,'Exceptional Star Metal Hammer','weapon'),
+ (51161,'Flawless Star Metal Hammer','weapon'),
+ (51162,'Exceptional Iron Warhammer','weapon'),
+ (51163,'Flawless Iron Warhammer','weapon'),
+ (51164,'Exceptional Steel Warhammer','weapon'),
+ (51165,'Flawless Steel Warhammer','weapon'),
+ (51166,'Exceptional Iron Mace','weapon'),
+ (51167,'Flawless Iron Mace','weapon'),
+ (51168,'Exceptional Hunting Bow','weapon'),
+ (51169,'Flawless Hunting Bow','weapon'),
+ (51170,'Exceptional Heavy Crossbow','weapon'),
+ (51171,'Flawless Heavy Crossbow','weapon'),
+ (51172,'Exceptional Iron Pike','weapon'),
+ (51173,'Flawless Iron Pike','weapon'),
+ (51174,'Exceptional Steel Trident','weapon'),
+ (51175,'Flawless Steel Trident','weapon'),
+ (51176,'Exceptional Falcata','weapon'),
+ (51177,'Flawless Falcata','weapon'),
+ (51178,'Exceptional Cimmerian Battle-axe','weapon'),
+ (51179,'Flawless Cimmerian Battle-axe','weapon'),
+ (51180,'Exceptional Stygian Spear','weapon'),
+ (51181,'Flawless Stygian Spear','weapon'),
+ (51182,'Exceptional Steel Poniard','weapon'),
+ (51183,'Flawless Steel Poniard','weapon'),
+ (51184,'Bone Arrow','weapon'),
+ (51185,'Bobe Bolt','weapon'),
+ (51186,'Flanged Iron Mace','weapon'),
+ (51187,'Exceptional Flanged Iron Mace','weapon'),
+ (51188,'Flawless Flanged Iron Mace','weapon'),
+ (51189,'Iron Corseque','weapon'),
+ (51190,'Exceptional Iron Corseque','weapon'),
+ (51191,'Flawless Iron Corseque','weapon'),
+ (51195,'Iron War Axe','weapon'),
+ (51196,'Exceptional Iron War Axe','weapon'),
+ (51197,'Flawless Iron War Axe','weapon'),
+ (51198,'Studded Iron Mace','weapon'),
+ (51199,'Exceptional Studded Iron Mace','weapon'),
+ (51200,'Flawless Studded Iron Mace','weapon'),
+ (51971,'Demon-fire Orb','weapon'),
+ (51209,'Steel Spear','weapon'),
+ (51210,'Exceptional Steel Spear','weapon'),
+ (51211,'Flawless Steel Spear','weapon'),
+ (51212,'Ancient Axe','weapon'),
+ (51972,'Grease Orb','weapon'),
+ (51302,'Iron Mace','weapon'),
+ (51305,'Steel Mace','weapon'),
+ (51306,'Iron Truncheon','weapon'),
+ (51307,'Steel Truncheon','weapon'),
+ (51406,'Ancient Bow','weapon'),
+ (51454,'Heavy Crossbow','weapon'),
+ (51622,'Lantern Shield','weapon'),
+ (51628,'Hardened Steel Shield','weapon'),
+ (51629,'Exceptional Hardened Steel Shield','weapon'),
+ (51630,'Flawless Hardened Steel Shield','weapon'),
+ (51631,'Star Metal Shield','weapon'),
+ (51632,'Exceptional Star Metal Shield','weapon'),
+ (51633,'Flawless Star Metal Shield','weapon'),
+ (51715,'Stone Pike','weapon'),
+ (51723,'Star Metal Spear','weapon'),
+ (51724,'Exceptional Star Metal Spear','weapon'),
+ (51725,'Flawless Star Metal Spear','weapon'),
+ (51726,'Hardened Steel Spear','weapon'),
+ (51727,'Exceptional Hardened Steel Spear','weapon'),
+ (51728,'Flawless Hardened Steel Spear','weapon'),
+ (51827,'Saw','weapon'),
+ (51828,'Adze','weapon'),
+ (51829,'Carpentry Hammer','weapon'),
+ (51830,'Drum','weapon'),
+ (51841,'Hardened Steel Sword','weapon'),
+ (51842,'Exceptional Hardened Steel Sword','weapon'),
+ (51843,'Flawless Hardened Steel Sword','weapon'),
+ (51852,'Iron Axe','weapon'),
+ (51973,'Water Orb','weapon'),
+ (51974,'Gaseous Orb','weapon'),
+ (51957,'Abysmal Dagger','weapon'),
+ (51958,'Abysmal Sword','weapon'),
+ (51959,'Hardened Steel Dagger','weapon'),
+ (51960,'Exceptional Hardened Steel Dagger','weapon'),
+ (51966,'Flawless Hardened Steel Dagger','weapon'),
+ (51967,'Star Metal Dagger','weapon'),
+ (51968,'Exceptional Star Metal Dagger','weapon'),
+ (51969,'Flawless Star Metal Dagger','weapon'),
+ (51970,'Acheronian Sickle','weapon'),
+ (51975,'Black Ice Longsword','weapon'),
+ (51976,'Black Ice Broadsword','weapon'),
+ (51977,'Black Ice Pick','weapon'),
+ (51978,'Acheronian Pick','weapon'),
+ (51979,'Acheronian Longsword','weapon'),
+ (51980,'Exceptional Acheronian Longsword','weapon'),
+ (51981,'Flawless Acheronian Longsword','weapon'),
+ (51982,'Acheronian Spear','weapon'),
+ (51983,'Exceptional Acheronian Spear','weapon'),
+ (51984,'Flawless Acheronian Spear','weapon'),
+ (51985,'Acheronian War-Axe','weapon'),
+ (51986,'Exceptional Acheronian War-Axe','weapon'),
+ (51987,'Flawless Acheronian War-Axe','weapon'),
+ (52016,'Reptilian Helm','armor'),
+ (52017,'Reptilian Gauntlets','armor'),
+ (52018,'Reptilian Chestpiece','armor'),
+ (52019,'Reptilian Tasset','armor'),
+ (52020,'Reptilian Boots','armor'),
+ (52026,'Exceptional Medium Cap','armor'),
+ (52027,'Exceptional Medium Harness','armor'),
+ (52028,'Exceptional Medium Gauntlets','armor'),
+ (52029,'Exceptional Medium Tasset','armor'),
+ (52030,'Exceptional Medium Boots','armor'),
+ (52036,'Exceptional Heavy Helmet','armor'),
+ (52037,'Exceptional Heavy Pauldron','armor'),
+ (52038,'Exceptional Heavy Gauntlets','armor'),
+ (52039,'Exceptional Heavy Tasset','armor'),
+ (52040,'Exceptional Heavy Sabatons','armor'),
+ (52056,'Flawless Medium Cap','armor'),
+ (52057,'Flawless Medium Harness','armor'),
+ (52058,'Flawless Medium Gauntlets','armor'),
+ (52059,'Flawless Medium Tasset','armor'),
+ (52060,'Flawless Medium Boots','armor'),
+ (52061,'XX_Stygian Headdress','armor'),
+ (52062,'XX_Stygian Vest','armor'),
+ (52064,'XX_Stygian Shendyt','armor'),
+ (52065,'XX_Stygian Sandals','armor'),
+ (52066,'Flawless Heavy Helmet','armor'),
+ (52067,'Flawless Heavy Pauldron','armor'),
+ (52068,'Flawless Heavy Gauntlets','armor'),
+ (52069,'Flawless Heavy Tasset','armor'),
+ (52070,'Flawless Heavy Sabatons','armor'),
+ (52293,'Climbing Gloves','armor'),
+ (52295,'Climbing Boots','armor'),
+ (52522,'Mitraen Tunic','armor'),
+ (52541,'Relic Hunter Turban','armor'),
+ (52542,'Relic Hunter Shirt','armor'),
+ (52543,'Relic Hunter Gloves','armor'),
+ (52544,'Relic Hunter Trousers','armor'),
+ (52545,'Relic Hunter Boots','armor'),
+ (52551,'Hyena Skull Helmet','armor'),
+ (52552,'Hyena-fur Chestpiece','armor'),
+ (52553,'Hyena-fur Gloves','armor'),
+ (52554,'Hyena-fur Wrap','armor'),
+ (52555,'Hyena-fur Boots','armor'),
+ (52556,'Star Metal Helmet','armor'),
+ (52557,'Star Metal Pauldron','armor'),
+ (52558,'Star Metal Gauntlets','armor'),
+ (52559,'Star Metal Tasset','armor'),
+ (52560,'Star Metal Boots','armor'),
+ (52561,'Hardened Steel Helmet','armor'),
+ (52562,'Hardened Steel Pauldron','armor'),
+ (52563,'Hardened Steel Gauntlets','armor'),
+ (52564,'Hardened Steel Tasset','armor'),
+ (52565,'Hardened Steel Boots','armor'),
+ (52566,'Fur Helmet','armor'),
+ (52567,'Fur Harness','armor'),
+ (52568,'Fur Gauntlets','armor'),
+ (52569,'Fur Tasset','armor'),
+ (52570,'Fur Boots','armor'),
+ (52571,'Exceptional Star Metal Helmet','armor'),
+ (52572,'Exceptional Star Metal Pauldron','armor'),
+ (52573,'Exceptional Star Metal Gauntlets','armor'),
+ (52574,'Exceptional Star Metal Helmet','armor'),
+ (52575,'Exceptional Star Metal Boots','armor'),
+ (52576,'Exceptional Hardened Steel Helmet','armor'),
+ (52577,'Exceptional Hardened Steel Pauldron','armor'),
+ (52578,'Exceptional Hardened Steel Gauntlets','armor'),
+ (52579,'Exceptional Hardened Steel Tasset','armor'),
+ (52580,'Exceptional Hardened Steel Boots','armor'),
+ (52581,'Exceptional Fur Helmet','armor'),
+ (52582,'Exceptional Fur Harness','armor'),
+ (52583,'Exceptional Fur Gauntlets','armor'),
+ (52584,'Exceptional Fur Tasset','armor'),
+ (52585,'Exceptional Fur Boots','armor'),
+ (52586,'Flawless Star Metal Helmet','armor'),
+ (52587,'Flawless Star Metal Pauldron','armor'),
+ (52588,'Flawless Star Metal Gauntlets','armor'),
+ (52589,'Flawless Star Metal Tasset','armor'),
+ (52590,'Flawless Star Metal Boots','armor'),
+ (52591,'Flawless Hardened Steel Helmet','armor'),
+ (52592,'Flawless Hardened Steel Pauldron','armor'),
+ (52593,'Flawless Hardened Steel Gauntlets','armor'),
+ (52594,'Flawless Hardened Steel Tasset','armor'),
+ (52595,'Flawless Hardened Steel Boots','armor'),
+ (52596,'Flawless Fur Helmet','armor'),
+ (52597,'Flawless Fur Harness','armor'),
+ (52598,'Flawless Fur Gauntlets','armor'),
+ (52599,'Flawless Fur Tasset','armor'),
+ (52600,'Flawless Fur Boots','armor'),
+ (52601,'Heavy Plated Helmet','armor'),
+ (52602,'Horned Heavy Plated Helmet','armor'),
+ (52603,'Silent Legion Helmet','armor'),
+ (52604,'Silent Legion Pauldron','armor'),
+ (52605,'Silent Legion Gauntlets','armor'),
+ (52606,'Silent Legion Tasset','armor'),
+ (52607,'Silent Legion Boots','armor'),
+ (52610,'Winter''s Majesty','armor'),
+ (52611,'Ymir''s Aegis','armor'),
+ (52612,'Ymir''s Might','armor'),
+ (52613,'Ymir''s Shanks','armor'),
+ (52614,'Ymir''s Stride','armor'),
+ (52615,'Vanir Fur Cap','armor'),
+ (52616,'Vanir Fur Harness','armor'),
+ (52617,'Vanir Fur Gauntlets','armor'),
+ (52618,'Vanir Fur Tasset','armor'),
+ (52619,'Vanir Fur Boots','armor'),
+ (52620,'Exceptional Vanir Fur Cap','armor'),
+ (52621,'Exceptional Vanir Fur Harness','armor'),
+ (52622,'Exceptional Vanir Fur Gauntlets','armor'),
+ (52623,'Exceptional Vanir Fur Tasset','armor'),
+ (52624,'Exceptional Vanir Fur Boots','armor'),
+ (52625,'Flawless Vanir Fur Cap','armor'),
+ (52626,'Flawless Vanir Fur Harness','armor'),
+ (52627,'Flawless Vanir Fur Gauntlets','armor'),
+ (52628,'Flawless Vanir Fur Tasset','armor'),
+ (52629,'Flawless Vanir Fur Boots','armor'),
+ (52630,'Aquilonian Helmet','armor'),
+ (52631,'Aquilonian Chestplate','armor'),
+ (52632,'Aquilonian Bracers','armor'),
+ (52633,'Aquilonian Tasset','armor'),
+ (52634,'Aquilonian Sandals','armor'),
+ (52635,'Exceptional Aquilonian Helmet','armor'),
+ (52636,'Exceptional Aquilonian Chestplate','armor'),
+ (52637,'Exceptional Aquilonian Bracers','armor'),
+ (52638,'Exceptional Aquilonian Tasset','armor'),
+ (52639,'Exceptional Aquilonian Sandals','armor'),
+ (52640,'Flawless Aquilonian Helmet','armor'),
+ (52641,'Flawless Aquilonian Chestplate','armor'),
+ (52642,'Flawless Aquilonian Bracers','armor'),
+ (52643,'Flawless Aquilonian Tasset','armor'),
+ (52644,'Flawless Aquilonian Sandals','armor'),
+ (52911,'Medium Helmet Padding','armor'),
+ (52912,'Medium Chest Padding','armor'),
+ (52913,'Medium Gauntlet Lining','armor'),
+ (52914,'Medium Legging Lining','armor'),
+ (52915,'Medium Boot Lining','armor'),
+ (52916,'Heavy Helmet Padding','armor'),
+ (52917,'Heavy Chest Padding','armor'),
+ (52918,'Heavy Gauntlet Lining','armor'),
+ (52919,'Heavy Legging Lining','armor'),
+ (52920,'Heavy Boot Lining','armor'),
+ (52921,'Light Helmet Padding','armor'),
+ (52922,'Light Chest Padding','armor'),
+ (52932,'Light Gloves Lining','armor'),
+ (52933,'Light Legging Lining','armor'),
+ (52934,'Light Boot Lining','armor'),
+ (52935,'Zamorian Thief Hood','armor'),
+ (52936,'Zamorian Thief Chest','armor'),
+ (52937,'Zamorian Thief Gauntlets','armor'),
+ (52938,'Zamorian Thief Breeches','armor'),
+ (52939,'Zamorian Thief Boots','armor'),
+ (52940,'Exceptional Zamorian Thief Hood','armor'),
+ (52941,'Exceptional Zamorian Thief Chest','armor'),
+ (52942,'Exceptional Zamorian Thief Gauntlets','armor'),
+ (52943,'Exceptional Zamorian Thief Breeches','armor'),
+ (52944,'Exceptional Zamorian Thief Boots','armor'),
+ (52945,'Flawless Zamorian Thief Hood','armor'),
+ (52946,'Flawless Zamorian Thief Chest','armor'),
+ (52947,'Flawless Zamorian Thief Gauntlets','armor'),
+ (52948,'Flawless Zamorian Thief Breeches','armor'),
+ (52949,'Flawless Zamorian Thief Boots','armor'),
+ (52950,'Hyperborean Slaver Waistguard','armor'),
+ (52951,'Hyperborean Slaver Bracers','armor'),
+ (52952,'Exceptional Hyperborean Slaver Waistguard','armor'),
+ (52953,'Exceptional Hyperborean Slaver Bracers','armor'),
+ (52954,'Flawless Hyperborean Slaver Waistguard','armor'),
+ (52955,'Flawless Hyperborean Slaver Bracers','armor'),
+ (53102,'Beathing Potion','consumable'),
+ (53202,'XX_Demon''s Bane','consumable'),
+ (53652,'Abysmal Arrows','consumable'),
+ (53653,'Abysmal Bolts','consumable'),
+ (53654,'Hardened Steel Arrow','consumable'),
+ (53655,'Hardened Steel Bolt','consumable'),
+ (53656,'Star Metal Arrow','consumable'),
+ (53657,'Star Metal Bolt','consumable'),
+ (53658,'Ice Shard Arrows','consumable'),
+ (53659,'Ice Shard Bolts','consumable');
 CREATE TRIGGER max_knowledge_points AFTER INSERT ON character_stats FOR EACH ROW BEGIN UPDATE character_stats set stat_value = '1300.0' WHERE stat_value = '497.0' AND stat_type = '0' AND stat_id = '3'; END;
-
-
-CREATE VIEW `all_player_info` AS select quote(g.name) as GUILD, quote(g.guildid) as GUILDid, quote(c.char_name) as NAME, case c.rank WHEN '2' then 'Leader' WHEN '1' then 'Officer' WHEN '0' then 'Peon' ELSE c.rank END RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, 'TeleportPlayer '||ap.x||' '||ap.y||' '||ap.z as LOCATION, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE from characters as c left outer join guilds as g on g.guildid = c.guild left outer join actor_position as ap on ap.id = c.id order by g.name, c.rank desc, c.level desc, c.char_name;
-
-
+CREATE VIEW "Wooden_Chest_Totals" 
+AS SELECT pb.name AS '[Char/Clan]', 
+COUNT(b.owner_id) AS 'Wooden_Chests' 
+FROM actor_position AS ap 
+INNER JOIN buildings b 
+ON b.object_id = ap.id 
+INNER JOIN 
+( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb 
+ON b.owner_id = pb_id 
+WHERE ap.class 
+LIKE '%Chest_Medium%' 
+GROUP BY owner_id 
+ORDER BY COUNT(b.owner_id) DESC;
 CREATE VIEW `Who_Owns_What_Items` AS select player_guild_name,ItemName,sum(item_count) as item_count from ( select pb.name as player_guild_name,x.Name as ItemName, case when substr(hex(data),length(hex(data))-31,1) = 'A' then 11 else case when substr(hex(data),length(hex(data))-31,1) = 'B' then 12 else case when substr(hex(data),length(hex(data))-31,1) = 'C' then 13 else case when substr(hex(data),length(hex(data))-31,1) = 'D' then 14 else case when substr(hex(data),length(hex(data))-31,1) = 'E' then 15 else cast(substr(hex(data),length(hex(data))-31,1) as Int) end end end end end * 16 + case when substr(hex(data),length(hex(data))-30,1) = 'A' then 11 else case when substr(hex(data),length(hex(data))-30,1) = 'B' then 12 else case when substr(hex(data),length(hex(data))-30,1) = 'C' then 13 else case when substr(hex(data),length(hex(data))-30,1) = 'D' then 14 else case when substr(hex(data),length(hex(data))-30,1) = 'E' then 15 else cast(substr(hex(data),length(hex(data))-30,1) as Int) end end end end end as item_count from item_inventory as i inner join actor_position ap on i.owner_id = ap.id inner join buildings b on b.object_id = ap.id inner join cust_item_xref x on x.template_id = i.template_id inner join ( Select guildid as pb_id, name from guilds Union select id, char_name from characters) pb on b.owner_id = pb_id where inv_type =4 ) iq group by player_guild_name,ItemName;
-
-
+CREATE VIEW "Vault_Totals" 
+AS SELECT pb.name AS '[Char/Clan]', 
+COUNT(b.owner_id) AS 'Vaults' 
+FROM actor_position AS ap 
+INNER JOIN buildings b 
+ON b.object_id = ap.id 
+INNER JOIN 
+( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb 
+ON b.owner_id = pb_id 
+WHERE ap.class 
+LIKE '%Vault%' 
+GROUP BY owner_id 
+ORDER BY COUNT(b.owner_id) DESC;
 CREATE VIEW "Thralls, Non-Combat"
 AS
 SELECT  pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Stored Thralls' FROM item_inventory AS i
@@ -1242,15 +1256,11 @@ INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_nam
 where ip.name = 'ThrallCharLayout'
 GROUP BY b.owner_id
 ORDER BY COUNT(b.owner_id) DESC;
-
-
 CREATE VIEW "Thralls, Combat"
 AS
 SELECT CASE WHEN class LIKE '%PersistentHuman%' THEN 'Combat' WHEN class LIKE '%EntertainerHuman%' THEN 'Dancer' ELSE class END Thrall, SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) THEN CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) THEN CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi',  'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM actor_position AS ap
 where class like '%Human%'
 ORDER BY Pippi, Location DESC;
-
-
 CREATE VIEW `ThrallInfo` AS select  pb.name as player_guild_name,*  from item_inventory as i
 inner join item_properties ip on ip.owner_id = i.owner_id and ip.item_id = i.item_id
 inner join actor_position ap on i.owner_id = ap.id
@@ -1260,42 +1270,45 @@ inner join
 Union
 select id, char_name from characters) pb on b.owner_id = pb_id
 where ip.name = 'ThrallCharLayout';
-
-
-CREATE VIEW "Structures, Locations"
-AS
-SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi',  'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM building_instances AS bi
-INNER JOIN buildings b ON b.object_id = bi.object_id
-INNER JOIN actor_position ap ON ap.id = bi.object_id
-INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id
-GROUP BY bi.object_id
-ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
-
-
-CREATE VIEW "Structures, Abandoned" AS SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location from buildings as b INNER JOIN building_instances bi ON bi.object_id = b.object_id INNER JOIN actor_position ap ON ap.id = bi.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id where owner_id in ( select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null) UNION select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild is null ) GROUP BY b.object_id ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
-
-
+CREATE VIEW "Structure_Locations" AS SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM building_instances AS bi INNER JOIN buildings b ON b.object_id = bi.object_id INNER JOIN actor_position ap ON ap.id = bi.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id GROUP BY bi.object_id ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
+CREATE VIEW `Single_Pillar_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%pillar%';
 CREATE VIEW `Single_Foundation_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%found%';
-
-
-CREATE VIEW `Out_Of_Bounds` AS select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'north' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y < '-19197.0'
-UNION ALL
-select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'south' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y > '352550.0'
-UNION ALL
-select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'west' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x < '-296876.0'
-UNION ALL
-select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'east' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x > '158989.0' order by direction;
-
-
-CREATE VIEW `InactivePlayers` AS select * from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-6 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-6 days') and guild is not null));
-
-
+CREATE VIEW `Northern_Structure_Locations` AS select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'north' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y < '-19197.0' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'south' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y > '352550.0' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'west' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x < '-296876.0' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer '||x||' '||y||' '||z as location, 'east' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x > '158989.0' order by direction;
+CREATE VIEW "Non_Building_Structure_Locations" AS 
+SELECT pb.name AS Owner, 
+pn.name AS Type,
+COUNT(pn.object_id) AS 'Connected_Structures', 
+SUBSTR("TSRQPONMLKJIHGFEDCBA",
+(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) 
+then CAST((168288-ap.x)/24429 AS INT) 
+ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || 
+(CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) 
+then CAST((ap.y+88930)/24764-1 AS INT) 
+ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location 
+FROM properties AS pn 
+INNER JOIN buildings b ON b.object_id = pn.object_id 
+INNER JOIN actor_position ap ON ap.id = pn.object_id 
+INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
+GROUP BY pn.object_id ORDER BY lower(Owner), Pippi, 
+COUNT(pn.object_id) DESC;
+CREATE VIEW "Large_Chest_Totals" 
+AS SELECT pb.name AS '[Char/Clan]', 
+COUNT(b.owner_id) AS 'Large_Chests' 
+FROM actor_position AS ap 
+INNER JOIN buildings b 
+ON b.object_id = ap.id 
+INNER JOIN 
+( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb 
+ON b.owner_id = pb_id 
+WHERE ap.class 
+LIKE '%Chest_Large%' 
+GROUP BY owner_id 
+ORDER BY COUNT(b.owner_id) DESC;
+CREATE VIEW `InactivePlayers` AS select * from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-4 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-4 days') and guild is not null));
 CREATE VIEW `Guild_Member_List` AS select quote(g.name) as GUILD, quote(g.guildid) as GUILDid, quote(c.char_name) as NAME, case c.rank WHEN '2' then 'Leader' WHEN '1' then 'Officer' WHEN '0' then 'Peon' ELSE c.rank END RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE from guilds g inner join characters c on g.guildid = c.guild order by g.name, c.rank desc, c.level desc, c.char_name;
-
-
+CREATE VIEW `Double_Pillar_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%pillar%';
 CREATE VIEW `Double_Foundation_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%found%';
-
-
+CREATE VIEW `Detailed_Player_Info` AS select quote(g.name) as GUILD, quote(g.guildid) as GUILDid, quote(c.char_name) as NAME, case c.rank WHEN '2' then 'Leader' WHEN '1' then 'Officer' WHEN '0' then 'Peon' ELSE c.rank END RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, 'TeleportPlayer '||ap.x||' '||ap.y||' '||ap.z as LOCATION, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE from characters as c left outer join guilds as g on g.guildid = c.guild left outer join actor_position as ap on ap.id = c.id order by g.name, c.rank desc, c.level desc, c.char_name;
 CREATE VIEW "Crafting Station Totals"
 AS
 SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Stations' FROM actor_position AS ap
@@ -1304,34 +1317,27 @@ INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_nam
 WHERE ap.class LIKE '%CraftingStation%'
 GROUP BY owner_id
 ORDER BY COUNT(b.owner_id) DESC;
-
-
 CREATE VIEW "Clan Member Totals"
 AS
 SELECT name AS Clan, COUNT(name) AS Members FROM guilds AS g
 INNER JOIN characters c on c.guild = g.guildId
 GROUP BY name
 ORDER BY Members DESC;
-
-
-CREATE VIEW "Character List, Clan Sorted"
+CREATE VIEW "Chatacter List, Clan Sorted"
 AS
 SELECT "char_name" AS Character, "level" AS Level, ( SELECT "name" FROM main.guilds WHERE "guildId" = "guild" ) AS Clan, CASE rank WHEN '2' THEN 'Leader' WHEN '1' THEN 'Officer' WHEN '0' THEN 'Peon' ELSE rank END Rank, strftime('%m-%d-%Y ', datetime("lastTimeOnline", 'unixepoch')) AS [Last Online], round(strftime('%J', 'now') - strftime('%J', datetime("lastTimeOnline", 'unixepoch'))) as 'Days Ago' FROM main.characters
 WHERE "lastTimeOnline" != "[NULL]"
 ORDER BY LOWER("Clan"), Rank, LOWER("Character");
-
-
 CREATE VIEW "Character List, Last Online"
 AS
 SELECT "char_name" AS Character, "level" AS Level, ( SELECT "name" FROM main.guilds WHERE "guildId" = "guild" ) AS Clan, CASE rank WHEN '2' THEN 'Leader' WHEN '1' THEN 'Officer' WHEN '0' THEN 'Peon' ELSE rank END Rank, strftime('%m-%d-%Y ', datetime("lastTimeOnline", 'unixepoch')) AS [Last Online], round(strftime('%J', 'now') - strftime('%J', datetime("lastTimeOnline", 'unixepoch'))) as 'Days Ago' FROM main.characters
 WHERE "lastTimeOnline" != "[NULL]"
 ORDER BY lastTimeOnline DESC;
-
-
 CREATE VIEW "Character List, Alphabetical"
 AS
 SELECT "char_name" AS Character, "playerId" as "Steam ID", "level" AS Level, ( SELECT "name" FROM main.guilds WHERE "guildId" = "guild" ) AS Clan, CASE rank WHEN '2' THEN 'Leader' WHEN '1' THEN 'Officer' WHEN '0' THEN 'Peon' ELSE rank END Rank, strftime('%m-%d-%Y ', datetime("lastTimeOnline", 'unixepoch')) AS [Last Online], round(strftime('%J', 'now') - strftime('%J', datetime("lastTimeOnline", 'unixepoch'))) as 'Days Ago' FROM main.characters
 WHERE "lastTimeOnline" != "[NULL]"
 ORDER BY LOWER("Character");
 CREATE VIEW `Buildings_By_Clan_and_Player` AS select count(b.owner_id) as cnt, b.owner_id, g.name, g.guildid, c.char_name, c.id, c.playerid from buildings as b left outer join characters as c on b.owner_id = c.id left outer join guilds as g on b.owner_id = g.guildid group by owner_id order by cnt desc;
+CREATE VIEW "Abandoned_Structures" AS SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location from buildings as b INNER JOIN building_instances bi ON bi.object_id = b.object_id INNER JOIN actor_position ap ON ap.id = bi.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id where owner_id in ( select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-4 days') and guild is not null) UNION select id from characters where lastTimeOnline < strftime('%s', 'now', '-4 days') and guild is null ) GROUP BY b.object_id ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
 COMMIT;
