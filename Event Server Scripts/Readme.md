@@ -1,0 +1,1 @@
+This script is for event servers only, this should NOT be run on a highly populated server for a length of time as this will bloat your database.  Upon each death a player will start off with 2 sets of armor, one red heavy set and one blue heavy set along with a few weapons.
