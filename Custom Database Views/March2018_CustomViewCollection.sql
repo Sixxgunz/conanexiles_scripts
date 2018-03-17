@@ -1322,7 +1322,7 @@ LIKE '%Chest_Large%'
 GROUP BY owner_id 
 ORDER BY COUNT(b.owner_id) DESC;
 DROP VIEW IF EXISTS `InactivePlayers`;
-CREATE VIEW `InactivePlayers` AS select * from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-4 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-4 days') and guild is not null));
+CREATE VIEW `InactivePlayers` AS select * from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null));
 DROP VIEW IF EXISTS `Guild_Member_List`;
 CREATE VIEW `Guild_Member_List` AS select quote(g.name) as GUILD, quote(g.guildid) as GUILDid, quote(c.char_name) as NAME, case c.rank WHEN '2' then 'Leader' WHEN '1' then 'Officer' WHEN '0' then 'Peon' ELSE c.rank END RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE from guilds g inner join characters c on g.guildid = c.guild order by g.name, c.rank desc, c.level desc, c.char_name;
 DROP VIEW IF EXISTS `Double_Pillar_Spam`;
@@ -1371,5 +1371,19 @@ DROP VIEW IF EXISTS `Buildings_By_Clan_and_Player`;
 CREATE VIEW `Buildings_By_Clan_and_Player` AS select count(b.owner_id) as cnt, b.owner_id, g.name, g.guildid, c.char_name, c.id, c.playerid from buildings as b left outer join characters as c on b.owner_id = c.id left outer join guilds as g on b.owner_id = g.guildid group by owner_id order by cnt desc;
 DROP VIEW IF EXISTS "Structures, Abandoned";
 DROP VIEW IF EXISTS "Abandoned_Structures";
-CREATE VIEW "Abandoned_Structures" AS SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location from buildings as b INNER JOIN building_instances bi ON bi.object_id = b.object_id INNER JOIN actor_position ap ON ap.id = bi.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id where owner_id in ( select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-4 days') and guild is not null) UNION select id from characters where lastTimeOnline < strftime('%s', 'now', '-4 days') and guild is null ) GROUP BY b.object_id ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
+CREATE VIEW "Abandoned_Structures" AS SELECT pb.name AS Owner, COUNT(bi.instance_id) AS 'Pieces', SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location from buildings as b INNER JOIN building_instances bi ON bi.object_id = b.object_id INNER JOIN actor_position ap ON ap.id = bi.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id where owner_id in ( select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null) UNION select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild is null ) GROUP BY b.object_id ORDER BY lower(Owner), Pippi, COUNT(bi.instance_id) DESC;
+DROP VIEW IF EXISTS "Wheel_Totals";
+CREATE VIEW "Wheel_Totals" 
+AS SELECT pb.name AS '[Char/Clan]', 
+COUNT(b.owner_id) AS 'Wheels' 
+FROM actor_position AS ap 
+INNER JOIN buildings b 
+ON b.object_id = ap.id 
+INNER JOIN 
+( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb 
+ON b.owner_id = pb_id 
+WHERE ap.class 
+LIKE '%Wheel%' 
+GROUP BY owner_id 
+ORDER BY COUNT(b.owner_id) DESC;
 COMMIT;
