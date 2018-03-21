@@ -1386,4 +1386,5 @@ WHERE ap.class
 LIKE '%Wheel%' 
 GROUP BY owner_id 
 ORDER BY COUNT(b.owner_id) DESC;
+CREATE VIEW `Base_Limit_Violators` AS SELECT * FROM structure_locations WHERE Pieces >=100;--You can edit this and change '100' to represent how many structures a base is allowed to have
 COMMIT;
