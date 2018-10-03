@@ -1,0 +1,1 @@
+ CREATE TRIGGER max_knowledge_points AFTER INSERT ON character_stats FOR EACH ROW BEGIN UPDATE character_stats set stat_value = '3000.0' WHERE stat_value = '497.0' AND stat_type = '0' AND stat_id = '3'; END
