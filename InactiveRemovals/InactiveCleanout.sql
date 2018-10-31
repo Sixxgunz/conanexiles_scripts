@@ -23,6 +23,9 @@ delete from characters where id in (select id from characters where lastTimeOnli
 delete from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null));
 
 /* Transfer Pet and Thrall ownership ID's to our custom tables before we remove old event logs*/
+create table if not exists zpet_ownership(pet_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
+create table if not exists zthrall_ownership(thrall_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
+
 insert into
   zpet_ownership (pet_id, player_owner_id, clan_owner_id) 
   select distinct
