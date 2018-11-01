@@ -1,8 +1,5 @@
 ------------------------------------------------------------------
---  This does not delete anything from the accounts table       --
---  I keep personal records of all steam id's for the purpose   --
---  of tracking total number of players that have joined since  -- 
---  conan exiles original release day when we started WWG.      --
+--                  This wipes all tables                       --
 ------------------------------------------------------------------
 DELETE FROM account;
 DELETE FROM actor_bounding_box;
