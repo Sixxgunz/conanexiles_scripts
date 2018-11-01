@@ -14,6 +14,7 @@ DELETE FROM character_stats;
 DELETE FROM characters;
 DELETE FROM destruction_history;
 DELETE FROM events;
+DELETE FROM game_events;
 DELETE FROM guilds;
 DELETE FROM item_inventory;
 DELETE FROM item_properties;
