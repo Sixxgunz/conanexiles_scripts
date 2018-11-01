@@ -1,3 +1,4 @@
+--This script is deprecated and no longer needed with the new table addition 'game_events' which now tracks more info per log event type.
 --This is only a prototype as I'm still testing performance issues and accuracy - Use at your own risk
 
 --Here we alter the destruction history table
