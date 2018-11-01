@@ -220,12 +220,15 @@ INSERT OR REPLACE INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw
  ('/Game/Systems/Storymission/BP_Storymission_ChaosmouthAltar.BP_Storymission_ChaosmouthAltar_C','ConanSandbox',8,-60599.8046875,30389.27734375,594.71630859375,1.0,1.0,1.0,0.0,0.0,-1.0,3.57627868652344e-07),
  ('/Game/Systems/Storymission/BP_Storymission_BatTower.BP_Storymission_BatTower_C','ConanSandbox',9,-62135.484375,158682.59375,-224.165512084961,1.0,1.0,1.0,0.0,0.0,0.161826282739639,0.986819267272949);
 
- /*This replaces all T2 door info with T3 info until our bugs get removed*/
+ /*This replaces all T2 door info with T3 info until our bugs get removed - NO LONGER NEEDED-This bug was patched but I am keeping this here to use as an example to use for other purposes*/
+/*
 update actor_position set class='/Game/Systems/Building/Placeables/BP_PL_Door_T3.BP_PL_Door_T3_C' where class like '%/Game/Systems/Building/Placeables/BP_PL_Door_T2.BP_PL_Door_T2_C%';
 update properties set name='BP_PL_Door_T3_C.PlacingPlayerUniqueID' where name like '%BP_PL_Door_T2_C.PlacingPlayerUniqueID%';
 update properties set name='BP_PL_Door_T3_C.SourceItemTemplateID', value=X'0000000060600100' where name like '%BP_PL_Door_T2_C.SourceItemTemplateID%'; 
 update properties set name='BP_PL_Door_T3_C.DecayDisabled', value=X'0000000001' where name like '%BP_PL_Door_T2_C.DecayDisabled%';
- 
+*/
+
+/*This will compress our database, reindex for faster searching/querying,Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
 REINDEX;
 ANALYZE;
