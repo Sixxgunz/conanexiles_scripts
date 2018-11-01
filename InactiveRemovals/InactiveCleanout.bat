@@ -1,4 +1,5 @@
-::Please read inactivecleanout.sql for what this contains. This is what I use on my server to help clean out inactive players.
+::Please read inactivecleanout.sql for what this contains. This is what I use on my server to help clean out inactive players
+::and to run other useful scripts to fix or replace data.
 ::This is a very lengthy process, but at this time the devs have not come up with a better solution
 ::And our current decay script has been deprecated as it no longer removes character and structure data properly.
 ::To gather log data create 2 new folders in saved folder called Chat_Logs and BackupServer_Logs
