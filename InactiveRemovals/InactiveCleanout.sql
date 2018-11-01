@@ -215,10 +215,21 @@ INSERT OR REPLACE INTO `buildable_health` (object_id,instance_id,health_id,templ
  (8,-1,0,11502,1.0),
  (9,-1,0,11502,1.0);
 INSERT OR REPLACE INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES 
+ ('/Game/DLC/DLC_Khitai/BP_ModController_Khitai_DLC.BP_ModController_Khitai_DLC_C','ConanSandbox',1,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
+ ('/Game/DLC/DLC_Aquilonia/DLC_Aquilonia_ModController.DLC_Aquilonia_ModController_C','ConanSandbox',2,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
+ ('/Game/DLC/ConanSword_DLC/BP_ConanSword_DLC_ModController.BP_ConanSword_DLC_ModController_C','ConanSandbox',3,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
+ ('/Game/DLC/ConanArmor_DLC/BP_ConanArmor_DLC_ModController.BP_ConanArmor_DLC_ModController_C','ConanSandbox',4,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
+ ('/Game/DLC/DLC_Pict/DLC_Pict_Modcontroller.DLC_Pict_Modcontroller_C','ConanSandbox',5,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
  ('/Game/Systems/Building/Placeables/BP_PL_Volcanic_Forge.BP_PL_Volcanic_Forge_C','ConanSandbox',6,346165.5,-353598.90625,-6467.171875,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
  ('/Game/Systems/Building/Placeables/BP_PL_Frost_Temple_Forge.BP_PL_Frost_Temple_Forge_C','ConanSandbox',7,-128000.0,-267584.0,6735.84765625,1.0,1.0,1.0,0.0,0.0,-0.707106053829193,0.707107543945313),
  ('/Game/Systems/Storymission/BP_Storymission_ChaosmouthAltar.BP_Storymission_ChaosmouthAltar_C','ConanSandbox',8,-60599.8046875,30389.27734375,594.71630859375,1.0,1.0,1.0,0.0,0.0,-1.0,3.57627868652344e-07),
  ('/Game/Systems/Storymission/BP_Storymission_BatTower.BP_Storymission_BatTower_C','ConanSandbox',9,-62135.484375,158682.59375,-224.165512084961,1.0,1.0,1.0,0.0,0.0,0.161826282739639,0.986819267272949);
+INSERT OR REPLACE INTO `mod_controllers` (id) VALUES 
+ (1),
+ (2),
+ (3),
+ (4),
+ (5);
 
  /*This replaces all T2 door info with T3 info until our bugs get removed - NO LONGER NEEDED-This bug was patched but I am keeping this here to use as an example to use for other purposes*/
 /*
