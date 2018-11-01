@@ -1,6 +1,7 @@
 ::Please read inactivecleanout.sql for what this contains. This is what I use on my server to help clean out inactive players.
 ::This is a very lengthy process, but at this time the devs have not come up with a better solution
 ::And our current decay script has been deprecated as it no longer removes character and structure data properly.
+::To gather log data create 2 new folders in saved folder called Chat_Logs and BackupServer_Logs
 
 @echo Inactive Cleanout and Chat Logs
 set curTimestamp=%date:~7,2%_%date:~3,3%_%date:~10,4%_%time:~0,2%_%time:~3,2%
