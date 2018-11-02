@@ -241,11 +241,15 @@ delete from properties where name like '%Corpse%';
 UPDATE purgescores SET purgescore = 0;
 
 /*Reinserts server spawned forges and storymode stuff*/
-INSERT OR REPLACE INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',6),
+ DELETE FROM static_buildables WHERE id = 6 OR id = 7 OR id = 8 OR id = 9;
+ INSERT OR REPLACE INTO `static_buildables` (name,id) VALUES 
+ ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',6),
  ('/Game/Maps/ConanSandbox/Art/Dungeon/Art_Dungeon_x2_y6_Tempel_of_Frost.Art_Dungeon_x2_y6_Tempel_of_Frost:PersistentLevel.BP_PL_Frost_Temple_Forge2_2',7),
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps-NPC_x3_y3-2.Camps-NPC_x3_y3-2:PersistentLevel.BP_Storymission_ChaosmouthAltar2_2',8),
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps_NPC_x3_y2.Camps_NPC_x3_y2:PersistentLevel.BP_Storymission_BatTower2_2',9);
-INSERT OR REPLACE INTO `properties` (object_id,name,value) VALUES 
+ 
+ DELETE FROM properties WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ INSERT OR REPLACE INTO `properties` (object_id,name,value) VALUES 
  (6,'BP_PL_Volcanic_Forge_C.m_IsStaticBuildable',X'0000000001'),
  (6,'BP_PL_Volcanic_Forge_C.DecayDisabled',X'0000000001'),
  (6,'CraftingQueue.m_IsStarted',X'0000000001'),
@@ -260,17 +264,23 @@ INSERT OR REPLACE INTO `properties` (object_id,name,value) VALUES
  (9,'BP_Storymission_BatTower_C.DecayDisabled',X'0000000001'),
  (9,'CraftingQueue.m_IsStarted',X'0000000001'),
  (9,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
-INSERT OR REPLACE INTO `buildings` (object_id,owner_id) VALUES 
+ 
+ DELETE FROM buildings WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ INSERT OR REPLACE INTO `buildings` (object_id,owner_id) VALUES 
  (6,0),
  (7,0),
  (8,0),
  (9,0);
-INSERT OR REPLACE INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES 
+ 
+ DELETE FROM buildable_health WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ INSERT OR REPLACE INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES 
  (6,-1,0,11064,1.0),
  (7,-1,0,18041,1.0),
  (8,-1,0,11502,1.0),
  (9,-1,0,11502,1.0);
-INSERT OR REPLACE INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES 
+ 
+ DELETE FROM actor_position WHERE id = 1 OR id = 2 OR id = 3 OR id = 4 OR id = 5 OR id = 6 OR id = 7 OR id = 8 OR id = 9;
+ INSERT OR REPLACE INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES 
  ('/Game/DLC/DLC_Khitai/BP_ModController_Khitai_DLC.BP_ModController_Khitai_DLC_C','ConanSandbox',1,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
  ('/Game/DLC/DLC_Aquilonia/DLC_Aquilonia_ModController.DLC_Aquilonia_ModController_C','ConanSandbox',2,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
  ('/Game/DLC/ConanSword_DLC/BP_ConanSword_DLC_ModController.BP_ConanSword_DLC_ModController_C','ConanSandbox',3,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0),
@@ -280,12 +290,15 @@ INSERT OR REPLACE INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw
  ('/Game/Systems/Building/Placeables/BP_PL_Frost_Temple_Forge.BP_PL_Frost_Temple_Forge_C','ConanSandbox',7,-128000.0,-267584.0,6735.84765625,1.0,1.0,1.0,0.0,0.0,-0.707106053829193,0.707107543945313),
  ('/Game/Systems/Storymission/BP_Storymission_ChaosmouthAltar.BP_Storymission_ChaosmouthAltar_C','ConanSandbox',8,-60599.8046875,30389.27734375,594.71630859375,1.0,1.0,1.0,0.0,0.0,-1.0,3.57627868652344e-07),
  ('/Game/Systems/Storymission/BP_Storymission_BatTower.BP_Storymission_BatTower_C','ConanSandbox',9,-62135.484375,158682.59375,-224.165512084961,1.0,1.0,1.0,0.0,0.0,0.161826282739639,0.986819267272949);
-INSERT OR REPLACE INTO `mod_controllers` (id) VALUES 
+
+ DELETE FROM mod_controllers WHERE id = 1 OR id = 2 OR id = 3 OR id = 4 OR id = 5;
+ INSERT OR REPLACE INTO `mod_controllers` (id) VALUES 
  (1),
  (2),
  (3),
  (4),
  (5);
+
 delete
 from
   mod_controllers 
