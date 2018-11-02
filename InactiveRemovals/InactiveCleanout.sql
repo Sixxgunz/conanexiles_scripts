@@ -235,7 +235,8 @@ delete from properties where name like '%Corpse%';
 UPDATE purgescores SET purgescore = 0;
 
 /*Reinserts server spawned forges and storymode stuff*/
-INSERT OR REPLACE INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',6),
+INSERT OR REPLACE INTO `static_buildables` (name,id) VALUES 
+ ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',6),
  ('/Game/Maps/ConanSandbox/Art/Dungeon/Art_Dungeon_x2_y6_Tempel_of_Frost.Art_Dungeon_x2_y6_Tempel_of_Frost:PersistentLevel.BP_PL_Frost_Temple_Forge2_2',7),
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps-NPC_x3_y3-2.Camps-NPC_x3_y3-2:PersistentLevel.BP_Storymission_ChaosmouthAltar2_2',8),
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps_NPC_x3_y2.Camps_NPC_x3_y2:PersistentLevel.BP_Storymission_BatTower2_2',9);
