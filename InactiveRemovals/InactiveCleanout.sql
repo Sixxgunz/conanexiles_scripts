@@ -110,6 +110,12 @@ where
   )
 ;
 
+/* Replace 0 values with Null value */
+update `zpet_ownership` set `player_owner_id` = null where player_owner_id = 0;
+update `zpet_ownership` set `clan_owner_id` = null where clan_owner_id = 0;
+update `zthrall_ownership` set `player_owner_id` = null where player_owner_id = 0;
+update `zthrall_ownership` set `clan_owner_id` = null where clan_owner_id = 0;
+
 /*remove inactive player/clan pets*/
 delete from properties where object_id in (select distinct pet_id from zpet_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
 delete from properties where object_id in (select distinct pet_id from zpet_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
