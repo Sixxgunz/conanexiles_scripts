@@ -104,6 +104,36 @@ insert into
     or objectname like '%Witch_Queen%' 
     or objectname like '%broodwarden%';
 
+/* Remove duplicate owned npc id's from our custom tables above */
+delete
+from
+  zthrall_ownership 
+where
+  rowid not in 
+  (
+    select
+      min(rowid) 
+    from
+      zthrall_ownership 
+    group by
+      thrall_id 
+  )
+;
+delete
+from
+  zpet_ownership 
+where
+  rowid not in 
+  (
+    select
+      min(rowid) 
+    from
+      zpet_ownership 
+    group by
+      pet_id 
+  )
+;
+
 /* Remove old event logs */
 delete from game_events where worldTime < strftime('%s', 'now', '-1 days');
 
