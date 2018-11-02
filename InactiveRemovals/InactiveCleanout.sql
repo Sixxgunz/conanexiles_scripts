@@ -104,7 +104,7 @@ insert into
     or objectname like '%Witch_Queen%' 
     or objectname like '%broodwarden%';
 
-/* Remove duplicate owned npc id's from our custom tables above */
+/* Remove duplicate owned npc id rows from our custom tables above */
 delete
 from
   zthrall_ownership 
@@ -133,6 +133,26 @@ where
       pet_id 
   )
 ;
+
+/*remove inactive player/clan pets*/
+delete from properties where object_id in (select distinct pet_id from zpet_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from properties where object_id in (select distinct pet_id from zpet_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from actor_position where id in (select distinct pet_id from zpet_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from actor_position where id in (select distinct pet_id from zpet_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from item_inventory where owner_id in (select distinct pet_id from zpet_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from item_inventory where owner_id in (select distinct pet_id from zpet_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from character_stats where char_id in (select distinct pet_id from zpet_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from character_stats where char_id in (select distinct pet_id from zpet_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+
+/*remove inactive player/clan thralls*/
+delete from properties where object_id in (select distinct thrall_id from zthrall_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from properties where object_id in (select distinct thrall_id from zthrall_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from actor_position where id in (select distinct thrall_id from zthrall_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from actor_position where id in (select distinct thrall_id from zthrall_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from item_inventory where owner_id in (select distinct thrall_id from zthrall_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from item_inventory where owner_id in (select distinct thrall_id from zthrall_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from character_stats where char_id in (select distinct thrall_id from zthrall_ownership where player_owner_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-3 days')) and player_owner_id not in (select id from characters where guild in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
+delete from character_stats where char_id in (select distinct thrall_id from zthrall_ownership where clan_owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-3 days') and guild is not null)));
 
 /* Remove old event logs */
 delete from game_events where worldTime < strftime('%s', 'now', '-1 days');
