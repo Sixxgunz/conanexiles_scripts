@@ -301,20 +301,6 @@ UPDATE purgescores SET purgescore = 0;
  (4),
  (5);
 
-delete
-from
-  mod_controllers 
-where
-  rowid not in 
-  (
-    select
-      min(rowid) 
-    from
-      mod_controllers 
-    group by
-      id 
-  )
-;
  /*This replaces all T2 door info with T3 info until our bugs get removed - NO LONGER NEEDED-This bug was patched but I am keeping this here to use as an example to use for other purposes*/
 /*
 update actor_position set class='/Game/Systems/Building/Placeables/BP_PL_Door_T3.BP_PL_Door_T3_C' where class like '%/Game/Systems/Building/Placeables/BP_PL_Door_T2.BP_PL_Door_T2_C%';
