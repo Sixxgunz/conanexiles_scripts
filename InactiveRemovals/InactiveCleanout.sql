@@ -1,8 +1,7 @@
 /* Transfer Pet and Thrall ownership ID's to our custom tables before we remove old event logs*/
-drop table if exists z_pet_ownership;
-drop table if exists z_thrall_ownership;
-
+drop table if exists zpet_ownership;
 create table if not exists z_pet_ownership(pet_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
+drop table if exists zthrall_ownership;
 create table if not exists z_thrall_ownership(thrall_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
 
 insert into
