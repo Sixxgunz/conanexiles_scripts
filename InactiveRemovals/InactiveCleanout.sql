@@ -1,6 +1,9 @@
 /* Transfer Pet and Thrall ownership ID's to our custom tables before we remove old event logs*/
-create table if not exists zpet_ownership(pet_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
-create table if not exists zthrall_ownership(thrall_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
+drop table if exists zpet_ownership;
+drop table if exists zthrall_ownership;
+
+create table if not exists z_pet_ownership(pet_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
+create table if not exists z_thrall_ownership(thrall_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
 
 insert into
   zpet_ownership (pet_id, player_owner_id, clan_owner_id) 
@@ -248,7 +251,7 @@ UPDATE purgescores SET purgescore = 0;
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps-NPC_x3_y3-2.Camps-NPC_x3_y3-2:PersistentLevel.BP_Storymission_ChaosmouthAltar2_2',8),
  ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps_NPC_x3_y2.Camps_NPC_x3_y2:PersistentLevel.BP_Storymission_BatTower2_2',9);
  
- DELETE FROM properties WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ DELETE FROM properties WHERE object_id = 6 OR object_id = 7 OR object_id = 8 OR object_id = 9;
  INSERT OR REPLACE INTO `properties` (object_id,name,value) VALUES 
  (6,'BP_PL_Volcanic_Forge_C.m_IsStaticBuildable',X'0000000001'),
  (6,'BP_PL_Volcanic_Forge_C.DecayDisabled',X'0000000001'),
@@ -265,14 +268,14 @@ UPDATE purgescores SET purgescore = 0;
  (9,'CraftingQueue.m_IsStarted',X'0000000001'),
  (9,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
  
- DELETE FROM buildings WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ DELETE FROM buildings WHERE object_id = 6 OR object_id = 7 OR object_id = 8 OR object_id = 9;
  INSERT OR REPLACE INTO `buildings` (object_id,owner_id) VALUES 
  (6,0),
  (7,0),
  (8,0),
  (9,0);
  
- DELETE FROM buildable_health WHERE object_id = 6 OR id = 7 OR id = 8 OR id = 9;
+ DELETE FROM buildable_health WHERE object_id = 6 OR object_id = 7 OR object_id = 8 OR object_id = 9;
  INSERT OR REPLACE INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES 
  (6,-1,0,11064,1.0),
  (7,-1,0,18041,1.0),
@@ -320,6 +323,7 @@ update properties set name='BP_PL_Door_T3_C.PlacingPlayerUniqueID' where name li
 update properties set name='BP_PL_Door_T3_C.SourceItemTemplateID', value=X'0000000060600100' where name like '%BP_PL_Door_T2_C.SourceItemTemplateID%'; 
 update properties set name='BP_PL_Door_T3_C.DecayDisabled', value=X'0000000001' where name like '%BP_PL_Door_T2_C.DecayDisabled%';
 */
+
 
 /*This will compress our database, reindex for faster searching/querying,Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
