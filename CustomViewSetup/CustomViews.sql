@@ -1535,3 +1535,25 @@ group by
   ItemName;
 create table if not exists zpet_ownership(pet_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
 create table if not exists zthrall_ownership(thrall_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
+DROP VIEW IF EXISTS Detailed_Player_Inventory;
+CREATE VIEW `Detailed_Player_Inventory` AS 
+select
+   quote(i.owner_id) as owner_id, quote(c.name) as ItemName
+from
+   item_inventory as i
+left outer join
+      cust_item_xref as c 
+      on i.template_id = c.template_id WHERE i.inv_type = 0 OR i.inv_type = 1 OR i.inv_type = 2    
+order by
+   i.owner_id;  
+DROP VIEW IF EXISTS Detailed_Structure_Inventory;
+CREATE VIEW `Detailed_Structure_Inventory` AS 
+select
+   quote(i.owner_id) as owner_id, quote(c.name) as ItemName
+from
+   item_inventory as i
+left outer join
+      cust_item_xref as c 
+      on i.template_id = c.template_id WHERE i.inv_type = 4    
+order by
+   i.owner_id;
