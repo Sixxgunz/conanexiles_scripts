@@ -1538,7 +1538,7 @@ create table if not exists zthrall_ownership(thrall_id bigint not null, player_o
 DROP VIEW IF EXISTS Detailed_Player_Inventory;
 CREATE VIEW `Detailed_Player_Inventory` AS 
 select
-quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name)
+quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name) as player_name
 from
    characters as c,
    cust_item_xref as cx
