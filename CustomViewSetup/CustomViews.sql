@@ -1538,22 +1538,24 @@ create table if not exists zthrall_ownership(thrall_id bigint not null, player_o
 DROP VIEW IF EXISTS Detailed_Player_Inventory;
 CREATE VIEW `Detailed_Player_Inventory` AS 
 select
-   quote(i.owner_id) as owner_id, quote(c.name) as ItemName
+   quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id
 from
    item_inventory as i
 left outer join
-      cust_item_xref as c 
-      on i.template_id = c.template_id WHERE i.inv_type = 0 OR i.inv_type = 1 OR i.inv_type = 2    
+      cust_item_xref as cx 
+      on i.template_id = cx.template_id WHERE inv_type = 0 or inv_type = 1 or inv_type = 2  
 order by
-   i.owner_id;  
+   i.owner_id;
+   
+   
 DROP VIEW IF EXISTS Detailed_Structure_Inventory;
 CREATE VIEW `Detailed_Structure_Inventory` AS 
 select
-   quote(i.owner_id) as owner_id, quote(c.name) as ItemName
+   quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id
 from
    item_inventory as i
 left outer join
-      cust_item_xref as c 
-      on i.template_id = c.template_id WHERE i.inv_type = 4    
+      cust_item_xref as cx 
+      on i.template_id = cx.template_id WHERE inv_type = 4  
 order by
    i.owner_id;
