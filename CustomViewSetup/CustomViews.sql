@@ -1562,12 +1562,48 @@ order by
    i.owner_id;
 
 --This pulls specific stat data pertaining to stat point amounts, feat points, current level, how much weight currently carrying and current health
+DROP TABLE IF EXISTS cust_stat_xref;
+CREATE TABLE cust_stat_xref (stat_id INTEGER, stat_name TEXT );
+INSERT INTO `cust_stat_xref` (stat_id,stat_name) VALUES 
+ (19,'Agility'),
+ (17,'Strength'),
+ (14,'Vitality'),
+ (18,'Accuracy'),
+ (15,'Grit'),
+ (16,'Encumbrance'),
+ (20,'Survival'),
+ (1,'Health'),
+ (12,'Weight'),
+ (4,'Current Level'),
+ (3,'Feat Points'),
+ (4,'Unknown Stat'),
+ (5,'Unknown Stat'),
+ (6,'Unknown Stat'),
+ (7,'Unknown Stat'),
+ (8,'Unknown Stat'),
+ (9,'Unknown Stat'),
+ (10,'Unknown Stat'),
+ (11,'Unknown Stat'),
+ (12,'Unknown Stat'),
+ (13,'Unknown Stat'),
+ (2,'Unknown Stat');
 DROP VIEW IF EXISTS Detailed_Player_Stats;
-CREATE VIEW `Detailed_Player_Stats` AS SELECT Distinct (SELECT c.char_name) AS Player_Name, (SELECT c.id) AS Player_ID, (SELECT cs.stat_value WHERE cs.stat_id = 19 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Agility, (SELECT cs.stat_value WHERE cs.stat_id = 17 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Strength, (SELECT cs.stat_value WHERE cs.stat_id = 14 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Vitality, (SELECT cs.stat_value WHERE cs.stat_id = 18 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Accuracy, (SELECT cs.stat_value WHERE cs.stat_id = 15 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Grit, (SELECT cs.stat_value WHERE cs.stat_id = 16 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Encumbrance, (SELECT cs.stat_value WHERE cs.stat_id = 20 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Survival, (SELECT cs.stat_value WHERE cs.stat_id = 1 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Current_Health, (SELECT cs.stat_value WHERE cs.stat_id = 12 AND cs.stat_type = 1 AND cs.char_id = c.id) AS Current_Weight, (SELECT cs.stat_value WHERE cs.stat_id = 4 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Current_Level, (SELECT cs.stat_value WHERE cs.stat_id = 3 AND cs.stat_type = 0 AND cs.char_id = c.id) AS Feat_Points FROM character_stats AS cs, characters AS c order by Agility desc, Strength desc, Vitality desc, Accuracy desc, Grit desc, Encumbrance desc, Survival desc, Current_Health desc, Current_Weight desc, Current_Level desc, Feat_Points;
-
+CREATE VIEW `Detailed_Player_Stats` AS
+select distinct
+   quote(c.char_name) as Player_Name, quote(cx.stat_name) as Stat_Name, quote(cs.stat_value) as Stat_Value, quote(cx.stat_id) as Stat_ID
+from
+   character_stats as cs, characters as c
+left outer join
+      cust_stat_xref as cx 
+      on cs.char_id = c.id WHERE cs.stat_id = cx.stat_id   
+order by
+   c.char_name;
+			       
 --To inspect a specific player using the Detailed Player Stats view
 SELECT * FROM Detailed_Player_Stats WHERE Player_Name LIKE '%PLAYER_NAME_HERE%';
 
---Run this to see if anyone is actually over 50 stat points in any category
-SELECT * FROM Detailed_Player_Stats WHERE Agility > 50 OR Strength > 50 OR Vitality > 50 OR Accuracy > 50 OR Grit > 50 OR Encumbrance > 50 OR Survival > 50;
+--This will show players over the default limits aka exploits
+SELECT * FROM Detailed_Player_Stats WHERE Stat_value <= 50 AND Stat_Name LIKE '%Agility%' OR '%Strength%' OR '%Vitality%' OR '%Accuracy%' OR '%Grit%' OR '%Encumbrance%' OR '%Survival%';
 
+--This will show ONLY the player attribute info pertaining to just the stats
+SELECT * FROM Detailed_Player_Stats WHERE Stat_Name LIKE '%Agility%' OR '%Strength%' OR '%Vitality%' OR '%Accuracy%' OR '%Grit%' OR '%Encumbrance%' OR '%Survival%';
