@@ -1560,47 +1560,35 @@ left outer join
       on i.template_id = cx.template_id WHERE inv_type = 4  
 order by
    i.owner_id;
+--This is our custom reference table for known stats
+DROP TABLE IF EXISTS cust_stat_xref;
+ CREATE TABLE cust_stat_xref (
+stat_id INTEGER,
+stat_name TEXT,
+stat_type INTEGER
+);
+INSERT INTO `cust_stat_xref` (stat_id,stat_name,stat_type) VALUES 
+ (19,'Agility',0),
+ (17,'Strength',0),
+ (14,'Vitality',0),
+ (18,'Accuracy',0),
+ (15,'Grit',0),
+ (16,'Encumbrance',0),
+ (20,'Survival',0),
+ (1,'Health',0),
+ (12,'Weight',0),
+ (4,'Current Level',0),
+ (3,'Feat Points',0);
 
 --This pulls specific stat data pertaining to stat point amounts, feat points, current level, how much weight currently carrying and current health
-DROP TABLE IF EXISTS cust_stat_xref;
-CREATE TABLE cust_stat_xref (stat_id INTEGER, stat_name TEXT );
-INSERT INTO `cust_stat_xref` (stat_id,stat_name) VALUES 
- (19,'Agility'),
- (17,'Strength'),
- (14,'Vitality'),
- (18,'Accuracy'),
- (15,'Grit'),
- (16,'Encumbrance'),
- (20,'Survival'),
- (1,'Health'),
- (12,'Weight'),
- (4,'Current Level'),
- (3,'Feat Points'),
- (4,'Unknown Stat'),
- (5,'Unknown Stat'),
- (6,'Unknown Stat'),
- (7,'Unknown Stat'),
- (8,'Unknown Stat'),
- (9,'Unknown Stat'),
- (10,'Unknown Stat'),
- (11,'Unknown Stat'),
- (12,'Unknown Stat'),
- (13,'Unknown Stat'),
- (2,'Unknown Stat');
 DROP VIEW IF EXISTS Detailed_Player_Stats;
-CREATE VIEW `Detailed_Player_Stats` AS
-select distinct
-   quote(c.char_name) as Player_Name, quote(cx.stat_name) as Stat_Name, quote(cs.stat_value) as Stat_Value, quote(cx.stat_id) as Stat_ID
-from
-   character_stats as cs, characters as c
-left outer join
-      cust_stat_xref as cx 
-      on cs.char_id = c.id WHERE cs.stat_id = cx.stat_id   
-order by
-   c.char_name;
+CREATE VIEW `Detailed_Player_Stats` AS select distinct quote(c.char_name) as Player_Name, quote(c.id) as Player_ID, quote(c.guild) as guild_id, quote(cx.stat_name) as Stat_Name, quote(cs.stat_value) as Stat_Value from character_stats as cs, characters as c left outer join cust_stat_xref as cx on cs.char_id = c.id WHERE cs.stat_id = cx.stat_id AND cs.stat_type = cx.stat_type order by cx.stat_type
 			       
 --To inspect a specific player using the Detailed Player Stats view
 SELECT * FROM Detailed_Player_Stats WHERE Player_Name LIKE '%PLAYER_NAME_HERE%';
+			       
+--To inspect a specific guild and all its members using the Detailed Player Stats view
+SELECT * FROM Detailed_Player_Stats WHERE guild_id = 'Guild_ID_Here';
 
 --This will show players over the default limits aka exploits
 SELECT * FROM Detailed_Player_Stats WHERE Stat_value <= 50 AND Stat_Name LIKE '%Agility%' OR '%Strength%' OR '%Vitality%' OR '%Accuracy%' OR '%Grit%' OR '%Encumbrance%' OR '%Survival%';
