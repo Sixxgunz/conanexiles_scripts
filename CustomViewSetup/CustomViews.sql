@@ -2,52 +2,33 @@ CREATE VIEW IF NOT EXISTS "Tier_3_Wheel_Totals" AS SELECT pb.name AS '[Char/Clan
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%wheelofpainXXL_c%' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
+
 CREATE VIEW IF NOT EXISTS "Tier_3_Altar_Totals" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'T3_Altars' 
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%BP_PL_CraftingStation_WheelOfPainXXL_C' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
+
 CREATE VIEW IF NOT EXISTS "Tier_2_Wheel_Totals" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Wheels' 
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%wheelofpainXL_c%' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
+
 CREATE VIEW IF NOT EXISTS "Tier_2_Altar_Totals" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'T2_Altars' 
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%BP_PL_CraftingStation_WheelOfPainXL_C' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
+
 CREATE VIEW IF NOT EXISTS "Tier_1_Wheel_Totals" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Wheels' 
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%wheelofpain_c%' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
+
 CREATE VIEW IF NOT EXISTS "Tier_1_Altar_Totals" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'T1_Altars' 
 FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id 
 INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id 
 WHERE ap.class LIKE '%BP_PL_CraftingStation_WheelOfPain_C' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
-CREATE VIEW IF NOT EXISTS "Thralls_Placed_In_World" AS 
-SELECT
-   CASE
-      WHEN
-         class LIKE '%human%' 
-      THEN
-         ap.id 
-      ELSE
-         class 
-   END
-   'Thrall_ID',CASE
-      WHEN
-         class LIKE '%human%' 
-      THEN
-         ap.class
-      ELSE
-         class 
-   END
-   'Thrall Class', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location 
-FROM
-   actor_position AS ap 
-where
-   class like '%human%' 
 
-ORDER BY
-   Thrall_ID DESC;
+CREATE VIEW IF NOT EXISTS "Thralls_Placed_In_World" AS SELECT CASE WHEN class LIKE '%human%' THEN ap.id ELSE class END 'Thrall_ID',CASE WHEN class LIKE '%human%' THEN ap.class ELSE class END 'Thrall Class', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM actor_position AS ap where class like '%human%' ORDER BY Thrall_ID DESC;
 CREATE VIEW IF NOT EXISTS "Thralls, Non-Combat" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Stored Thralls' FROM item_inventory AS i INNER JOIN item_properties ip ON ip.owner_id = i.owner_id AND ip.item_id = i.item_id INNER JOIN actor_position ap ON i.owner_id = ap.id INNER JOIN buildings b ON b.object_id = ap.id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id where ip.name = 'ThrallCharLayout' GROUP BY b.owner_id ORDER BY COUNT(b.owner_id) DESC;
 CREATE VIEW IF NOT EXISTS "Thralls, Combat" AS SELECT CASE WHEN class LIKE '%PersistentHuman%' THEN 'Combat' WHEN class LIKE '%EntertainerHuman%' THEN 'Dancer' ELSE class END Thrall, SUBSTR("TSRQPONMLKJIHGFEDCBA",(CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) THEN CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) THEN CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM actor_position AS ap where class like '%Human%' ORDER BY Pippi, Location DESC;
 CREATE VIEW IF NOT EXISTS `ThrallInfo` AS select pb.name as player_guild_name,* from item_inventory as i inner join item_properties ip on ip.owner_id = i.owner_id and ip.item_id = i.item_id inner join actor_position ap on i.owner_id = ap.id inner join buildings b on b.object_id = ap.id inner join (Select guildid as pb_id, name from guilds Union select id, char_name from characters) pb on b.owner_id = pb_id where ip.name = 'ThrallCharLayout';
@@ -55,142 +36,13 @@ CREATE VIEW IF NOT EXISTS "Structure_Locations" AS SELECT pb.name AS Owner, COUN
 CREATE VIEW IF NOT EXISTS `Single_Pillar_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%pillar%';
 CREATE VIEW IF NOT EXISTS `Single_Foundation_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%found%';
 CREATE VIEW IF NOT EXISTS `Pet_Thrall_Unique_id_info` AS SELECT substr(hguid, 7, 2) || substr(hguid, 5, 2) || substr(hguid, 3, 2) || substr(hguid, 1, 2) || '-' || substr(hguid, 11, 2) || substr(hguid, 9, 2) || '-' || substr(hguid, 15, 2) || substr(hguid, 13, 2) || '-' || substr(hguid, 17, 4) || '-' || substr(hguid, 21, 12) AS value_string FROM (SELECT hex(value) AS hguid FROM properties WHERE name = 'BP_ThrallComponent_C.OwnerUniqueID');
-CREATE VIEW IF NOT EXISTS `Out_Of_Bounds` AS 
-select
-  g.name as guild_name,
-  g.guildid as guild_id,
-  c.char_name as char_name,
-  c.id as char_id,
-  ap.id as object_id,
-  class as object,
-  'TeleportPlayer ' || x || ' ' || y || ' ' || z as location,
-  'north' as direction 
-from
-  actor_position as ap 
-  left outer join
-    buildings as b 
-    on ap.id = b.object_id 
-  left outer join
-    characters as c 
-    on c.id = b.owner_id 
-  left outer join
-    guilds as g 
-    on g.guildid = b.owner_id 
-where
-  y < '-288547.281' 
-UNION ALL
-select
-  g.name as guild_name,
-  g.guildid as guild_id,
-  c.char_name as char_name,
-  c.id as char_id,
-  ap.id as object_id,
-  class as object,
-  'TeleportPlayer ' || x || ' ' || y || ' ' || z as location,
-  'south' as direction 
-from
-  actor_position as ap 
-  left outer join
-    buildings as b 
-    on ap.id = b.object_id 
-  left outer join
-    characters as c 
-    on c.id = b.owner_id 
-  left outer join
-    guilds as g 
-    on g.guildid = b.owner_id 
-where
-  y > '351389.906' 
-UNION ALL
-select
-  g.name as guild_name,
-  g.guildid as guild_id,
-  c.char_name as char_name,
-  c.id as char_id,
-  ap.id as object_id,
-  class as object,
-  'TeleportPlayer ' || x || ' ' || y || ' ' || z as location,
-  'west' as direction 
-from
-  actor_position as ap 
-  left outer join
-    buildings as b 
-    on ap.id = b.object_id 
-  left outer join
-    characters as c 
-    on c.id = b.owner_id 
-  left outer join
-    guilds as g 
-    on g.guildid = b.owner_id 
-where
-  x < '-291709.219' 
-UNION ALL
-select
-  g.name as guild_name,
-  g.guildid as guild_id,
-  c.char_name as char_name,
-  c.id as char_id,
-  ap.id as object_id,
-  class as object,
-  'TeleportPlayer ' || x || ' ' || y || ' ' || z as location,
-  'east' as direction 
-from
-  actor_position as ap 
-  left outer join
-    buildings as b 
-    on ap.id = b.object_id 
-  left outer join
-    characters as c 
-    on c.id = b.owner_id 
-  left outer join
-    guilds as g 
-    on g.guildid = b.owner_id 
-where
-  x > '396587.625' 
-order by
-  direction;
+CREATE VIEW IF NOT EXISTS `Out_Of_Bounds` AS select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer ' || x || ' ' || y || ' ' || z as location, 'north' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y < '-288547.281' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer ' || x || ' ' || y || ' ' || z as location, 'south' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where y > '351389.906' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer ' || x || ' ' || y || ' ' || z as location, 'west' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x < '-291709.219' UNION ALL select g.name as guild_name, g.guildid as guild_id, c.char_name as char_name, c.id as char_id, ap.id as object_id, class as object, 'TeleportPlayer ' || x || ' ' || y || ' ' || z as location, 'east' as direction from actor_position as ap left outer join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id where x > '396587.625' order by direction;
 CREATE VIEW IF NOT EXISTS "Non_Building_Item_Locations" AS SELECT pb.name AS Owner, pn.name AS Type, COUNT(pn.object_id) AS 'Connected_Structures', SUBSTR("TSRQPONMLKJIHGFEDCBA", (CASE WHEN (168288-ap.x)/24429 = CAST((168288-ap.x)/24429 AS INT) then CAST((168288-ap.x)/24429 AS INT) ELSE 1 + CAST((168288-ap.x)/24429 AS INT) END),1) || (CASE WHEN (ap.y+88930)/24764-1 = CAST((ap.y+88930)/24764-1 AS INT) then CAST((ap.y+88930)/24764-1 AS INT) ELSE 1 + CAST((ap.y+88930)/24764-1 AS INT) END) AS 'Pippi', 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z AS Location FROM properties AS pn INNER JOIN buildings b ON b.object_id = pn.object_id INNER JOIN actor_position ap ON ap.id = pn.object_id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id GROUP BY pn.object_id ORDER BY lower(Owner), Pippi, COUNT(pn.object_id) DESC;
 CREATE VIEW IF NOT EXISTS `Items_In_Structure_Inventories` AS select player_guild_name, ItemName, ItemType, sum(item_count) as item_count from ( select pb.name as player_guild_name, x.Name as ItemName, x.Type as ItemType, case when substr(hex(data), length(hex(data)) - 31, 1) = 'A' then 11 else case when substr(hex(data), length(hex(data)) - 31, 1) = 'B' then 12 else case when substr(hex(data), length(hex(data)) - 31, 1) = 'C' then 13 else case when substr(hex(data), length(hex(data)) - 31, 1) = 'D' then 14 else case when substr(hex(data), length(hex(data)) - 31, 1) = 'E' then 15 else cast(substr(hex(data), length(hex(data)) - 31, 1) as Int) end end end end end * 16 + case when substr(hex(data), length(hex(data)) - 30, 1) = 'A' then 11 else case when substr(hex(data), length(hex(data)) - 30, 1) = 'B' then 12 else case when substr(hex(data), length(hex(data)) - 30, 1) = 'C' then 13 else case when substr(hex(data), length(hex(data)) - 30, 1) = 'D' then 14 else case when substr(hex(data), length(hex(data)) - 30, 1) = 'E' then 15 else cast(substr(hex(data), length(hex(data)) - 30, 1) as Int) end end end end end as item_count from item_inventory as i inner join actor_position ap on i.owner_id = ap.id inner join buildings b on b.object_id = ap.id inner join cust_item_xref x on x.template_id = i.template_id inner join ( Select guildid as pb_id, name from guilds Union select id, char_name from characters ) pb on b.owner_id = pb_id where inv_type = 4 ) iq group by player_guild_name, ItemName, ItemType;
 CREATE VIEW IF NOT EXISTS `InactivePlayers` AS select * from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-2 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-2 days') and guild is not null));
 CREATE VIEW IF NOT EXISTS `Double_Pillar_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%pillar%';
 CREATE VIEW IF NOT EXISTS `Double_Foundation_Spam` AS select ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '0' and bi.object_id not in (select object_id from building_instances where instance_id = '1') and ap.class like '%found%';
-CREATE VIEW IF NOT EXISTS `Detailed_Player_Info` AS 
-select
-   quote(g.name) as GUILD,
-   quote(g.guildid) as GUILDid,
-   quote(c.char_name) as NAME,
-   case
-      c.rank 
-	  WHEN
-	     '3'
-	  then
-	     'Recruit'
-      WHEN
-         '2' 
-      then
-         'Leader' 
-      WHEN
-         '1' 
-      then
-         'Officer' 
-      WHEN
-         '0' 
-      then
-         'Member' 
-      ELSE
-         'No Clan' 
-   END
-   RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z as LOCATION, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE 
-from
-   characters as c 
-   left outer join
-      guilds as g 
-      on g.guildid = c.guild 
-   left outer join
-      actor_position as ap 
-      on ap.id = c.id 
-order by
-   g.name, c.rank desc, c.level desc, c.char_name;
+CREATE VIEW IF NOT EXISTS `Detailed_Player_Info` AS select quote(g.name) as GUILD, quote(g.guildid) as GUILDid, quote(c.char_name) as NAME, case c.rank WHEN '3' then 'Recruit' WHEN '2' then 'Leader' WHEN '1' then 'Officer' WHEN '0' then 'Member' ELSE 'No Clan' END RANK, c.level as LEVEL, quote(c.playerid) as STEAMid, quote(c.id) as DBid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z as LOCATION, datetime(c.lastTimeOnline, 'unixepoch') as LASTONLINE from characters as c left outer join guilds as g on g.guildid = c.guild left outer join actor_position as ap on ap.id = c.id order by g.name, c.rank desc, c.level desc, c.char_name;
 CREATE VIEW IF NOT EXISTS 'Crafting Station Totals' AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'Stations' FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id WHERE ap.class LIKE '%CraftingStation%' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
 CREATE VIEW IF NOT EXISTS "Clan Member Totals" AS SELECT name AS Clan, COUNT(name) AS Members FROM guilds AS g INNER JOIN characters c on c.guild = g.guildId GROUP BY name ORDER BY Members DESC;
 CREATE VIEW IF NOT EXISTS "Archery_Targets" AS SELECT pb.name AS '[Char/Clan]', COUNT(b.owner_id) AS 'ArcheryTargetCoordsd' FROM actor_position AS ap INNER JOIN buildings b ON b.object_id = ap.id INNER JOIN ( SELECT guildid AS pb_id, name FROM guilds UNION SELECT id, char_name FROM characters ) pb ON b.owner_id = pb_id WHERE ap.class LIKE '%/Game/Systems/Building/Placeables/BP_PL_ArcheryTarget.BP_PL_ArcheryTarget_C' GROUP BY owner_id ORDER BY COUNT(b.owner_id) DESC;
@@ -1415,151 +1267,14 @@ INSERT INTO `cust_item_xref` (template_id,name,type) VALUES (10001,'Stone','ingr
  (53658,'Ice Shard Arrows','consumable'),
  (53659,'Ice Shard Bolts','consumable');
  
-CREATE VIEW IF NOT EXISTS`Item_Ownership_Info` AS 
-select
-  player_guild_name,
-  ItemName,
-  sum(item_count) as item_count 
-from
-  (
-    select
-      pb.name as player_guild_name,
-      x.Name as ItemName,
-      case
-        when
-          substr(hex(data), length(hex(data)) - 31, 1) = 'A' 
-        then
-          11 
-        else
-          case
-            when
-              substr(hex(data), length(hex(data)) - 31, 1) = 'B' 
-            then
-              12 
-            else
-              case
-                when
-                  substr(hex(data), length(hex(data)) - 31, 1) = 'C' 
-                then
-                  13 
-                else
-                  case
-                    when
-                      substr(hex(data), length(hex(data)) - 31, 1) = 'D' 
-                    then
-                      14 
-                    else
-                      case
-                        when
-                          substr(hex(data), length(hex(data)) - 31, 1) = 'E' 
-                        then
-                          15 
-                        else
-                          cast(substr(hex(data), length(hex(data)) - 31, 1) as Int) 
-                      end
-                  end
-              end
-          end
-      end
-      * 16 + 
-      case
-        when
-          substr(hex(data), length(hex(data)) - 30, 1) = 'A' 
-        then
-          11 
-        else
-          case
-            when
-              substr(hex(data), length(hex(data)) - 30, 1) = 'B' 
-            then
-              12 
-            else
-              case
-                when
-                  substr(hex(data), length(hex(data)) - 30, 1) = 'C' 
-                then
-                  13 
-                else
-                  case
-                    when
-                      substr(hex(data), length(hex(data)) - 30, 1) = 'D' 
-                    then
-                      14 
-                    else
-                      case
-                        when
-                          substr(hex(data), length(hex(data)) - 30, 1) = 'E' 
-                        then
-                          15 
-                        else
-                          cast(substr(hex(data), length(hex(data)) - 30, 1) as Int) 
-                      end
-                  end
-              end
-          end
-      end
-      as item_count 
-    from
-      item_inventory as i 
-      inner join
-        actor_position ap 
-        on i.owner_id = ap.id 
-      inner join
-        buildings b 
-        on b.object_id = ap.id 
-      inner join
-        cust_item_xref x 
-        on x.template_id = i.template_id 
-      inner join
-        (
-          Select
-            guildid as pb_id,
-            name 
-          from
-            guilds 
-          Union
-          select
-            id,
-            char_name 
-          from
-            characters
-        )
-        pb 
-        on b.owner_id = pb_id 
-    where
-      inv_type = 4 
-  )
-  iq 
-group by
-  player_guild_name,
-  ItemName;
 create table if not exists zpet_ownership(pet_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
 create table if not exists zthrall_ownership(thrall_id bigint not null, player_owner_id bigint not null, clan_owner_id bigint not null);
+
 DROP VIEW IF EXISTS Detailed_Player_Inventory;
-CREATE VIEW `Detailed_Player_Inventory` AS 
-select
-quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name) as player_name
-from
-   characters as c,
-   cust_item_xref as cx
-left outer join
-   item_inventory as i
-      on i.template_id = cx.template_id and i.owner_id = c.id WHERE inv_type = 0 or inv_type = 1 or inv_type = 2  
-order by
-   c.id;
-   
+CREATE VIEW `Detailed_Player_Inventory` AS select quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name) as player_name from characters as c, cust_item_xref as cx left outer join item_inventory as i on i.template_id = cx.template_id and i.owner_id = c.id WHERE inv_type = 0 or inv_type = 1 or inv_type = 2 order by c.id;
    
 DROP VIEW IF EXISTS Detailed_Structure_Inventory;
-CREATE VIEW `Detailed_Structure_Inventory` AS 
-select
-   quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id
-from
-   item_inventory as i
-left outer join
-      cust_item_xref as cx 
-      on i.template_id = cx.template_id WHERE inv_type = 4  
-order by
-   i.owner_id;
+CREATE VIEW `Detailed_Structure_Inventory` AS select quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id from item_inventory as i left outer join cust_item_xref as cx on i.template_id = cx.template_id WHERE inv_type = 4 order by i.owner_id;
 --This is our custom reference table for known stats
 DROP TABLE IF EXISTS cust_stat_xref;
  CREATE TABLE cust_stat_xref (
@@ -1582,7 +1297,7 @@ INSERT INTO `cust_stat_xref` (stat_id,stat_name,stat_type) VALUES
 
 --This pulls specific stat data pertaining to stat point amounts, feat points, current level, how much weight currently carrying and current health
 DROP VIEW IF EXISTS Detailed_Player_Stats;
-CREATE VIEW `Detailed_Player_Stats` AS select distinct quote(c.char_name) as Player_Name, quote(c.id) as Player_ID, quote(c.guild) as guild_id, quote(cx.stat_name) as Stat_Name, quote(cs.stat_value) as Stat_Value from character_stats as cs, characters as c left outer join cust_stat_xref as cx on cs.char_id = c.id WHERE cs.stat_id = cx.stat_id AND cs.stat_type = cx.stat_type order by cx.stat_type
+CREATE VIEW `Detailed_Player_Stats` AS select distinct quote(c.char_name) as Player_Name, quote(c.id) as Player_ID, quote(c.guild) as guild_id, quote(cx.stat_name) as Stat_Name, quote(cs.stat_value) as Stat_Value from character_stats as cs, characters as c left outer join cust_stat_xref as cx on cs.char_id = c.id WHERE cs.stat_id = cx.stat_id AND cs.stat_type = cx.stat_type order by cx.stat_type;
 			       
 --To inspect a specific player using the Detailed Player Stats view
 SELECT * FROM Detailed_Player_Stats WHERE Player_Name LIKE '%PLAYER_NAME_HERE%';
