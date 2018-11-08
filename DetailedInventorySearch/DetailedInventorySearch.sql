@@ -1218,27 +1218,7 @@ INSERT INTO `cust_item_xref` (template_id,name,type) VALUES (10001,'Stone','ingr
  (53658,'Ice Shard Arrows','consumable'),
  (53659,'Ice Shard Bolts','consumable');
 DROP VIEW IF EXISTS Detailed_Player_Inventory;
-CREATE VIEW `Detailed_Player_Inventory` AS 
-select
-quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name) as player_name
-from
-   characters as c,
-   cust_item_xref as cx
-left outer join
-   item_inventory as i
-      on i.template_id = cx.template_id and i.owner_id = c.id WHERE inv_type = 0 or inv_type = 1 or inv_type = 2  
-order by
-   c.id;
-   
-   
+CREATE VIEW `Detailed_Player_Inventory` AS select quote(i.owner_id) as Player_Id, quote(cx.name) as Item_Name, quote(i.template_id) as Item_Id, quote(c.char_name) as player_name from characters as c, cust_item_xref as cx left outer join item_inventory as i on i.template_id = cx.template_id and i.owner_id = c.id WHERE inv_type = 0 or inv_type = 1 or inv_type = 2 order by c.id;
+
 DROP VIEW IF EXISTS Detailed_Structure_Inventory;
-CREATE VIEW `Detailed_Structure_Inventory` AS 
-select
-   quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id
-from
-   item_inventory as i
-left outer join
-      cust_item_xref as cx 
-      on i.template_id = cx.template_id WHERE inv_type = 4  
-order by
-   i.owner_id;
+CREATE VIEW `Detailed_Structure_Inventory` AS select quote(i.owner_id) as owner_id, quote(cx.name) as ItemName, quote(i.template_id) as template_id from item_inventory as i left outer join cust_item_xref as cx on i.template_id = cx.template_id WHERE inv_type = 4 order by i.owner_id;
