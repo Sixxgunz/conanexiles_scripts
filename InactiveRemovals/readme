@@ -1,4 +1,4 @@
---This Transfer Pet and Thrall ownership ID's to our custom tables before we remove old event logs
+--This will Transfer Pet and Thrall ownership ID's to our custom tables so we can store the known owner IDs before we remove old event logs
 
 --Remove duplicate owned npc id rows from our custom tables above 
 
@@ -23,4 +23,4 @@
 
 *To change your inactive settings, default is set to 3 days removal for my server
 one active member saves a clan, otherwise i delete everything u own + ur character and thralls
-to change it, open with notepad++ or even notepad(ew)  and change all    -3 days   to    -8 days
+to change it, open with notepad++ or regular old notepad and press ctrl + H to change all  -3 days   to    -8 days.
