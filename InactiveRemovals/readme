@@ -24,3 +24,10 @@
 *To change your inactive settings, default is set to 3 days removal for my server
 one active member saves a clan, otherwise i delete everything u own + ur character and thralls
 to change it, open with notepad++ or regular old notepad and press ctrl + H to change all  -3 days   to    -8 days.
+
+*Known Issue - The inactive removal script pulls thrall and pet owner ID's from the game_events table.  It targets ONLY 
+event type 89 which is only one of two events logged for pets and thralls, when they die and when they 'return home'.  The return home
+is event type 89, this happens after a pet or thrall aggroes to something or someone and then returns back to the position you
+originally placed them at.  Currently thrall and pet ownership ID's are stored in the properties table and encoded in ui16LE and cannot
+be decoded via sql scripting and can only be done through an outside windows app prebuilt for this table specifically.  This can be done 
+through many programming languages, vb,C#,C++,Java etc etc etc.
