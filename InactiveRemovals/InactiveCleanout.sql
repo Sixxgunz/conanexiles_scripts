@@ -1,7 +1,6 @@
 /* Transfer Pet and Thrall ownership ID's to our custom tables before we remove old event logs*/
-drop table if exists zpet_ownership;
+
 create table if not exists z_pet_ownership(pet_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
-drop table if exists zthrall_ownership;
 create table if not exists z_thrall_ownership(thrall_id bigint null, player_owner_id bigint null, clan_owner_id bigint null);
 
 insert into
@@ -196,16 +195,14 @@ delete from buildings where object_id in (select distinct id from CleanUp_Double
 delete from properties where object_id in (select distinct id from CleanUp_DoubleFoundations);
 DROP TABLE CleanUp_DoubleFoundations;
 
-/* Use this if u have issues with players trying to sneak by with an extra foundation or pillar when spamming */
-/*
 CREATE TEMPORARY TABLE CleanUp_TripleFoundations AS
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%BuildFoundation%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '2' and bi.object_id not in (select object_id from building_instances where instance_id = '3') and ap.class like '%BuildFoundation%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%Pillar%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '2' and bi.object_id not in (select object_id from building_instances where instance_id = '3') and ap.class like '%Pillar%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%FenceFoundation%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '2' and bi.object_id not in (select object_id from building_instances where instance_id = '3') and ap.class like '%FenceFoundation%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%BuildTriangleFoundation%'order by ap.id;;
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '2' and bi.object_id not in (select object_id from building_instances where instance_id = '3') and ap.class like '%BuildTriangleFoundation%'order by ap.id;;
 delete from buildable_health where object_id in (select distinct id from CleanUp_TripleFoundations);
 delete from building_instances where object_id in (select distinct id from CleanUp_TripleFoundations);
 delete from actor_position where id in (select distinct id from CleanUp_TripleFoundations);
@@ -214,20 +211,19 @@ delete from properties where object_id in (select distinct id from CleanUp_Tripl
 DROP TABLE CleanUp_TripleFoundations;
 
 CREATE TEMPORARY TABLE CleanUp_QuadFoundations AS
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%BuildFoundation%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '3' and bi.object_id not in (select object_id from building_instances where instance_id = '4') and ap.class like '%BuildFoundation%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%Pillar%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '3' and bi.object_id not in (select object_id from building_instances where instance_id = '4') and ap.class like '%Pillar%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%FenceFoundation%'
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '3' and bi.object_id not in (select object_id from building_instances where instance_id = '4') and ap.class like '%FenceFoundation%'
 UNION ALL
-SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '1' and bi.object_id not in (select object_id from building_instances where instance_id = '2') and ap.class like '%BuildTriangleFoundation%'order by ap.id;;
+SELECT ap.id, c.char_name, c.playerid, c.id, g.name, g.guildid, 'TeleportPlayer ' || ap.x || ' ' || ap.y || ' ' || ap.z from actor_position as ap inner join buildings as b on ap.id = b.object_id left outer join characters as c on c.id = b.owner_id left outer join guilds as g on g.guildid = b.owner_id inner join building_instances as bi on bi.object_id = b.object_id where bi.instance_id = '3' and bi.object_id not in (select object_id from building_instances where instance_id = '4') and ap.class like '%BuildTriangleFoundation%'order by ap.id;;
 delete from buildable_health where object_id in (select distinct id from CleanUp_QuadFoundations);
 delete from building_instances where object_id in (select distinct id from CleanUp_QuadFoundations);
 delete from actor_position where id in (select distinct id from CleanUp_QuadFoundations);
 delete from buildings where object_id in (select distinct id from CleanUp_QuadFoundations);
 delete from properties where object_id in (select distinct id from CleanUp_QuadFoundations);
 DROP TABLE CleanUp_QuadFoundations;
-*/
 
 /*Crafting Station fix - Fishtraps, Wells, Wheels, Beehives, Alters*/
 INSERT INTO properties (object_id, name, value)
