@@ -1,6 +1,6 @@
 CoalForSilver - This is a simple gather/fetch quest.  Players accept quest, gather 500 
 coal and turn it into quest giver for 10 silver.  Quest giver checks to see if 
-player is on quest or not, removes quest when completed.
+player is on quest or not, removes quest when completed. Repeatable.
 
 Disgruntled loser - This is for comedic relief, we put in funny responses about admins and
 the Loser NPC charges 1 bronze to tell you some 'dirt' about the admins.
