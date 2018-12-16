@@ -30,4 +30,4 @@ InactiveCleanout and what this does for you:
 
 *To change your inactive settings, default is set to 3 days removal for my server
 one active member saves a clan, otherwise i delete everything u own + ur character and thralls
-to change it, open with notepad++ or even notepad(ew)  and change all    -3 days   to    -8 days
+to change it, open with notepad++ or even notepad(ew)  and change all    -3 days   to    (any amount of days like so -8 days)
