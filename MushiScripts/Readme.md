@@ -11,7 +11,7 @@ etc etc modify as you see fit.
 Server Ambassador is a friendly NPC that you can place anywhere and they will tell you all
 about the server you are playing on.  
 
-
+GlandsForKatana - This is a more in depth multiple item requirement and non repeatable quest.
 
 If you plan on using these Mushi Scripts for your server, Please make sure to edit these 
 values in game to match your server name/admin names and other important server related information.
