@@ -158,7 +158,7 @@ delete from item_inventory where owner_id in (select id from characters where la
 delete from item_inventory where owner_id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null));
 delete from actor_position where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and id not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null));
 delete from actor_position where id in (select guildid from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null));
-delete from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null);
+delete from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days'));
 delete from character_stats where char_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild is null);
 delete from character_stats where char_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-5 days') and guild is not null));
 delete from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-5 days') and guild is null);
@@ -332,7 +332,3 @@ UPDATE purgescores SET purgescore = 0;
 
 /*This will compress our database, reindex for faster querying, Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
-REINDEX;
-ANALYZE;
-pragma integrity_check;
-.quit
