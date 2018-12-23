@@ -332,3 +332,7 @@ UPDATE purgescores SET purgescore = 0;
 
 /*This will compress our database, reindex for faster querying, Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
+REINDEX;
+ANALYZE;
+pragma integrity_check;
+.quit
