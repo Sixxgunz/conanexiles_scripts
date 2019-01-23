@@ -154,6 +154,14 @@ INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('
 INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Storymission/BP_Storymission_ChaosmouthAltar.BP_Storymission_ChaosmouthAltar_C','ConanSandbox',9,-60599.8046875,30389.27734375,594.71630859375,1.0,1.0,1.0,0.0,0.0,-0.999999940395355,1.78813934326172e-07);
 INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Storymission/BP_Storymission_BatTower.BP_Storymission_BatTower_C','ConanSandbox',10,-62135.484375,158682.59375,-224.165512084961,1.0,1.0,1.0,0.0,0.0,0.161826223134995,0.986819267272949);
 
+/*Fish Trap Cleaner - Thanks to MVP*/
+create temporary table fish_traps as select actor_position.id from actor_position where actor_position.class like '%Fish%' or actor_position.class like '%crab%';
+delete from buildable_health where object_id in (select id from fish_traps);
+delete from game_events where game_events.objectId in (select id from fish_traps);
+delete from item_inventory where item_inventory.owner_id in (select id from fish_traps);
+delete from properties where properties.object_id in (select id from fish_traps);
+delete from actor_position where actor_position.id in (select id from fish_traps);
+drop table fish_traps;
 /*This will compress our database, reindex for faster querying, Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
 REINDEX;
