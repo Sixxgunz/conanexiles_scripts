@@ -108,7 +108,7 @@ delete from properties where name like '%Corpse%';
 UPDATE purgescores SET purgescore = 0;
 
 /*Reinserts server spawned forges and storymode stuff*/
-DELETE FROM static_buildables WHERE id = 7 OR id = 8 OR id = 9 OR id = 10;
+DELETE FROM static_buildables WHERE id = 6 OR = 7 OR id = 8 OR id = 9 OR id = 10;
 INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',7);
 INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Art/Dungeon/Art_Dungeon_x2_y6_Tempel_of_Frost.Art_Dungeon_x2_y6_Tempel_of_Frost:PersistentLevel.BP_PL_Frost_Temple_Forge2_2',8);
 INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps-NPC_x3_y3-2.Camps-NPC_x3_y3-2:PersistentLevel.BP_Storymission_ChaosmouthAltar2_2',9);
@@ -129,19 +129,19 @@ INSERT INTO `properties` (object_id,name,value) VALUES (10,'BP_Storymission_BatT
 INSERT INTO `properties` (object_id,name,value) VALUES (10,'BP_Storymission_BatTower_C.DecayDisabled',X'0000000001');
 INSERT INTO `properties` (object_id,name,value) VALUES (10,'CraftingQueue.m_IsStarted',X'0000000001');
 INSERT INTO `properties` (object_id,name,value) VALUES (10,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
- 
+
 DELETE FROM buildings WHERE object_id = 7 OR object_id = 8 OR object_id = 9 OR object_id = 10;
 INSERT INTO `buildings` (object_id,owner_id) VALUES (7,0);
 INSERT INTO `buildings` (object_id,owner_id) VALUES (8,0);
 INSERT INTO `buildings` (object_id,owner_id) VALUES (9,0);
 INSERT INTO `buildings` (object_id,owner_id) VALUES (10,0);
- 
+
 DELETE FROM buildable_health WHERE object_id = 6 OR object_id = 7 OR object_id = 8 OR object_id = 9 OR object_id = 10;
 INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (7,-1,0,11064,1.0);
 INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (8,-1,0,18041,1.0);
 INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (9,-1,0,11502,1.0);
 INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (10,-1,0,11502,1.0);
- 
+
 DELETE FROM actor_position WHERE id = 1 OR id = 2 OR id = 3 OR id = 4 OR id = 5 OR id = 6 OR id = 7 OR id = 8 OR id = 9;
 INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Pict/DLC_Pict_Modcontroller.DLC_Pict_Modcontroller_C','ConanSandbox',1,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
 INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Khitai/BP_ModController_Khitai_DLC.BP_ModController_Khitai_DLC_C','ConanSandbox',2,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
