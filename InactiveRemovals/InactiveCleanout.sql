@@ -107,53 +107,6 @@ delete from properties where name like '%Corpse%';
 /*reset purge scores*/
 UPDATE purgescores SET purgescore = 0;
 
-/*Reinserts server spawned forges and storymode stuff*/
-DELETE FROM static_buildables WHERE id = 6 OR = 7 OR id = 8 OR id = 9 OR id = 10;
-INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Gameplay_VolcanoDungeon.Gameplay_VolcanoDungeon:PersistentLevel.BP_PL_Volcanic_Forge2_2',7);
-INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Art/Dungeon/Art_Dungeon_x2_y6_Tempel_of_Frost.Art_Dungeon_x2_y6_Tempel_of_Frost:PersistentLevel.BP_PL_Frost_Temple_Forge2_2',8);
-INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps-NPC_x3_y3-2.Camps-NPC_x3_y3-2:PersistentLevel.BP_Storymission_ChaosmouthAltar2_2',9);
-INSERT INTO `static_buildables` (name,id) VALUES ('/Game/Maps/ConanSandbox/Gameplay/Camps_NPC/Camps_NPC_x3_y2.Camps_NPC_x3_y2:PersistentLevel.BP_Storymission_BatTower2_2',10);
-
-DELETE FROM properties WHERE object_id = 7 OR object_id = 8 OR object_id = 9 OR object_id = 10;
-INSERT INTO `properties` (object_id,name,value) VALUES (7,'BP_PL_Volcanic_Forge_C.m_IsStaticBuildable',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (7,'BP_PL_Volcanic_Forge_C.DecayDisabled',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (7,'CraftingQueue.m_IsStarted',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (7,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (8,'BP_PL_Frost_Temple_Forge_C.m_IsStaticBuildable',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (8,'BP_PL_Frost_Temple_Forge_C.DecayDisabled',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (8,'CraftingQueue.m_IsStarted',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (8,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (9,'BP_Storymission_ChaosmouthAltar_C.m_IsStaticBuildable',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (9,'BP_Storymission_ChaosmouthAltar_C.DecayDisabled',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (10,'BP_Storymission_BatTower_C.m_IsStaticBuildable',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (10,'BP_Storymission_BatTower_C.DecayDisabled',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (10,'CraftingQueue.m_IsStarted',X'0000000001');
-INSERT INTO `properties` (object_id,name,value) VALUES (10,'CraftingQueue.m_IsDefaultRunStateInitialized',X'0000000001');
-
-DELETE FROM buildings WHERE object_id = 7 OR object_id = 8 OR object_id = 9 OR object_id = 10;
-INSERT INTO `buildings` (object_id,owner_id) VALUES (7,0);
-INSERT INTO `buildings` (object_id,owner_id) VALUES (8,0);
-INSERT INTO `buildings` (object_id,owner_id) VALUES (9,0);
-INSERT INTO `buildings` (object_id,owner_id) VALUES (10,0);
-
-DELETE FROM buildable_health WHERE object_id = 6 OR object_id = 7 OR object_id = 8 OR object_id = 9 OR object_id = 10;
-INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (7,-1,0,11064,1.0);
-INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (8,-1,0,18041,1.0);
-INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (9,-1,0,11502,1.0);
-INSERT INTO `buildable_health` (object_id,instance_id,health_id,template_id,health_percentage) VALUES (10,-1,0,11502,1.0);
-
-DELETE FROM actor_position WHERE id = 1 OR id = 2 OR id = 3 OR id = 4 OR id = 5 OR id = 6 OR id = 7 OR id = 8 OR id = 9;
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Pict/DLC_Pict_Modcontroller.DLC_Pict_Modcontroller_C','ConanSandbox',1,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Khitai/BP_ModController_Khitai_DLC.BP_ModController_Khitai_DLC_C','ConanSandbox',2,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Aquilonia/DLC_Aquilonia_ModController.DLC_Aquilonia_ModController_C','ConanSandbox',3,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/ConanSword_DLC/BP_ConanSword_DLC_ModController.BP_ConanSword_DLC_ModController_C','ConanSandbox',4,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/ConanArmor_DLC/BP_ConanArmor_DLC_ModController.BP_ConanArmor_DLC_ModController_C','ConanSandbox',5,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/DLC/DLC_Yamatai/DLC_Yamatai_ModController.DLC_Yamatai_ModController_C','ConanSandbox',6,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Building/Placeables/BP_PL_Volcanic_Forge.BP_PL_Volcanic_Forge_C','ConanSandbox',7,346165.5,-353598.90625,-6467.171875,1.0,1.0,1.0,0.0,0.0,0.0,1.0);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Building/Placeables/BP_PL_Frost_Temple_Forge.BP_PL_Frost_Temple_Forge_C','ConanSandbox',8,-128000.0,-267584.0,6735.84765625,1.0,1.0,1.0,0.0,0.0,-0.707106053829193,0.707107543945313);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Storymission/BP_Storymission_ChaosmouthAltar.BP_Storymission_ChaosmouthAltar_C','ConanSandbox',9,-60599.8046875,30389.27734375,594.71630859375,1.0,1.0,1.0,0.0,0.0,-0.999999940395355,1.78813934326172e-07);
-INSERT INTO `actor_position` (class,map,id,x,y,z,sx,sy,sz,rx,ry,rz,rw) VALUES ('/Game/Systems/Storymission/BP_Storymission_BatTower.BP_Storymission_BatTower_C','ConanSandbox',10,-62135.484375,158682.59375,-224.165512084961,1.0,1.0,1.0,0.0,0.0,0.161826223134995,0.986819267272949);
-
 /*Fish Trap Cleaner - Thanks to MVP*/
 create temporary table fish_traps as select actor_position.id from actor_position where actor_position.class like '%Fish%' or actor_position.class like '%crab%';
 delete from buildable_health where object_id in (select id from fish_traps);
@@ -162,6 +115,7 @@ delete from item_inventory where item_inventory.owner_id in (select id from fish
 delete from properties where properties.object_id in (select id from fish_traps);
 delete from actor_position where actor_position.id in (select id from fish_traps);
 drop table fish_traps;
+
 /*This will compress our database, reindex for faster querying, Analyze and then an integrety check and close the database after our transactions above have finished*/ 
 VACUUM;
 REINDEX;
