@@ -125,4 +125,5 @@ VACUUM;
 REINDEX;
 ANALYZE;
 pragma integrity_check;
+PRAGMA optimize;
 .quit
