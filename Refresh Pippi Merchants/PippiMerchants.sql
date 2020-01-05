@@ -1,8 +1,16 @@
 -- How to isolate data in your Conan Exiles Database for other uses.
+-- Please take note that this will modify the database structure, so please use a copy of your database as this will
+-- only be a test environment for the purpose of creating the scripts necessary to serve our purpose.  We will be utilizing the database from the game
+-- so do not try and use this to load into your game server as it will surely not meet anyones expectations.
+
+
 
 -- Today I want to make my Pippi Merchants auto refill the items I place in them for sale.
+
 -- First what we need is all the data associated with these merchants, Copy over your backup database to a safe area, 
+
 -- make sure to bring along your sqlite3.exe file out of the /Saved folder unless you are using a DB viewer(recomended for the first half of this tutorial).
+
 -- So now lets use a simple query to View all Pippi Merchant info, these 2 queries should be run seperately.
 
 -- View actor_position info
@@ -15,13 +23,37 @@ Select * From properties WHERE object_id in (select distinct id from actor_posit
 Select * From buildings WHERE object_id in (select distinct id from actor_position WHERE class LIKE '%Mob%');
 
 -- This is our Merchant NPC database id list we will be targeting after we isolate our merchant info
--- ( merchants are classified as structures in the database - you will find easy ownership id reference through buildings table)
+-- ( merchants are classified as a building in the database - you will find easy ownership id reference through buildings table)
 
 
--- Delete everything from these two tables except Pippi Merchants so we can isolate all data we will re-insert later into our live database during restarts.
+-- We need to delete everything from these two tables except Pippi Merchants so we can isolate all data we will re-insert later into our live database during restarts.
+-- Lets also keep it clean so we can only have the db stuff we want.  Recommendations also include removing custom views from our now merchant info only database.
+-- Removing all non essential tables as this will only be our copy of the data we want to keep.
+
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS actor_bounding_box;
+DROP TABLE IF EXISTS buildable_health;
+DROP TABLE IF EXISTS building_instances;
+DROP TABLE IF EXISTS character_stats;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS destruction_history;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS game_events;
+DROP TABLE IF EXISTS guilds;
+DROP TABLE IF EXISTS item_inventory;
+DROP TABLE IF EXISTS item_properties;
+DROP TABLE IF EXISTS purgescores;
+DROP TABLE IF EXISTS static_buildables;
+
+
+-- These are the npc id's that I will be singling out and removing anything that is not a mechant is removed
+-- All pippi merchants above and below these db id numbers will be removed
+
+DELETE FROM actor_position WHERE class NOT LIKE '%Mob%';
+DELETE FROM actor_position WHERE id <= 586618;
+DELETE FROM actor_position WHERE id >= 603546;
 DELETE FROM properties WHERE object_id NOT in (select distinct id from actor_position WHERE class LIKE '%Mob%');
 DELETE FROM buildings WHERE object_id NOT in (select distinct id from actor_position WHERE class LIKE '%Mob%');
-DELETE FROM actor_position WHERE class NOT LIKE '%Mob%';
 
 -- Now, in your Datbase viewer, Export the Properties, actor_position, and buildings tables to an sql file.
 -- Remove all of the index's from the end of the file, remove all of the CREATE TABLE lines so that all we have
@@ -30,9 +62,11 @@ DELETE FROM actor_position WHERE class NOT LIKE '%Mob%';
 
 -- This section below will be added to our restart script so we can get this stuff refreshed on a schedule
 -- First we will delete our merchants by ID and then reinsert the fresh data we pulled after setting up our merchants
+
 DELETE From properties WHERE object_id in ('17848','17847','17846','17845','17844','17843','17842','17841','17839');
 DELETE FROM actor_position WHERE id in ('17848','17847','17846','17845','17844','17843','17842','17841','17839');
 DELETE FROM buildings WHERE object_id in ('17848','17847','17846','17845','17844','17843','17842','17841','17839');
+
 
 -- Here are the values we will enter back into our database.
 INSERT INTO `properties` (object_id,name,value) 
