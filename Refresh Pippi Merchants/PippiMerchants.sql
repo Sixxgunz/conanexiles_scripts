@@ -28,7 +28,7 @@ Select * From buildings WHERE object_id in (select distinct id from actor_positi
 
 -- We need to delete everything from these two tables except Pippi Merchants so we can isolate all data we will re-insert later into our live database during restarts.
 -- Lets also keep it clean so we can only have the db stuff we want.  Recommendations also include removing custom views from our now merchant info only database.
--- Removing all non essential tables as this will only be our copy of the data we want to keep.
+-- Removing all non essential tables as this will only be our copy of the data we want to keep for the sole purpose of storing this info.
 
 DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS actor_bounding_box;
@@ -44,7 +44,16 @@ DROP TABLE IF EXISTS item_inventory;
 DROP TABLE IF EXISTS item_properties;
 DROP TABLE IF EXISTS purgescores;
 DROP TABLE IF EXISTS static_buildables;
-
+DROP TABLE IF EXISTS serverPopulationRecordings;
+DROP TABLE IF EXISTS z_pet_ownership;
+DROP TABLE IF EXISTS z_thrall_ownership;
+DROP TABLE IF EXISTS zpet_ownership;
+DROP TABLE IF EXISTS zthrall_ownership;
+DROP TABLE IF EXISTS cust_item_xref;
+DROP TABLE IF EXISTS cust_stat_xref;
+DROP TABLE IF EXISTS diplomacy;
+DROP TABLE IF EXISTS dw_settings;
+DROP TABLE IF EXISTS mod_controllers;
 
 -- These are the npc id's that I will be singling out and removing anything that is not a mechant is removed
 -- All pippi merchants above and below these db id numbers will be removed
