@@ -2,6 +2,8 @@
 This is a collection of gathered sql scripts from the conan exiles server owner community and a few I have modified or created myself.  This collection includes a complete custom item cross referencing table which can be used for many reasons and many custom database views to make your life as a server owner and the lives of your admins much less stressful.
 
 
+Everything here should be considered as up to date and working unless otherwise.  If anything is not working properly, shoot me a message.
+
 
 InactiveCleanout and what this does for you:
 
