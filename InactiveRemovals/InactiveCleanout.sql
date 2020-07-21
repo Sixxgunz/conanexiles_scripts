@@ -64,9 +64,9 @@ delete from actor_position where id in (select guildid from guilds where guildid
 delete from guilds where guildid not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-6 days'));
 delete from character_stats where char_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-6 days') and guild is null);
 delete from character_stats where char_id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-6 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-6 days') and guild is not null));
-delete from account where id in (select distinct playerid from characters where lastTimeOnline > strftime('%s', 'now', '-6 days'));
 delete from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-6 days') and guild is null);
 delete from characters where id in (select id from characters where lastTimeOnline < strftime('%s', 'now', '-6 days') and guild not in (select distinct guild from characters where lastTimeOnline > strftime('%s', 'now', '-6 days') and guild is not null));
+delete from account where id not in (select distinct playerid from characters);
 
 
 /*Single/Double/Triple/Quadruple Foundation AND Pillar spam removal - Uncomment if you wish to use the latter*/
